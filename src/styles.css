@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-custom-black {
+
+	background-color: #191519;
+
+}
+
+.color-custom-black {
+
+	color: #191519;
+
+}
+
+.bg-custom-yellow {
+
+	background-color: #ffffb3;
+
+}
+
+.color-custom-blue {
+
+	color: #006ba6;
+
+}
+
+.bg-custom-red {
+
+	background-color: #6e0d25;
+
+}
+
+.color-custom-red {
+
+	color: #6e0d25;
+
+}
+
+.bg-custom-orange {
+
+	background-color: #dcab6b;
+
+}

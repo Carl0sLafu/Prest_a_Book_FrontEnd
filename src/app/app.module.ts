@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+
+import { AppComponent } from './app.component';
+import { MainComponent } from './main/main.component';
+import { BooksearchComponent } from './booksearch/booksearch.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { InterfaceComponent } from './interface/interface.component';
+import { LoginregisterComponent } from './loginregister/loginregister.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    MainComponent,
+    BooksearchComponent,
+    HeaderComponent,
+    FooterComponent,
+    InterfaceComponent,
+    LoginregisterComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
