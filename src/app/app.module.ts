@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { InterfaceComponent } from './interface/interface.component';
 import { LoginregisterComponent } from './loginregister/loginregister.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginregisterComponent } from './loginregister/loginregister.component'
     HeaderComponent,
     FooterComponent,
     InterfaceComponent,
-    LoginregisterComponent
+    LoginregisterComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { BooksearchComponent } from './booksearch/booksearch.component';
 import { MainComponent } from './main/main.component';
 import { LoginregisterComponent } from './loginregister/loginregister.component';
 import { InterfaceComponent } from './interface/interface.component';
+import { AboutComponent } from './about/about.component';
+
 const routes: Routes = [
     {
         path: 'search',
@@ -20,6 +22,10 @@ const routes: Routes = [
     {
         path: 'interface',
         component: InterfaceComponent
+    },
+    {
+        path: 'about',
+        component: AboutComponent
     }
 ];
 
