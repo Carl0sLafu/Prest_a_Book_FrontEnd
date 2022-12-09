@@ -8,6 +8,11 @@ import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
     {
+        path: '',
+        redirectTo: 'main',
+        pathMatch: 'full'
+    },
+    {
         path: 'search',
         component: BooksearchComponent
     },
