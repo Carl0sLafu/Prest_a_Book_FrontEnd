@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http'
 export class AppComponent implements OnInit {
   title = 'prest-a-book';
 
-  books: any = null;
+  /*books: any = null;
   users: any = null;
   drawers: any = null;
   editorials: any = null;
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 
     this.http.get('https://prestabookbackend-production.up.railway.app/api/editorials').subscribe
     (res => this.editorials = res);
-  }
+  }*/
 
   
 
