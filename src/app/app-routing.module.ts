@@ -16,10 +16,6 @@ const routes: Routes = [
         component: BooksearchComponent
     },
     {
-        path: 'main',
-        component: MainComponent
-    },
-    {
         path: 'login-register',
         component: LoginregisterComponent
     },
