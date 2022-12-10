@@ -9,16 +9,15 @@ import { AboutComponent } from './about/about.component';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'main',
-        pathMatch: 'full'
-    },
-    {
-        path: 'search',
-        component: BooksearchComponent
+        component: MainComponent
     },
     {
         path: 'main',
         component: MainComponent
+    },
+    {
+        path: 'search',
+        component: BooksearchComponent
     },
     {
         path: 'login-register',

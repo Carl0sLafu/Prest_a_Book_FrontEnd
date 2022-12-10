@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 // import { HttpClient } from '@angular/common/http'
+=======
+>>>>>>> c77d7e7de638de2216604dac6c1bb1684767f692
 
 
 @Component({
@@ -7,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+<<<<<<< HEAD
 export class AppComponent /*implements OnInit*/ {
   title = 'prest-a-book';
 
@@ -15,6 +19,16 @@ export class AppComponent /*implements OnInit*/ {
   // drawers: any = null;
   // editorials: any = null;
   // authors: any = null;
+=======
+export class AppComponent {
+  title = 'prest-a-book';
+
+  /*books: any = null;
+  users: any = null;
+  drawers: any = null;
+  editorials: any = null;
+  authors: any = null;
+>>>>>>> c77d7e7de638de2216604dac6c1bb1684767f692
 
   // constructor(private http: HttpClient){}
 
@@ -31,9 +45,15 @@ export class AppComponent /*implements OnInit*/ {
   //   this.http.get('https://prestabookbackend-production.up.railway.app/api/authors').subscribe
   //   (res => this.authors = res);
 
+<<<<<<< HEAD
   //   this.http.get('https://prestabookbackend-production.up.railway.app/api/editorials').subscribe
   //   (res => this.editorials = res);
   // }
+=======
+    this.http.get('https://prestabookbackend-production.up.railway.app/api/editorials').subscribe
+    (res => this.editorials = res);
+  }*/
+>>>>>>> c77d7e7de638de2216604dac6c1bb1684767f692
 
   
 
