@@ -1,0 +1,38 @@
+.right-writing-vertical {
+
+    text-orientation: upright;
+    writing-mode: vertical-lr;
+
+}
+
+#intro {
+
+    animation-name: appear;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+
+}
+
+#intro2 {
+
+    animation-name: appear2;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+
+}
+
+@keyframes appear {
+
+    from {margin-top: 1em;
+    color: #1915196b;}
+    to {margin-top: 0em; color: inherit;}
+
+}
+
+@keyframes appear2 {
+
+    from {margin-top: 1em;
+    color: #ffffff;}
+    to {margin-top: 0em; color: #ffffff;}
+
+}

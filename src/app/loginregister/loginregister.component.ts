@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class LoginregisterComponent {
 
+  register: boolean = false;
+
+  constructor () {
+
+
+
+  }
+
+  cambiarEstado() {
+
+    this.register = this.register?false:true;
+
+  }
+
 }
