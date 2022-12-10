@@ -12,6 +12,10 @@ const routes: Routes = [
         component: MainComponent
     },
     {
+        path: 'main',
+        component: MainComponent
+    },
+    {
         path: 'search',
         component: BooksearchComponent
     },
