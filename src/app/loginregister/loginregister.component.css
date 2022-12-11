@@ -36,3 +36,19 @@
     to {margin-top: 0em; color: #ffffff;}
 
 }
+
+#acceder{
+    background-image: url(/assets/Acceder.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width:100%;
+    height:100%;
+}
+
+#registrarse{
+    background-image: url(/assets/Registrarse.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width:100%;
+    height:100%;
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-loginregister',
   templateUrl: './loginregister.component.html',
@@ -10,8 +11,6 @@ export class LoginregisterComponent {
   register: boolean = false;
 
   constructor () {
-
-
 
   }
 

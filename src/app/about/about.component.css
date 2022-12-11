@@ -1,0 +1,29 @@
+#mini{
+    height: 35vh;
+    border-radius: 40%;
+    border: 3px solid black;
+}
+#foto{
+    border-radius: 5%;
+    border: 3px solid black;
+    box-shadow: 0em ;
+}
+.grande{
+    height:100%;
+}
+
+#intro {
+
+    animation-name: appear;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+
+}
+
+@keyframes appear {
+
+    from {margin-top: 1em;
+    color: #1915196b;}
+    to {margin-top: 0em; color: inherit;}
+
+}
