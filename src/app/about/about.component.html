@@ -1,6 +1,6 @@
 <div class="container-fluid color-custom-black h-100">
     <div class="row h-100">
-        <div class="col-sm-9 p-0">
+        <div class="col-xl-9 p-0">
             <div class="container-fluid bg-custom-yellow h-100 p-5">
                 <div class="row">
                     <div class="col fs-1 fw-bold py-3" id="intro">
@@ -30,39 +30,45 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm p-0">
-            <div class="container bg-custom-orange h-100 grande">
+        <div class="col-xl-3 p-0">
+            <div class="container-fluid bg-custom-orange h-100 grande">
 
                 <!--Alberto-->
 
                 <div class="row justify-content-md-center" *ngIf="fotonum==1">
-                    <div class="col-12 col-md-auto p-5" id="intro">
-                        <img id="foto" [src]="imgSrc1">
+                    <div class="col-12 col-md-auto p-5 text-center" id="intro">
+                        <img id="foto" class="img-fluid" [src]="imgSrc1">
                     </div>
-                    <div class="col-12 text-center">
-                        Alberto Jiménez
+                    <div class="col-12 text-center pb-5">
+                        <p class="fs-5 fw-bold">Alberto Jiménez</p>
+                        <p>Breve descripcion sobre su rol en el equipo</p>
+                        <p>Backend developer, etc</p>
                     </div>
                 </div>
 
                 <!--Facu-->
 
                 <div class="row justify-content-md-center" *ngIf="fotonum==2">
-                    <div class="col-12 col-md-auto p-5" id="intro">
-                        <img id="foto" [src]="imgSrc2">
+                    <div class="col-12 col-md-auto p-5 text-center" id="intro">
+                        <img id="foto" class="img-fluid" [src]="imgSrc2">
                     </div>
-                    <div class="col-12 text-center" >
-                        Facundo Silva
+                    <div class="col text-center pb-5">
+                        <p class="fs-5 fw-bold">Facundo Silva</p>
+                        <p>Breve descripcion sobre su rol en el equipo</p>
+                        <p>Backend developer, etc</p>
                     </div>
                 </div>
 
                 <!--Carlos-->
 
                 <div class="row justify-content-md-center" *ngIf="fotonum==3">
-                    <div class="col-12 col-md-auto p-5" id="intro">
-                        <img id="foto" [src]="imgSrc3">
+                    <div class="col-12 col-md-auto p-5 text-center" id="intro">
+                        <img id="foto" class="img-fluid" [src]="imgSrc3">
                     </div>
-                    <div class="col-12 text-center">
-                        Carlos Lafuente
+                    <div class="col-12 text-center pb-5">
+                        <p class="fs-5 fw-bold">Carlos Lafuente</p>
+                        <p>Breve descripcion sobre su rol en el equipo</p>
+                        <p>Backend developer, etc</p>
                     </div>
                 </div>
             </div>
