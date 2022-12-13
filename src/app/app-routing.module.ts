@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { LoginregisterComponent } from './loginregister/loginregister.component';
 import { InterfaceComponent } from './interface/interface.component';
 import { AboutComponent } from './about/about.component';
+import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 
 const routes: Routes = [
     {
@@ -30,6 +31,10 @@ const routes: Routes = [
     {
         path: 'about',
         component: AboutComponent
+    },
+    {
+        path: 'adminpanel',
+        component: AdminpanelComponent
     }
 ];
 

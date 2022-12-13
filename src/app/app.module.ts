@@ -9,6 +9,7 @@ import { InterfaceComponent } from './interface/interface.component';
 import { LoginregisterComponent } from './loginregister/loginregister.component';
 import { AboutComponent } from './about/about.component';
 import { ElementsModule } from './elements/elements.module';
+import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ElementsModule } from './elements/elements.module';
     InterfaceComponent,
     LoginregisterComponent,
     AboutComponent,
+    AdminpanelComponent,
   ],
   imports: [
     BrowserModule,
