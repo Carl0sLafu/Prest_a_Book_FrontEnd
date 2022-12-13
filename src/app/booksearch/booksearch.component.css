@@ -1,0 +1,15 @@
+#books{
+    width:100%;
+    margin:auto;
+}
+
+#searchbar{
+    width:100%;
+    margin:auto;
+}
+
+#orderby{
+    margin:0;
+    padding:0;
+    height: 100%;
+}
