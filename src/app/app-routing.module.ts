@@ -6,6 +6,9 @@ import { LoginregisterComponent } from './loginregister/loginregister.component'
 import { InterfaceComponent } from './interface/interface.component';
 import { AboutComponent } from './about/about.component';
 import { AdminpanelComponent } from './adminpanel/adminpanel.component';
+import { AdminpanelUsersComponent } from './adminpanel-users/adminpanel-users.component';
+import { AdminpanelLoansComponent } from './adminpanel-loans/adminpanel-loans.component';
+import { AdminpanelBooksComponent } from './adminpanel-books/adminpanel-books.component';
 
 const routes: Routes = [
     {
@@ -35,6 +38,18 @@ const routes: Routes = [
     {
         path: 'adminpanel',
         component: AdminpanelComponent
+    },
+    {
+        path: 'adminpanel/users',
+        component: AdminpanelUsersComponent
+    },
+    {
+        path: 'adminpanel/loans',
+        component: AdminpanelLoansComponent
+    },
+    {
+        path: 'adminpanel/books',
+        component: AdminpanelBooksComponent
     }
 ];
 
