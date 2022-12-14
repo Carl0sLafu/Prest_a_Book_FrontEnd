@@ -13,6 +13,8 @@ import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 import { AdminpanelBooksComponent } from './adminpanel-books/adminpanel-books.component';
 import { AdminpanelUsersComponent } from './adminpanel-users/adminpanel-users.component';
 import { AdminpanelLoansComponent } from './adminpanel-loans/adminpanel-loans.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { AdminpanelLoansComponent } from './adminpanel-loans/adminpanel-loans.co
     AppRoutingModule,
     RouterModule,
     ElementsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
