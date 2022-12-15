@@ -11,12 +11,11 @@
                     <a id="home" href="/main" class="nav-item nav-link active">Home</a>
                     <a href="/search" class="nav-item nav-link">Buscar libros</a>
                     <a href="/interface" class="nav-item nav-link">Mi zona</a>
-                    <a href="/about" class="nav-item nav-link">About</a>
                 </div>
-                <!-- añadir aquí un ngif, si el usuario está logueado mostrar select con mi zona y logout, sino mostrar register y login -->
                 <div class="navbar-nav ms-auto">
-                    <a href="/login-register" class="nav-item nav-link">Register</a>
-                    <a href="/login-register" class="nav-item nav-link">Login</a>
+                    <a *ngIf="isLoged" class="nav-item nav-link" (click)="logOut()">Log Out</a>
+                    <a *ngIf="!isLoged" href="/login-register" class="nav-item nav-link">Register</a>
+                    <a *ngIf="!isLoged" href="/login-register" class="nav-item nav-link">Login</a>
                 </div>
             </div>
         </div>
