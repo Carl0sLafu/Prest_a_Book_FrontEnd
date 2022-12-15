@@ -62,10 +62,10 @@ export class LoginregisterComponent implements OnInit {
 
       this.authService.login(username, password).subscribe(
         data => {
-          this.tokenStorage.saveToken(data.accessToken);
+          this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
 
-          this.reloadPage();
+         this.reloadPage();
         },
         error => {
 

@@ -13,9 +13,10 @@ import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 import { AdminpanelBooksComponent } from './adminpanel-books/adminpanel-books.component';
 import { AdminpanelUsersComponent } from './adminpanel-users/adminpanel-users.component';
 import { AdminpanelLoansComponent } from './adminpanel-loans/adminpanel-loans.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BookComponent } from './book/book.component';
+import { AuthInterceptor } from './_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,14 @@ import { BookComponent } from './book/book.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,25 +12,15 @@
                     <th scope="col">Control</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let usuario of usuarios">
+
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Alberto</td>
-                    <td>Administrador</td>
-                    <td><button class="btn btn-danger">x</button><button class="btn btn-success">-</button></td>
+                    <th scope="row">{{usuario.id}}</th>
+                    <td>{{usuario.username}}</td>
+                    <td>{{usuario.id_role.role_name}}</td>
+                    <td><button class="btn btn-danger">x</button><button class="btn btn-success">Rol</button></td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Facu</td>
-                    <td>Colaborador</td>
-                    <td><button class="btn btn-danger">x</button><button class="btn btn-success">-</button></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Carlos</td>
-                    <td>Usuario</td>
-                    <td><button class="btn btn-danger">x</button><button class="btn btn-success">-</button></td>
-                </tr>
+
             </tbody>
         </table>
 

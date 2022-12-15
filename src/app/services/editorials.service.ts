@@ -32,8 +32,8 @@ export class EditorialsService {
     return this.http.delete<any>(`${baseUrl}/${id}`);
   }
 
-  getByName(name:string): Observable<Editorials[]>{
-    return this.http.get<Editorials[]>(`${baseUrl}/name/${name}`);
+  getByName(name:string): Observable<Editorials>{
+    return this.http.get(`${baseUrl}/name/${name}`);
   }
 
 }

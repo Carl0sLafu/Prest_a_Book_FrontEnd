@@ -18,8 +18,8 @@ export class UsersService {
     return this.http.get<Users[]>(baseUrl);
   }
 
-  getById(id:number): Observable<Users[]>{
-    return this.http.get<Users[]>(`${baseUrl}/${id}`);
+  getById(id:number): Observable<Users>{
+    return this.http.get(`${baseUrl}/${id}`);
   }
 
   create(data:any): Observable<any>{
@@ -34,8 +34,8 @@ export class UsersService {
     return this.http.delete<any>(`${baseUrl}/${id}`);
   }
 
-  getByUsername(username:string): Observable<Users[]>{
-    return this.http.get<Users[]>(`${baseUrl}/username/${username}`);
+  getByUsername(username:string): Observable<Users>{
+    return this.http.get(`${baseUrl}/username/${username}`);
   }
 
 }

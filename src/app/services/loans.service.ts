@@ -31,7 +31,7 @@ export class LoansService {
   }
 
   delete(id:number): Observable<any>{
-    return this.http.delete<any>(`${baseUrl}/${id}`);
+    return this.http.delete(`${baseUrl}/${id}`);
   }
 
 }

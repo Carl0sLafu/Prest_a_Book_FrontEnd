@@ -40,7 +40,7 @@ export class BooksService {
   }
 
   getByIsbn(isbn:string): Observable<Books>{
-    return this.http.get<Books>(`${baseUrl}/isbn/${isbn}`);
+    return this.http.get(`${baseUrl}/isbn/${isbn}`);
   }
 
 }

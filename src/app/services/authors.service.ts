@@ -32,11 +32,11 @@ export class AuthorsService {
     return this.http.delete<any>(`${baseUrl}/${id}`);
   }
 
-  getByName(name:string): Observable<Authors[]>{
-    return this.http.get<Authors[]>(`${baseUrl}/name/${name}`);
+  getByName(name:string): Observable<Authors>{
+    return this.http.get<Authors>(`${baseUrl}/name/${name}`);
   }
 
-  getBySurname(surname:string): Observable<Authors[]>{
-    return this.http.get<Authors[]>(`${baseUrl}/surname/${surname}`);
+  getBySurname(surname:string): Observable<Authors>{
+    return this.http.get(`${baseUrl}/surname/${surname}`);
   }
 }

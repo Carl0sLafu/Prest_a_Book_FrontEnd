@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-adminpanel-users',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AdminpanelUsersComponent {
 
+  usuarios:any = null
+
+  constructor(private users: UsersService){}
+
+  ngOnInit(): void{
+    this.users.getAll().subscribe
+    (res => this.usuarios = res);
+  }
 }
