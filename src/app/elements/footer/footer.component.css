@@ -20,3 +20,7 @@ a:hover{
 
     color:rgb(0, 121, 185) !important;
 }
+
+ul, li{
+    display:inline-block;
+}

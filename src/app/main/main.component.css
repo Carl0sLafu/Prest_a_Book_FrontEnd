@@ -10,3 +10,12 @@
     border:0.13em solid black;
     border-radius: 50px;
 }
+
+#bienvenido{
+    height: 50vh;
+    max-height: 50vh;
+    background-image: url(./../../assets/background.jpg);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 170% auto;
+}
