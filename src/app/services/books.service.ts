@@ -35,4 +35,12 @@ export class BooksService {
     return this.http.delete<any>(`${baseUrl}/${id}`);
   }
 
+  getByTitle(title:string): Observable<Books[]>{
+    return this.http.get<Books[]>(`${baseUrl}/title/${title}`);
+  }
+
+  getByIsbn(isbn:string): Observable<Books[]>{
+    return this.http.get<Books[]>(`${baseUrl}/isbn/${isbn}`);
+  }
+
 }

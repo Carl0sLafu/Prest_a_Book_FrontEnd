@@ -1,25 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Users } from '../models/users.model';
+import { Editorials } from '../models/editorials.model';
 
-const baseUrl = "https://prestabookbackend-production.up.railway.app/api/users";
+const baseUrl = "https://prestabookbackend-production.up.railway.app/api/editorials";
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class UsersService {
-
+export class EditorialsService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Users[]>{
-    return this.http.get<Users[]>(baseUrl);
+  getAll(): Observable<Editorials[]>{
+    return this.http.get<Editorials[]>(baseUrl);
   }
 
-  getById(id:number): Observable<Users[]>{
-    return this.http.get<Users[]>(`${baseUrl}/${id}`);
+  getById(id:number): Observable<Editorials[]>{
+    return this.http.get<Editorials[]>(`${baseUrl}/${id}`);
   }
 
   create(data:any): Observable<any>{
@@ -34,8 +32,8 @@ export class UsersService {
     return this.http.delete<any>(`${baseUrl}/${id}`);
   }
 
-  getByUsername(username:string): Observable<Users[]>{
-    return this.http.get<Users[]>(`${baseUrl}/username/${username}`);
+  getByName(name:string): Observable<Editorials[]>{
+    return this.http.get<Editorials[]>(`${baseUrl}/name/${name}`);
   }
 
 }
