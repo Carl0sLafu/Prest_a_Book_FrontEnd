@@ -15,6 +15,7 @@ import { AdminpanelUsersComponent } from './adminpanel-users/adminpanel-users.co
 import { AdminpanelLoansComponent } from './adminpanel-loans/adminpanel-loans.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BookComponent } from './book/book.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FormsModule } from '@angular/forms';
     AdminpanelBooksComponent,
     AdminpanelUsersComponent,
     AdminpanelLoansComponent,
+    BookComponent,
   ],
   imports: [
     BrowserModule,

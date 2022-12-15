@@ -19,8 +19,8 @@ export class BooksService {
     return this.http.get<Books[]>(baseUrl);
   }
 
-  getById(id:number): Observable<Books[]>{
-    return this.http.get<Books[]>(`${baseUrl}/${id}`);
+  getById(id:number): Observable<Books>{
+    return this.http.get<Books>(`${baseUrl}/${id}`);
   }
 
   create(data:any): Observable<any>{
@@ -35,12 +35,12 @@ export class BooksService {
     return this.http.delete<any>(`${baseUrl}/${id}`);
   }
 
-  getByTitle(title:string): Observable<Books[]>{
-    return this.http.get<Books[]>(`${baseUrl}/title/${title}`);
+  getByTitle(title:string): Observable<Books>{
+    return this.http.get<Books>(`${baseUrl}/title/${title}`);
   }
 
-  getByIsbn(isbn:string): Observable<Books[]>{
-    return this.http.get<Books[]>(`${baseUrl}/isbn/${isbn}`);
+  getByIsbn(isbn:string): Observable<Books>{
+    return this.http.get<Books>(`${baseUrl}/isbn/${isbn}`);
   }
 
 }

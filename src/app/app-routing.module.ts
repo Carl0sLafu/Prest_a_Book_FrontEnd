@@ -9,6 +9,7 @@ import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 import { AdminpanelUsersComponent } from './adminpanel-users/adminpanel-users.component';
 import { AdminpanelLoansComponent } from './adminpanel-loans/adminpanel-loans.component';
 import { AdminpanelBooksComponent } from './adminpanel-books/adminpanel-books.component';
+import { BookComponent } from './book/book.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
         path: 'search',
         component: BooksearchComponent
+    },
+    {
+        path: 'book/:id',
+        component: BookComponent
     },
     {
         path: 'login-register',
