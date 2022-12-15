@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 const LOGIN_API = "https://prestabookbackend-production.up.railway.app/login";
-const REGISTER_API = "https://prestabookbackend-production.up.railway.app/users";
+const REGISTER_API = "https://prestabookbackend-production.up.railway.app/api/users";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -40,9 +40,9 @@ export class AuthService {
     psswd: string,
     email: string,
     real_name:string,
-    surname: string,
-    birth_date: Date,
-    gender: string,
+    surname: string | null,
+    birth_date: Date | null,
+    gender: string | null,
     id: number
 
     ): Observable<any> {

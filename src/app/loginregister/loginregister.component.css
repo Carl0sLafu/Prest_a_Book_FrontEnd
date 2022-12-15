@@ -1,4 +1,4 @@
-#intro {
+.intro {
 
     animation-name: appear;
     animation-duration: 0.8s;
@@ -6,7 +6,7 @@
 
 }
 
-#intro2 {
+.intro2 {
 
     animation-name: appear2;
     animation-duration: 0.8s;

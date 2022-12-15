@@ -4,43 +4,53 @@
             <div class="col-sm-9 p-0">
                 <div class="container-fluid bg-custom-yellow h-100 p-5">
                     <div class="row">
-                        <div class="col fs-1 fw-bold py-3" id="intro">
+                        <div class="col fs-1 fw-bold py-3 intro" >
                             Acceder
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col fs-4 fw-bold py-2" id="intro">
-                            Usuario
+                        <div class="col fs-4 fw-bold py-2 intro" >
+                            Usuario<span class="color-custom-red">*</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col py-1">
-                            <input type="text" name="User" id="intro" [(ngModel)]="loginFormResults.username">
+                            <input type="text" name="User" class="intro" [(ngModel)]="loginFormResults.username">
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="useremptyLogin">
+                        <div class="col fs-6 color-custom-red">
+                            No has introducido nombre de usuario
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col fs-4 fw-bold py-2" id="intro">
-                            Contraseña
+                        <div class="col fs-4 fw-bold py-2 intro">
+                            Contraseña<span class="color-custom-red">*</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col py-1">
-                            <input type="password" name="Pass" id="intro" [(ngModel)]="loginFormResults.password">
+                            <input type="password" name="Pass" class="intro" [(ngModel)]="loginFormResults.password">
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="passemptyLogin">
+                        <div class="col fs-6 color-custom-red">
+                            No has introducido una contraseña
                         </div>
                     </div>
                     <div class="row">
                         <div class="col pt-3 pb-1">
-                            <input type="button" value="Entrar" class="btn btn-primary fs-6" id="intro2" (click)="onSubmitLogin()">
+                            <input type="button" value="Entrar" class="btn btn-primary fs-6 intro2" (click)="onSubmitLogin()">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col py-1" id="intro">
+                        <div class="col py-1 intro">
                             <span>¿No tienes cuenta? </span> <a href="./login-register#header" class="color-custom-blue text-decoration-none" (click)="cambiarEstado()">Registrate</a>
                         </div>
                     </div>
                     <div class="row" *ngIf="errorMessageLogin != ''">
                         <div class="col py-1">
-                            <p class="color-danger">{{errorMessageLogin}}</p>
+                            <p class="color-custom-red">{{errorMessageLogin}}</p>
                         </div>
                     </div>
                 </div>
@@ -55,58 +65,84 @@
 			<div class="col-sm-9 p-0">
                 <div class="container-fluid bg-custom-orange h-100 p-5">
                     <div class="row">
-                        <div class="col fs-1 fw-bold py-3" id="intro">
+                        <div class="col fs-1 fw-bold py-3 intro">
                             Register
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col fs-4 fw-bold py-2" id="intro">
-                            Nombre de usuario
+                        <div class="col fs-4 fw-bold py-2 intro">
+                            Nombre de usuario<span class="color-custom-red">*</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col py-1">
-                            <input type="text" name="User" id="intro">
+                            <input type="text" name="User" class="intro" [(ngModel)]="registerFormResults.username">
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="useremptyRegister">
+                        <div class="col fs-6 color-custom-red">
+                            No has introducido un nombre
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col fs-4 fw-bold py-2" id="intro">
-                            Correo electronico
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col py-1">
-                            <input type="text" name="Pass" id="intro">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col fs-4 fw-bold py-2" id="intro">
-                            Contraseña
+                        <div class="col fs-4 fw-bold py-2 intro">
+                            Correo electronico<span class="color-custom-red">*</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col py-1">
-                            <input type="text" name="Pass" id="intro">
+                            <input type="email" name="Pass" class="intro" [(ngModel)]="registerFormResults.email">
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="emailemptyRegister">
+                        <div class="col fs-6 color-custom-red">
+                            No has introducido un email
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col fs-4 fw-bold py-2" id="intro">
-                            Confirmar contraseña
+                        <div class="col fs-4 fw-bold py-2 intro">
+                            Contraseña<span class="color-custom-red">*</span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col py-1">
-                            <input type="text" name="Pass" id="intro">
+                            <input type="password" name="Pass" class="intro" [(ngModel)]="registerFormResults.password">
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="passemptyRegister">
+                        <div class="col fs-6 color-custom-red">
+                            No has introducido una contraseña
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col fs-4 fw-bold py-2 intro">
+                            Confirmar contraseña<span class="color-custom-red">*</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col py-1">
+                            <input type="password" name="Pass" class="intro" [(ngModel)]="registerFormResults.confirmedpassword">
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="passConfirmemptyRegister">
+                        <div class="col fs-6 color-custom-red">
+                            No has introducido una contraseña
                         </div>
                     </div>
                     <div class="row">
                         <div class="col pt-3">
-                            <input type="button" value="Registrarse" class="btn btn-primary fs-6" id="intro2">
+                            <input type="button" value="Registrarse" class="btn btn-primary fs-6 intro2" (click)="onSubmitRegister()">
+                            <p *ngIf="registerSuccesful" class="text-color-green">Te has registrado correctamente</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col py-1 pb-5" id="intro">
+                        <div class="col py-1 pb-5 intro">
                             <span>¿Ya tienes cuenta? </span> <a href="./login-register#header" class="color-custom-blue text-decoration-none" (click)="cambiarEstado()">Accede</a>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="errorMessageRegister != ''">
+                        <div class="col pt-3 color-custom-red">
+                            <p>{{errorMessageRegister}}</p>
                         </div>
                     </div>
                 </div>
