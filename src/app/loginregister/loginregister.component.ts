@@ -27,10 +27,19 @@ export class LoginregisterComponent implements OnInit {
   };
 
   errorMessageLogin = '';
+  errorMessageRegister = '';
 
-  constructor (private authService: AuthService, private tokenStorage: TokenStorageService) {
+  useremptyLogin: boolean = false;
+  passemptyLogin: boolean = false;
 
-  }
+  useremptyRegister: boolean = false;
+  emailemptyRegister: boolean = false;
+  passemptyRegister: boolean = false;
+  passConfirmemptyRegister: boolean = false;
+
+  registerSuccesful: boolean = false;
+
+  constructor (private authService: AuthService, private tokenStorage: TokenStorageService) {}
 
   ngOnInit(): void {
     
@@ -45,25 +54,78 @@ export class LoginregisterComponent implements OnInit {
   onSubmitLogin(): void {
 
     const {username, password} = this.loginFormResults;
-    this.authService.login(username, password).subscribe(
-      data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUser(data);
 
-        this.reloadPage();
-      },
-      error => {
+    this.useremptyLogin = (username == null)?true:false;
+    this.passemptyLogin = (password == null)?true:false;
 
-        this.errorMessageLogin = error;
+    if (!this.useremptyLogin && !this.passemptyLogin) {
 
-      }
-    );
+      this.authService.login(username, password).subscribe(
+        data => {
+          this.tokenStorage.saveToken(data.accessToken);
+          this.tokenStorage.saveUser(data);
+
+          this.reloadPage();
+        },
+        error => {
+
+          this.errorMessageLogin = "El usuario o la contraseña no coinciden, vuelvelo a intentar";
+
+        }
+      );
+
+    }
+
+  }
+
+  onSubmitRegister(): void {
+
+    const {username, email, password, confirmedpassword} = this.registerFormResults;
+
+    this.useremptyRegister = (username == null)?true:false;
+    this.emailemptyRegister = (email == null)?true:false;
+    this.passemptyRegister = (password == null)?true:false;
+    this.passConfirmemptyRegister = (confirmedpassword == null)?true:false;
+
+    var coinciden = false;
+
+    if (password == confirmedpassword) {
+
+      coinciden = true;
+
+    } else if (!this.passemptyRegister && !this.passConfirmemptyRegister) {
+
+      this.errorMessageRegister = 'Las contraseñas no coinciden';
+      coinciden = false;
+
+    }
+
+    //Controlar con una consulta de que no se repite el nombre
+    if (!this.useremptyRegister && !this.emailemptyRegister && !this.passemptyRegister && !this.passConfirmemptyRegister && coinciden) {
+
+      this.authService.register(username, password, email, username, null, null, null, 3).subscribe(
+        data => {
+
+          this.registerSuccesful = true;
+
+        },
+        error => {
+
+          this.errorMessageRegister = "Algo a fallado, vuelvelo a intentar";
+
+        }
+      );
+
+    }
 
   }
 
   cambiarEstado() {
 
     this.register = this.register?false:true;
+
+    this.useremptyLogin = false;
+    this.passemptyLogin = false;
 
   }
 
