@@ -1,6 +1,6 @@
 <body class="bg-custom-yellow align-self-center">
     <div class="container-fluid text-center p-5">
-        <div class="row">
+        <div class="row" *ngIf="!editarPerfil">
             <div class="col">
                 <div class="container bg-white">
                     <div class="row p-5">
@@ -11,38 +11,110 @@
                             <div class="container-fluid fs-4 text-start">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="color-custom-red fw-bold">Nombre de usuario:</span> Carlos
+                                        <span class="color-custom-red fw-bold">Nombre de usuario:</span> {{user.username}}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="color-custom-red fw-bold">Email:</span> example@gmail.com
+                                        <span class="color-custom-red fw-bold">Email:</span> {{user.email}}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="color-custom-red fw-bold">Birth:</span> 01/01/2000
+                                        <span class="color-custom-red fw-bold">Fecha de nacimiento:</span> {{user.birth_date}}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="color-custom-red fw-bold">Nombre real:</span> Carlos
+                                        <span class="color-custom-red fw-bold">Nombre real:</span> {{user.real_name}}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="color-custom-red fw-bold">Apellidos:</span> Lafuente (SecondSurname)
+                                        <span class="color-custom-red fw-bold">Apellidos:</span> {{user.surname}}
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="color-custom-red fw-bold">Gender:</span> No-Specific
+                                        <span class="color-custom-red fw-bold">Género:</span> {{user.gender}}
                                     </div>
-                                </div>   
+                                </div>
+                                <div class="row" *ngIf="error != ''">
+                                    <div class="col">
+                                        <span class="color-custom-red fw-bold">{{error}}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-3 text-end align-self-end">
-                            <button type="button" class="btn btn-success align-self-end">Editar perfil</button>
+                        <div class="col-2 text-end align-self-end">
+                            <button type="button" class="btn btn-success align-self-end" (click)="cambiarDatos()">Editar perfil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="editarPerfil">
+            <div class="col">
+                <div class="container bg-white">
+                    <div class="row p-5">
+                        <div class="col-3">
+                            <img src="./../../assets/Portrait_placeholder.png" class="img-fluid"ºº alt="Bruja del mar" height="300">
+                        </div>
+                        <div class="col">
+                            <div class="container-fluid fs-5 text-start">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-1">
+                                            <span class="color-custom-red fw-bold input-group-text fs-5">Nombre de usuario:</span>
+                                            <input type="text" name="username" value="{{user.username}}" [(ngModel)]="modifyUser.username">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-1">
+                                            <span class="color-custom-red fw-bold input-group-text fs-5">Email:</span>
+                                            <input type="text" name="email" value="{{user.email}}" [(ngModel)]="modifyUser.email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-1">
+                                            <span class="color-custom-red fw-bold input-group-text fs-5">Fecha de nacimiento:</span>
+                                            <input type="text" name="birth" value="{{user.birth_date}}" placeholder="dd/MM/year" [(ngModel)]="modifyUser.birth">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-1">
+                                            <span class="color-custom-red fw-bold input-group-text fs-5">Nombre real:</span>
+                                            <input type="text" name="trueName" value="{{user.real_name}}" [(ngModel)]="modifyUser.trueName">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-1">
+                                            <span class="color-custom-red fw-bold input-group-text fs-5">Apellidos:</span>
+                                            <input type="text" name="surname" value="{{user.surname}}" [(ngModel)]="modifyUser.surname">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-1">
+                                            <span class="color-custom-red fw-bold input-group-text fs-5">Género:</span>
+                                            <input type="text" name="gender" value="{{user.gender}}" [(ngModel)]="modifyUser.gender">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 text-end align-self-end">
+                            <button type="button" class="btn btn-danger" (click)="cambiarDatos()">X</button>
+                            <button type="button" class="btn btn-success align-self-end" (click)="subirDatos()">Subir cambios</button>
                         </div>
                     </div>
                 </div>
