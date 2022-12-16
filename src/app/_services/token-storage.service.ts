@@ -32,7 +32,7 @@ export class TokenStorageService {
 
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
-    if(user){
+    if(user!=null){
         return JSON.parse(user);
     }
 

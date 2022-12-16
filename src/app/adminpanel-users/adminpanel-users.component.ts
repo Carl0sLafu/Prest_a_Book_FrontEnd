@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { timeout } from 'rxjs';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -9,11 +10,22 @@ import { UsersService } from '../services/users.service';
 export class AdminpanelUsersComponent {
 
   usuarios:any = null
+  estasSeguro: any = false;
 
   constructor(private users: UsersService){}
 
   ngOnInit(): void{
     this.users.getAll().subscribe
     (res => this.usuarios = res);
+  }
+
+  
+  borrarUsuario(usuarioid:number){
+    this.estasSeguro = window.confirm("¿Estás seguro?");
+    console.log(usuarioid)
+    if(this.estasSeguro){
+          this.users.delete(usuarioid).subscribe();
+    }
+
   }
 }
