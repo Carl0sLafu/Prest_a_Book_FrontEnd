@@ -40,3 +40,16 @@
 	background-color: #dcab6b;
 
 }
+
+.color-custom-pink {
+
+	color: #e20074 !important;
+
+}
+
+.dropdown-menu[data-bs-popper] {
+
+	right: 1%;
+	left: auto;
+
+}
