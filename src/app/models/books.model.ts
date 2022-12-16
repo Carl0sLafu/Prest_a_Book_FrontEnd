@@ -1,43 +1,16 @@
+import { Editorials } from "./editorials.model";
+import { Users } from "./users.model";
+
 export class Books {
     id?: number;
     isbn?: string;
     title?: string;
     num_pages?: number;
     genre?: string;
+    description?:string;
     img?: string;
-    id_editorial?: {
-        id: 1;
-        editorial_name: string;
-        country: string;
-        id_user: {
-            id?: number;
-            username?: string;
-            psswd?: string;
-            email?: string;
-            real_name?: string;
-            surname?: string;
-            birth_date?: Date;
-            gender?: string;
-            id_role?: {
-                id?: number;
-                role_name?:string;
-            };
-        };
-    };
-    id_user?: {
-        id?: number;
-        username?: string;
-        psswd?: string;
-        email?: string;
-        real_name?: string;
-        surname?: string;
-        birth_date?: Date;
-        gender?: string;
-        id_role?: {
-            id?: number;
-            role_name?: string;
-        };
-    };
+    id_editorial?: Editorials;
+    id_user?: Users;
     id_drawer?: {
         id?: string;
         container?: {
