@@ -11,13 +11,13 @@
     border-radius: 50px;
 }
 
-#bienvenido{
-    height: 50vh;
-    max-height: 50vh;
-    background-image: url(./../../assets/background.jpg);
+#bienvenido {
+    height: 60vh;
+    max-height: 60vh;
+    background-image: url(./../../assets/header-3.jpeg);
     background-repeat: no-repeat;
     background-position: right;
-    background-size: 170% auto;
+    background-size: 100% auto;
 }
 
 .card > img{
@@ -28,4 +28,121 @@
 .card{
     padding: 0;
     border: 0px;
+}
+
+#header-reduct-width {
+
+    width: 50%;
+
+}
+
+@media (max-width: 950px) {
+
+    #bienvenido{
+        background-size: 110% auto;
+    }
+
+}
+
+@media (max-width: 810px) {
+
+    #bienvenido{
+        background-size: 120% auto;
+    }
+
+}
+
+@media (max-width: 750px) {
+
+    #bienvenido{
+        background-size: 150% auto;
+    }
+
+    #header-reduct-width {
+
+        width: 100%;
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    #bienvenido{
+        background-size: 200% auto;
+    }
+
+}
+@media (max-width: 455px) {
+
+    #bienvenido{
+        background-size: 280% auto;
+    }
+
+}
+
+/* Animaciones */
+
+.headerintro {
+
+    animation-name: headerappear;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+
+}
+
+.headerintro2 {
+
+    animation-name: headerappear;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+
+}
+
+.headerintro3 {
+
+    animation-name: headerappear;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+
+}
+
+@keyframes headerappear {
+
+    from {padding-left: 0em;
+    opacity: 0;}
+    to {}
+
+}
+
+.contentintroImg {
+
+    animation-name: contentimgappear;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+
+}
+
+.contentintroText {
+
+    animation-name: contentappear;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+
+}
+
+@keyframes contentimgappear {
+
+    from {opacity: 0;}
+    to {}
+
+}
+
+@keyframes contentappear {
+
+    from {padding-right: 0em;
+        padding-left: 24px;
+    opacity: 0;}
+    to {}
+
 }
