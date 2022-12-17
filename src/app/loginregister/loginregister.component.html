@@ -1,8 +1,8 @@
-<body>
+<body class="bg-custom-yellow purebackground">
 	<div class="container-fluid color-custom-black h-100" *ngIf="!register">
 		<div class="row h-100">
             <div class="col-sm-9 p-0">
-                <div class="container-fluid bg-custom-yellow h-100 p-5">
+                <div class="container-fluid bg-custom-yellow h-100 p-5 purebackground">
                     <div class="row">
                         <div class="col fs-1 fw-bold py-3 intro" >
                             Acceder
@@ -55,7 +55,7 @@
                     </div>
                 </div>
             </div>
-			<div class="col-sm p-0" (click)="cambiarEstado()">
+			<div class="col-sm p-0 bg-custom-orange purebackground background-image-center" (click)="cambiarEstado()">
                 <div id="registrarse"></div>
             </div>
 		</div>
@@ -63,14 +63,14 @@
     <div class="container-fluid color-custom-black h-100" *ngIf="register">
 		<div class="row h-100">
 			<div class="col-sm-9 p-0">
-                <div class="container-fluid bg-custom-orange h-100 p-5">
+                <div class="container-fluid bg-custom-orange purebackground h-100 p-5">
                     <div class="row">
-                        <div class="col fs-1 fw-bold py-3 intro">
+                        <div class="col fs-1 fw-bold py-3 intro3">
                             Register
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col fs-4 fw-bold py-2 intro">
+                        <div class="col fs-4 fw-bold py-2 intro3">
                             Nombre de usuario<span class="color-custom-red">*</span>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col fs-4 fw-bold py-2 intro">
+                        <div class="col fs-4 fw-bold py-2 intro3">
                             Correo electronico<span class="color-custom-red">*</span>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col fs-4 fw-bold py-2 intro">
+                        <div class="col fs-4 fw-bold py-2 intro3">
                             Contraseña<span class="color-custom-red">*</span>
                         </div>
                     </div>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col fs-4 fw-bold py-2 intro">
+                        <div class="col fs-4 fw-bold py-2 intro3">
                             Confirmar contraseña<span class="color-custom-red">*</span>
                         </div>
                     </div>
@@ -131,12 +131,12 @@
                     </div>
                     <div class="row">
                         <div class="col pt-3">
-                            <input type="button" value="Registrarse" class="btn btn-primary fs-6 intro2" (click)="onSubmitRegister()">
+                            <input type="button" value="Registrarse" class="btn btn-primary fs-6 intro4" (click)="onSubmitRegister()">
                             <p *ngIf="registerSuccesful" class="text-color-green">Te has registrado correctamente</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col py-1 pb-5 intro">
+                        <div class="col py-1 pb-5 intro3">
                             <span>¿Ya tienes cuenta? </span> <a href="./login-register#header" class="color-custom-blue text-decoration-none" (click)="cambiarEstado()">Accede</a>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm p-0" (click)="cambiarEstado()">
+            <div class="col-sm p-0 bg-custom-yellow purebackground background-image-center" (click)="cambiarEstado()">
                 <div id="acceder"></div>
             </div>
 		</div>
