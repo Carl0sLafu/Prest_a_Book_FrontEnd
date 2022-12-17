@@ -43,4 +43,8 @@ export class BooksService {
     return this.http.get(`${baseUrl}/isbn/${isbn}`);
   }
 
+  getByOwner(id_user:number): Observable<Books[]>{
+    return this.http.get<Books[]>(`${baseUrl}/user/${id_user}`);
+  }
+
 }

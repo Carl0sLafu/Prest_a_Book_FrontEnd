@@ -97,8 +97,9 @@ export class AuthService {
       }
 
     };
-    
-    return this.http.put(UPDATE_API + id, JSON.stringify(this.user), httpOptions);
+    console.log("hola");
+    console.log(JSON.stringify(this.user));
+    return this.http.put(UPDATE_API + id, JSON.stringify(this.user));
 
     }
 
