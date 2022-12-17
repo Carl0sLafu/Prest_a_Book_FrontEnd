@@ -25,6 +25,10 @@ export class WishesService {
     return this.http.get<Wishes[]>(`${baseUrl}/user/${id_user}`)
   }
 
+  getByUserAndBook(id_user:any, id_book:any) :Observable<Wishes>{
+    return this.http.get(`${baseUrl}/byuserandbook/${id_user}/${id_book}`);
+  }
+
   create(data:any): Observable<any>{
     return this.http.post(baseUrl,data);
   }

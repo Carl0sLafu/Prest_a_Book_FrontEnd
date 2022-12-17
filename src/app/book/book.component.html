@@ -13,7 +13,8 @@
                 <h4>{{book?.num_pages}}</h4>
                 <h4>{{book?.description}}</h4>
                 
-                <button (click)="toWishlist()" class="btn btn-primary mt-3">Añadir a Lista de Deseos</button>
+                <button *ngIf="wish == null; else elseBlock" (click)="toWishlist()" class="btn btn-primary mt-3">Añadir a Lista de Deseos</button>
+                <ng-template #elseBlock><a routerLink='/interface' class="btn btn-success">En tu lista de deseos</a></ng-template>
             </div>
         </div>
     </div>
