@@ -21,6 +21,10 @@ export class WishesService {
     return this.http.get<Wishes[]>(`${baseUrl}/${id}`);
   }
 
+  getByUser(id_user:number): Observable<Wishes[]>{
+    return this.http.get<Wishes[]>(`${baseUrl}/user/${id_user}`)
+  }
+
   create(data:any): Observable<any>{
     return this.http.post(baseUrl,data);
   }
@@ -29,7 +33,7 @@ export class WishesService {
     return this.http.put(`${baseUrl}/${id}`,data);
   }
 
-  delete(id:number): Observable<any>{
+  delete(id:number | undefined): Observable<any>{
     return this.http.delete(`${baseUrl}/${id}`);
   }
 }

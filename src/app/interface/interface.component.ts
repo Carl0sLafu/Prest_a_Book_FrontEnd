@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { AuthService } from '../_services/auth.service';
 import { UsersService } from '../services/users.service';
+import { WishesService } from '../services/wishes.service';
+import { BooksService } from '../services/books.service';
+import { Wishes } from '../models/wishes.model';
+import { Books } from '../models/books.model';
 
 @Component({
   selector: 'app-interface',
@@ -10,12 +14,19 @@ import { UsersService } from '../services/users.service';
 })
 export class InterfaceComponent implements OnInit {
 
-  constructor (private token: TokenStorageService, private auth: AuthService, private usersService: UsersService) {}
+  constructor (
+    private token: TokenStorageService, 
+    private auth: AuthService, 
+    private usersService: UsersService, 
+    private wishesService: WishesService,
+    private booksService: BooksService ) {}
 
   editarPerfil: boolean = false;
   user: any = null;
   modificacionExitosa: boolean = false;
   error: string = '';
+  wishlist?:Wishes[];
+  published?:Books[];
 
   modifyUser: any = {
 
@@ -38,8 +49,13 @@ export class InterfaceComponent implements OnInit {
     
     this.user = this.token.getUser();
     this.recargarUserData();
-    console.log(this.user);
+    this.wishesService.getByUser(this.user.id).subscribe( result => this.wishlist = result);
+    this.booksService.getByOwner(this.user.id).subscribe( result => this.published = result);
 
+  }
+
+  deleteWish(id:number | undefined):void{
+    this.wishesService.delete(id).subscribe();
   }
 
   cambiarDatos() {
@@ -82,7 +98,7 @@ export class InterfaceComponent implements OnInit {
       err => {
 
         console.log(err);
-        this.error = 'Algo a fallado';
+        this.error = 'Algo ha fallado';
 
       }
 

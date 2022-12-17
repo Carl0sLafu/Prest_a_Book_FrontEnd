@@ -29,6 +29,14 @@ export class BookComponent implements OnInit {
   wrote?: Wrote;
 
   ngOnInit():void{
+
+    if (!this.TokenStorage.getToken()) {
+
+      window.location.assign("../login-register");
+
+
+    }
+    
     this.id = this.route.snapshot.paramMap.get('id');
     this.BooksService.getById(this.id).subscribe(result => this.book = result);
     this.WroteService.getByBook(this.id).subscribe(result => this.wrote = result);

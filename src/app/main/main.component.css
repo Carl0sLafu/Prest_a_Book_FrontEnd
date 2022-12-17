@@ -111,6 +111,38 @@
 
     from {padding-left: 0em;
     opacity: 0;}
-    to {padding-left: 12px;}
+    to {}
+
+}
+
+.contentintroImg {
+
+    animation-name: contentimgappear;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+
+}
+
+.contentintroText {
+
+    animation-name: contentappear;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+
+}
+
+@keyframes contentimgappear {
+
+    from {opacity: 0;}
+    to {}
+
+}
+
+@keyframes contentappear {
+
+    from {padding-right: 0em;
+        padding-left: 24px;
+    opacity: 0;}
+    to {}
 
 }

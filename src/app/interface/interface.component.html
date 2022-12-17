@@ -128,23 +128,14 @@
                             Lista de deseos
                         </div>
                     </div>
-                    <div class="row p-2">
-                        <div class="card m-2 col-lg-2 col-11">
-                            <img src="./../../assets/AEEPDLM.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                    <div class="row p-2" *ngIf="wishlist?.length">
+                        <div class="card m-2 col-lg-2 col-11" *ngFor="let wish of wishlist" >
+                            <div id="foto">
+                                <img src="{{wish.id_book?.img}}" class="card-img-top" alt="...">
+                                <button (click)="deleteWish(wish.id)" class="btn btn-danger text-center"><strong>-</strong></button>
                             </div>
-                        </div>
-                        <div class="card m-2 col-lg-2 col-11" >
-                            <img src="./../../assets/BDM.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                            </div>
-                        </div>
-                        <div class="card m-2 col-lg-2 col-11" >
-                            <img src="./../../assets/DQDLM.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                                <h5 class="card-title">{{wish.id_book?.title}}</h5>
                             </div>
                         </div>
                     </div>
@@ -159,7 +150,7 @@
                             Mis libros publicados
                         </div>
                     </div>
-                    <div class="row p-2">
+                    <div class="row p-2" *ngIf="published?.length">
                         <div class="card m-2 col-lg-2 col-11">
                             <img src="./../../assets/AEEPDLM.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
