@@ -1,18 +1,18 @@
 <body class="bg-custom-yellow p-1 purebackground background-image-center" id="all-page-height">
-    <div class="container mt-5">
+    <div class="container my-5">
         <div class="row mb-4 bg-custom-orange p-4 rounded-2">
-            <div class="col-4">
-                <img src="{{book?.img}}" alt="" class="img-fluid">
+            <div class="col-md-4">
+                <img src="{{book?.img}}" alt="" class="img-fluid ">
             </div>
-            <div class="col-6">
+            <div class="col-md-7 pt-3">
                 <h2><strong>{{book?.title}}</strong></h2>
-                <h4>{{wrote?.id_author?.name}} {{wrote?.id_author?.surname}}</h4>
-                <h3> {{book?.id_editorial?.editorial_name}} - {{book?.isbn}}</h3>
-                <h3>{{book?.genre}}</h3>
+                <h3>{{wrote?.id_author?.name}} {{wrote?.id_author?.surname}}</h3>
+                <h4> {{book?.id_editorial?.editorial_name}} - {{book?.isbn}}</h4>
+                <h4>{{book?.genre}}</h4>
                 <h4>{{book?.num_pages}}</h4>
                 <h4>{{book?.description}}</h4>
                 
-                <button (click)="toWishlist()" class="btn btn-primary">Añadir a Lista de Deseos</button>
+                <button (click)="toWishlist()" class="btn btn-primary mt-3">Añadir a Lista de Deseos</button>
             </div>
         </div>
     </div>
