@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Users } from 'src/app/models/users.model';
 import { TokenStorageService } from '../../_services/token-storage.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { TokenStorageService } from '../../_services/token-storage.service';
 export class HeaderComponent implements OnInit {
 
   isLoged: boolean = false;
+  user?:Users;
 
   constructor (private tokenStorage: TokenStorageService) {}
 
@@ -17,6 +19,7 @@ export class HeaderComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
 
       this.isLoged = true;
+      this.user=this.tokenStorage.getUser();
 
     } else {
 
