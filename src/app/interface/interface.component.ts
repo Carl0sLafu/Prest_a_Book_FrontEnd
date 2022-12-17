@@ -29,20 +29,17 @@ export class InterfaceComponent implements OnInit {
   published?:Books[];
 
   modifyUser: any = {
-
     username: null,
     email: null,
     birth: null,
     trueName: null, 
     surname: null, 
     gender: null
-
   };
 
   ngOnInit(): void {
-
     if(!this.token.getToken()) {
-
+      
       window.location.assign("..");
 
     }
@@ -59,64 +56,30 @@ export class InterfaceComponent implements OnInit {
   }
 
   cambiarDatos() {
-
     if(this.editarPerfil) {
-
       this.recargarUserData();
-
     } 
-
     this.editarPerfil = this.editarPerfil?false:true;
-
   }
 
   subirDatos() {
-
-    this.auth.updateUser(this.user.id, 
-      this.modifyUser.username, 
-      this.user.psswd, 
-      this.modifyUser.email, 
-      this.modifyUser.trueName,
-      this.modifyUser.surname, 
-      this.modifyUser.birth, 
-      this.modifyUser.gender, 
-      this.user.id_role.id).subscribe(
-      result => {
-
-        console.log(result);
-        this.modificacionExitosa = true;
-
-        this.usersService.getById(this.user.id).subscribe(
-          res => {
-            this.token.saveUser(res);
-            }
-        );
-
-        this.error = '';
-
-      },
-      err => {
-
-        console.log(err);
-        this.error = 'Algo ha fallado';
-
-      }
-
-    );
-
+    this.user.username = this.modifyUser.username;
+    this.user.email = this.modifyUser.email;
+    this.user.birth_date = this.modifyUser.birth;
+    this.user.real_name = this.modifyUser.trueName;
+    this.user.surname = this.modifyUser.surname;
+    this.user.gender = this.modifyUser.gender;
+    this.usersService.update(this.user.id, this.user).subscribe();
     this.cambiarDatos();
-
   }
 
   recargarUserData() {
-
     this.modifyUser.username = this.user.username;
     this.modifyUser.email = this.user.email;
     this.modifyUser.birth = this.user.birth_date;
     this.modifyUser.trueName = this.user.real_name;
     this.modifyUser.surname = this.user.surname;
     this.modifyUser.gender = this.user.gender;
-
   }
 
 }

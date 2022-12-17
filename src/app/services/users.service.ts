@@ -27,6 +27,7 @@ export class UsersService {
   }
 
   update(id:number, data: any): Observable<any>{
+    console.log(data);
     return this.http.put(`${baseUrl}/${id}`,data);
   }
 
