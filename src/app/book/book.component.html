@@ -1,2 +1,19 @@
-<p>book works!</p>
-{{ book | json}}
+<body class="bg-custom-yellow p-1">
+    <div class="container mt-5 ">
+        <div class="row mb-4 bg-custom-orange p-4">
+            <div class="col-4">
+                <img src="{{book?.img}}" alt="">
+            </div>
+            <div class="col-6">
+                <h2><strong>{{book?.title}}</strong></h2>
+                <h4>{{wrote?.id_author?.name}} {{wrote?.id_author?.surname}}</h4>
+                <h3> {{book?.id_editorial?.editorial_name}} - {{book?.isbn}}</h3>
+                <h3>{{book?.genre}}</h3>
+                <h4>{{book?.num_pages}}</h4>
+                <h4>{{book?.description}}</h4>
+                
+                <button (click)="toWishlist()" class="btn btn-primary">Añadir a Lista de Deseos</button>
+            </div>
+        </div>
+    </div>
+</body>

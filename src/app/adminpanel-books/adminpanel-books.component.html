@@ -18,7 +18,7 @@
                     <th scope="row">{{libro.id}}</th>
                     <td>{{libro.title}}</td>
                     <td>{{libro.id_user.username}}</td>
-                    <td><button class="btn btn-danger">x</button></td>
+                    <td><button class="btn btn-danger" (click)="borrarLibro(libro.id)">x</button></td>
                 </tr>
 
             </tbody>

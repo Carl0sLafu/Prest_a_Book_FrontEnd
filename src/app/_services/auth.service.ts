@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 const LOGIN_API = "https://prestabookbackend-production.up.railway.app/login";
 const REGISTER_API = "https://prestabookbackend-production.up.railway.app/api/users";
+const UPDATE_API = "https://prestabookbackend-production.up.railway.app/api/users/";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -65,4 +66,40 @@ export class AuthService {
     
     return this.http.post(REGISTER_API, JSON.stringify(this.user), httpOptions);
   }
+
+  updateUser (
+
+    id: number,
+    username: string,
+    psswd: string,
+    email: string,
+    real_name:string,
+    surname: string | null,
+    birth_date: Date | null,
+    gender: string | null,
+    idrole: number
+
+    ): Observable<any> {
+
+      this.user = null;
+
+    this.user = {
+      id: id,
+      username: username,
+      psswd: psswd,
+      email: email,
+      real_name: real_name,
+      surname: surname,
+      birth_date: birth_date,
+      gender: gender,
+      id_role: {
+        id: idrole
+      }
+
+    };
+    
+    return this.http.put(UPDATE_API + id, JSON.stringify(this.user), httpOptions);
+
+    }
+
 }

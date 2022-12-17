@@ -10,6 +10,7 @@ import { BooksService } from '../services/books.service';
 export class AdminpanelBooksComponent implements OnInit {
 
   libros:any = null
+  estasSeguro: any = false;
 
   constructor(private books: BooksService){}
 
@@ -18,6 +19,13 @@ export class AdminpanelBooksComponent implements OnInit {
     (res => this.libros = res);
     
   }
+  borrarLibro(libroid:number){
+    this.estasSeguro = window.confirm("¿Estás seguro?");
+    console.log(libroid)
+    if(this.estasSeguro){
+          this.books.delete(libroid).subscribe();
+    }
 
+  }
 
 }

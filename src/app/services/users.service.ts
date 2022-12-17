@@ -31,7 +31,7 @@ export class UsersService {
   }
 
   delete(id:number): Observable<any>{
-    return this.http.delete<any>(`${baseUrl}/${id}`);
+    return this.http.delete(`https://cors.io/?${baseUrl}/${id}`);
   }
 
   getByUsername(username:string): Observable<Users>{

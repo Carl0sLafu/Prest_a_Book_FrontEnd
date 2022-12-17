@@ -20,11 +20,11 @@ export class AdminpanelUsersComponent {
   }
 
   
-  borrarUsuario(usuarioid:number){
+  borrarUsuario(usuario_id:number){
     this.estasSeguro = window.confirm("¿Estás seguro?");
-    console.log(usuarioid)
+    console.log(usuario_id)
     if(this.estasSeguro){
-          this.users.delete(usuarioid).subscribe();
+          this.users.delete(usuario_id).subscribe();
     }
 
   }
