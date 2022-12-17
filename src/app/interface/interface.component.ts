@@ -71,6 +71,14 @@ export class InterfaceComponent implements OnInit {
     this.user.gender = this.modifyUser.gender;
     this.usersService.update(this.user.id, this.user).subscribe();
     this.cambiarDatos();
+    this.usersService.getById(this.user.id).subscribe(
+      res=> {
+
+        this.token.saveUser(res);
+
+      }
+    );
+    
   }
 
   recargarUserData() {
