@@ -2,10 +2,10 @@
     <div class="container mt-5 ">
         <div id="searchbar" class="row bg-custom-orange p-3 mb-2 rounded-3">
             <div class="col-lg-2 col-md-4 col-6 mt-1">
-                <select name="orderby" id="orderby" class="form-select col-2 px-2">
-                    <option value="alfabetico">Alfabético</option>
-                    <option value="reciente">Más Reciente</option>
-                    <option value="paginas">Núm. Páginas</option>
+                <select name="orderby" id="orderby" class="form-select col-2 px-2" [(ngModel)]="ordenarBy" (click)="orderBooks()">
+                    <option value="0">Alfabético</option>
+                    <option value="1">Más Reciente</option>
+                    <option value="2">Núm. Páginas</option>
                 </select>
             </div>
             <div class="col-lg-3 col-md-4 col-6 mt-1">
@@ -18,7 +18,7 @@
         <div id="books" class="row justify-content-center bg-custom-orange py-4 mb-4 rounded-3" *ngIf="books!==undefined">
             <div class="card m-2" style="width: 18rem;" *ngFor="let book of books">
                 <a href="book/{{book.id}}">
-                    <img src="{{book.img}}" class="card-img-top rounded-top" alt="{{book.title}}">
+                    <img src="{{book.img}}" class="card-img-top rounded-top bookimg" alt="{{book.title}}">
                     <div class="card-body">
                         <h5 class="card-title">{{book.title}}</h5>
                     </div>
