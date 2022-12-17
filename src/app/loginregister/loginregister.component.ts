@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-loginregister',
@@ -39,7 +40,7 @@ export class LoginregisterComponent implements OnInit {
 
   registerSuccesful: boolean = false;
 
-  constructor (private authService: AuthService, private tokenStorage: TokenStorageService) {}
+  constructor (private authService: AuthService, private tokenStorage: TokenStorageService, private users: UsersService) {}
 
   ngOnInit(): void {
     
@@ -62,11 +63,15 @@ export class LoginregisterComponent implements OnInit {
 
       this.authService.login(username, password).subscribe(
         data => {
-          this.tokenStorage.saveToken(data.token);
-          this.tokenStorage.saveUser(data);
-         /* this.tokenStorage.saveRole(data.role);*/
 
-          this.reloadPage();
+          this.tokenStorage.saveToken(data.token);
+          this.users.getByUsername(username).subscribe(
+            res => {
+              this.tokenStorage.saveUser(res);
+              this.reloadPage();
+              }
+            );
+
         },
         error => {
 
