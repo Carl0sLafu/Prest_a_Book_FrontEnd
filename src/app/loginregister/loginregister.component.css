@@ -22,14 +22,6 @@
 
 }
 
-.intro4 {
-
-    animation-name: appear4;
-    animation-duration: 0.8s;
-    animation-iteration-count: 1;
-
-}
-
 @keyframes appear {
 
     from {margin-top: 1em;
@@ -48,17 +40,9 @@
 
 @keyframes appear3 {
 
-    from {margin-top: 0.2em;
+    from {margin-top: 0.01em;
     color: #1915196b;}
     to {margin-top: 0em; color: inherit;}
-
-}
-
-@keyframes appear4 {
-
-    from {margin-top: 0.2em;
-    color: #ffffff;}
-    to {margin-top: 0em; color: #ffffff;}
 
 }
 
