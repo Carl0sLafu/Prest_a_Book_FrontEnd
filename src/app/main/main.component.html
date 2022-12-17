@@ -33,9 +33,9 @@
 		</div>
 	</div> -->
 
-	<div id="cards-container" class="container-fluid">
-		<div class="container-fluid purebackground p-5 pt-0 mt-5 background-image-center">
-			<div class="row mb-3">
+	<div id="cards-container" class="container-fluid px-0">
+		<div class="container-fluid purebackground p-5 pt-0 background-image-center">
+			<div class="row mb-3 pt-5">
 				<div class="col-12 text-center">
 					<span class="fs-1 fw-bold">Últimos libros publicados</span>
 				</div>
@@ -51,51 +51,25 @@
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<div class="card-group">
-								<div class="card m-2" style="width: 18rem;">
-									<img src="./../../assets/AEEPDLM.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<a href="#" class="btn btn-primary">Go somewhere</a>
-									</div>
-								</div>
-								<div class="card m-2" style="width: 18rem;">
-									<img src="./../../assets/BDM.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<a href="#" class="btn btn-primary">Go somewhere</a>
-									</div>
-								</div>
-								<div class="card m-2" style="width: 18rem;">
-									<img src="./../../assets/DQDLM.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<a href="#" class="btn btn-primary">Go somewhere</a>
-									</div>
+								<div class="card m-2" style="width: 18rem;" *ngFor="let book of books | slice:0:3;">
+									<a href="book/{{book.id}}">
+										<img src="{{book.img}}" class="card-img-top" alt="{{book.title}}">
+										<div class="card-body">
+											<h5 class="card-title">{{book.title}}</h5>
+										</div>
+									</a>
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item">
 							<div class="card-group">
-								<div class="card m-2" style="width: 18rem;">
-									<img src="./../../assets/AEEPDLM.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<a href="#" class="btn btn-primary">Go somewhere</a>
-									</div>
-								</div>
-								<div class="card m-2" style="width: 18rem;">
-									<img src="./../../assets/BDM.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<a href="#" class="btn btn-primary">Go somewhere</a>
-									</div>
-								</div>
-								<div class="card m-2" style="width: 18rem;">
-									<img src="./../../assets/DQDLM.jpg" class="card-img-top" alt="...">
-									<div class="card-body">
-										<h5 class="card-title">Card title</h5>
-										<a href="#" class="btn btn-primary">Go somewhere</a>
-									</div>
+								<div class="card m-2" style="width: 18rem;" *ngFor="let book of books | slice:3:6;">
+									<a href="book/{{book.id}}">
+										<img src="{{book.img}}" class="card-img-top" alt="{{book.title}}">
+										<div class="card-body">
+											<h5 class="card-title">{{book.title}}</h5>
+										</div>
+									</a>
 								</div>
 							</div>
 						</div>
