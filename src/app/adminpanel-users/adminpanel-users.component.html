@@ -15,10 +15,10 @@
             <tbody *ngFor="let usuario of usuarios">
 
                 <tr>
-                    <th scope="row">{{usuario.id}}</th>
-                    <td>{{usuario.username}}</td>
-                    <td>{{usuario.id_role.role_name}}</td>
-                    <td><button class="btn btn-danger">x</button><button class="btn btn-success">Rol</button></td>
+                    <th scope="row">{{usuario?.id}}</th>
+                    <td>{{usuario?.username}}</td>
+                    <td>{{usuario?.id_role.role_name}}</td>
+                    <td><button class="btn btn-danger" (click)="borrarUsuario(usuario?.id)">x</button><button class="btn btn-success">Rol</button></td>
                 </tr>
 
             </tbody>

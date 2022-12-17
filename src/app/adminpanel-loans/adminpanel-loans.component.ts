@@ -8,7 +8,8 @@ import { LoansService } from '../services/loans.service';
 })
 export class AdminpanelLoansComponent implements OnInit {
 
-  prestamos:any = null
+  prestamos:any = null;
+  estasSeguro: any = false;
 
   constructor(private loans: LoansService){}
 
@@ -19,6 +20,15 @@ export class AdminpanelLoansComponent implements OnInit {
 
   comprobar(): void{
     console.log("PRESTAMOS"+JSON.stringify(this.prestamos));
+  }
+
+  borrarPrestamo(prestamo_id:number){
+    this.estasSeguro = window.confirm("¿Estás seguro?");
+    console.log(prestamo_id)
+    if(this.estasSeguro){
+          this.loans.delete(prestamo_id).subscribe();
+          window.alert("Libro borrado correctamente");
+    }
   }
 
 }

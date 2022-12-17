@@ -16,11 +16,11 @@
             <tbody *ngFor="let prestamo of prestamos">
 
                 <tr>
-                    <th scope="row">{{prestamo.id}}</th>
-                    <td>{{prestamo.id_book.title}}</td>
-                    <td>{{prestamo.id_loaner.username}}</td>
-                    <td>{{prestamo.id_loanee.username}}</td>
-                    <td><button class="btn btn-danger">x</button></td>
+                    <th scope="row">{{prestamo?.id}}</th>
+                    <td>{{prestamo?.id_book.title}}</td>
+                    <td>{{prestamo?.id_loaner.username}}</td>
+                    <td>{{prestamo?.id_loanee.username}}</td>
+                    <td><button class="btn btn-danger" (click)="borrarPrestamo(prestamo?.id)">x</button></td>
                 </tr>
 
             </tbody>
