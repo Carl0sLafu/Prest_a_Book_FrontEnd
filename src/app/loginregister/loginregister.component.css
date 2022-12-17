@@ -51,7 +51,8 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width:100%;
-    height:75vh;
+    height:100vh;
+    border-left: 2px solid black;
 }
 
 #registrarse{
@@ -59,5 +60,6 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width:100%;
-    height:75vh;
+    height:100vh;
+    border-left: 2px solid black;
 }

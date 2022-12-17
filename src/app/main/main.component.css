@@ -7,8 +7,27 @@
 }
 
 .indicator{
+    height: 4.5vh;
     border:0.13em solid black;
     border-radius: 50px;
+    background-image: url(./../../assets/booklogo.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 100% auto;
+}
+
+#containercentral{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+#bottom{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+#libroscielo{
+    border-radius:20%;
 }
 
 #bienvenido {
@@ -146,3 +165,4 @@
     to {}
 
 }
+
