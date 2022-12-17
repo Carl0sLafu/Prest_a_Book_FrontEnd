@@ -42,22 +42,31 @@ export class BookComponent implements OnInit {
     }
     this.id = this.route.snapshot.paramMap.get('id');
     this.user = this.TokenStorage.getUser();
-    this.WroteService.getByBook(this.id).subscribe(result => this.wrote = result);
-    this.BooksService.getById(this.id).pipe(finalize( () => this.checkWishlist())).subscribe(result => this.book = result);
+    this.sendRequests();
   }
 
   toWishlist():void{
     let user:Users = this.TokenStorage.getUser();
-    console.log(user);
     let data:any={
       id_user:user,
       id_book:this.book
     }
     this.WishesService.create(data).subscribe();
     this.checkWishlist();
+    this.sendRequests();
   }
 
   checkWishlist(){
     this.WishesService.getByUserAndBook(this.user?.id, this.id).subscribe(result => this.wish = result);
+  }
+
+  deleteFromWishlist(){
+    this.WishesService.delete(this.wish?.id).subscribe();
+    this.sendRequests();
+  }
+
+  sendRequests(){
+    this.WroteService.getByBook(this.id).subscribe(result => this.wrote = result);
+    this.BooksService.getById(this.id).pipe(finalize( () => this.checkWishlist())).subscribe(result => this.book = result);
   }
 }

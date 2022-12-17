@@ -14,7 +14,10 @@
                 <h4>{{book?.description}}</h4>
                 
                 <button *ngIf="wish == null; else elseBlock" (click)="toWishlist()" class="btn btn-primary mt-3">Añadir a Lista de Deseos</button>
-                <ng-template #elseBlock><a routerLink='/interface' class="btn btn-success">En tu lista de deseos</a></ng-template>
+                <ng-template #elseBlock>
+                    <a routerLink='/interface' class="btn btn-success m-2">En tu lista de deseos</a>
+                    <button (click)="deleteFromWishlist()" class="btn btn-danger m-2">Quitar de lista de deseos</button>
+                </ng-template>
             </div>
         </div>
     </div>
