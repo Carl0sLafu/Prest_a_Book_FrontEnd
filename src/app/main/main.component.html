@@ -3,22 +3,24 @@
 		<div class="row">
 			<div class="col fs-1 align-self-center fw-bolder">¡Bienvenido a Prest-a-Book!</div>
 		</div>
-		<div class="row">
+		<div class="row" id="header-reduct-width">
 			<div class="col fs-5 align-self-center fw-bolder pt-5">¿Buscas libros nuevos que devorar? ¿Quieres intercambiar obras y abrir nuevos mundos a lectores como tú?</div>
 		</div>
 		<div class="row">
-			<div class="col align-self-center fw-bolder pt-5"><a href="/login-register">¡Regístrate aquí! ¿Ya tienes cuenta? ¡Accede!</a></div>
+			<div class="col align-self-center fw-bolder pt-5"><a href="/login-register" class="color-custom-blue2">¡Regístrate aquí! ¿Ya tienes cuenta? ¡Accede!</a></div>
 		</div>
 	</div>
 
-	<div class="container-fluid bg-custom-orange p-5">
-		<div class="row">
-			<div class="col-3 text-end"><img src="assets/book.png" class="img-fluid" height="256px" width="256px"></div>
-			<div class="col align-self-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium ac lectus non iaculis. Nam auctor sollicitudin ullamcorper. Sed tincidunt, nulla in aliquam consequat, magna libero mattis tellus, ut facilisis libero odio in erat. Aenean velit ligula, imperdiet sit amet vehicula id, rhoncus sed tellus.</div>
-		</div>
-		<div class="row">
-			<div class="col-3 text-end"><img src="assets/book.png" class="img-fluid" height="256px" width="256px"></div>
-			<div class="col align-self-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium ac lectus non iaculis. Nam auctor sollicitudin ullamcorper. Sed tincidunt, nulla in aliquam consequat, magna libero mattis tellus, ut facilisis libero odio in erat. Aenean velit ligula, imperdiet sit amet vehicula id, rhoncus sed tellus.</div>
+	<div class="container-fluid bg-custom-orange px-0">
+		<div class="container-fluid purebackground p-5">
+			<div class="row ignore-opacity">
+				<div class="col-3 text-end"><img src="assets/book.png" class="img-fluid" height="256px" width="256px"></div>
+				<div class="col align-self-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium ac lectus non iaculis. Nam auctor sollicitudin ullamcorper. Sed tincidunt, nulla in aliquam consequat, magna libero mattis tellus, ut facilisis libero odio in erat. Aenean velit ligula, imperdiet sit amet vehicula id, rhoncus sed tellus.</div>
+			</div>
+			<div class="row ignore-opacity">
+				<div class="col-3 text-end"><img src="assets/book.png" class="img-fluid" height="256px" width="256px"></div>
+				<div class="col align-self-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium ac lectus non iaculis. Nam auctor sollicitudin ullamcorper. Sed tincidunt, nulla in aliquam consequat, magna libero mattis tellus, ut facilisis libero odio in erat. Aenean velit ligula, imperdiet sit amet vehicula id, rhoncus sed tellus.</div>
+			</div>
 		</div>
 	</div>
 
@@ -31,62 +33,69 @@
 		</div>
 	</div> -->
 
-	<div id="cards-container" class="container-fluid p-5 pt-0 mt-5">
-		<div class="row">
-			<div id="carouselExampleIndicators" class="carousel slide pb-5 col-lg-6 col-md-8 col-sm-12" data-bs-ride="true">
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-						class="active indicator" aria-current="true" aria-label="Slide 1"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-						aria-label="Slide 2" class="indicator"></button>
+	<div id="cards-container" class="container-fluid">
+		<div class="container-fluid purebackground p-5 pt-0 mt-5 background-image-center">
+			<div class="row mb-3">
+				<div class="col-12 text-center">
+					<span class="fs-1 fw-bold">Últimos libros publicados</span>
 				</div>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<div class="card-group">
-							<div class="card m-2" style="width: 18rem;">
-								<img src="./../../assets/AEEPDLM.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<a href="#" class="btn btn-primary">Go somewhere</a>
+			</div>
+			<div class="row">
+				<div id="carouselExampleIndicators" class="carousel slide pb-5 col-lg-6 col-md-8 col-sm-12" data-bs-ride="true">
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+							class="active indicator" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+							aria-label="Slide 2" class="indicator"></button>
+					</div>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="card-group">
+								<div class="card m-2" style="width: 18rem;">
+									<img src="./../../assets/AEEPDLM.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<a href="#" class="btn btn-primary">Go somewhere</a>
+									</div>
 								</div>
-							</div>
-							<div class="card m-2" style="width: 18rem;">
-								<img src="./../../assets/BDM.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<a href="#" class="btn btn-primary">Go somewhere</a>
+								<div class="card m-2" style="width: 18rem;">
+									<img src="./../../assets/BDM.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<a href="#" class="btn btn-primary">Go somewhere</a>
+									</div>
 								</div>
-							</div>
-							<div class="card m-2" style="width: 18rem;">
-								<img src="./../../assets/DQDLM.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<a href="#" class="btn btn-primary">Go somewhere</a>
+								<div class="card m-2" style="width: 18rem;">
+									<img src="./../../assets/DQDLM.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<a href="#" class="btn btn-primary">Go somewhere</a>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="card-group">
-							<div class="card m-2" style="width: 18rem;">
-								<img src="./../../assets/AEEPDLM.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<a href="#" class="btn btn-primary">Go somewhere</a>
+						<div class="carousel-item">
+							<div class="card-group">
+								<div class="card m-2" style="width: 18rem;">
+									<img src="./../../assets/AEEPDLM.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<a href="#" class="btn btn-primary">Go somewhere</a>
+									</div>
 								</div>
-							</div>
-							<div class="card m-2" style="width: 18rem;">
-								<img src="./../../assets/BDM.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<a href="#" class="btn btn-primary">Go somewhere</a>
+								<div class="card m-2" style="width: 18rem;">
+									<img src="./../../assets/BDM.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<a href="#" class="btn btn-primary">Go somewhere</a>
+									</div>
 								</div>
-							</div>
-							<div class="card m-2" style="width: 18rem;">
-								<img src="./../../assets/DQDLM.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<a href="#" class="btn btn-primary">Go somewhere</a>
+								<div class="card m-2" style="width: 18rem;">
+									<img src="./../../assets/DQDLM.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<h5 class="card-title">Card title</h5>
+										<a href="#" class="btn btn-primary">Go somewhere</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -96,15 +105,17 @@
 		</div>
 	</div>
 
-	<div class="container-fluid bg-custom-orange p-5">
-		<div class="row">
-			<div class="col-6 text-center">
-				<span class="fs-2">¿No encuentras lo que buscas?</span><br>
-				<a class="color-custom-blue fs-3" href="/interface">Crea una lista de deseos --></a>
-			</div>
-			<div class="col-6 text-center">
-				<span class="fs-2">¿Quieres prestar libros que no usas?</span><br>
-				<a class="color-custom-blue fs-3" href="/login-register">Inicia sesión y comienza a compartir --></a>
+	<div class="container-fluid bg-custom-orange">
+		<div class="container-fluid purebackground p-5">
+			<div class="row">
+				<div class="col-6 text-center">
+					<span class="fs-2">¿No encuentras lo que buscas?</span><br>
+					<a class="color-custom-blue fs-3" href="/interface">Crea una lista de deseos --></a>
+				</div>
+				<div class="col-6 text-center">
+					<span class="fs-2">¿Quieres prestar libros que no usas?</span><br>
+					<a class="color-custom-blue fs-3" href="/login-register">Inicia sesión y comienza a compartir --></a>
+				</div>
 			</div>
 		</div>
 	</div>
