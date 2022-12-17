@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { timeout } from 'rxjs';
 import { UsersService } from '../services/users.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-adminpanel-users',
@@ -12,7 +13,9 @@ export class AdminpanelUsersComponent {
   usuarios:any = null
   estasSeguro: any = false;
 
-  constructor(private users: UsersService){}
+  constructor(private users: UsersService){
+    
+  }
 
   ngOnInit(): void{
     this.users.getAll().subscribe
@@ -24,7 +27,7 @@ export class AdminpanelUsersComponent {
     this.estasSeguro = window.confirm("¿Estás seguro?");
     console.log(usuario_id)
     if(this.estasSeguro){
-          this.users.delete(usuario_id).subscribe();
+          this.users.delete(usuario_id).subscribe()
     }
 
   }

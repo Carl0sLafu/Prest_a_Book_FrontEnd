@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../services/books.service';
 
-
 @Component({
   selector: 'app-adminpanel-books',
   templateUrl: './adminpanel-books.component.html',
@@ -19,13 +18,12 @@ export class AdminpanelBooksComponent implements OnInit {
     (res => this.libros = res);
     
   }
-  borrarLibro(libroid:number){
+  borrarLibro(libro_id:number){
     this.estasSeguro = window.confirm("¿Estás seguro?");
-    console.log(libroid)
+    console.log(libro_id)
     if(this.estasSeguro){
-          this.books.delete(libroid).subscribe();
+          this.books.delete(libro_id).subscribe();
+          window.alert("Libro borrado correctamente");
     }
-
   }
-
 }
