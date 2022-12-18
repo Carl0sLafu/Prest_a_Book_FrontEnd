@@ -108,7 +108,7 @@ export class BooksearchComponent implements OnInit{
 
   searchByTitle() {
 
-    console.log(this.books);
+    this.authorSearch = '';
 
     this.estaBuscando = (this.titleSearch != '')?true:false;
 
@@ -123,6 +123,8 @@ export class BooksearchComponent implements OnInit{
   }
 
   searchByAuthor() {
+
+    this.titleSearch = '';
 
     this.estaBuscando = (this.authorSearch != '')?true:false;
 
