@@ -10,7 +10,7 @@ export class AboutComponent {
   fotonum: number = 0;
   imgSrc1 = "/assets/fotoalberto.png"
   imgSrc2 = "/assets/fotofacundo.png"
-  imgSrc3 = "/assets/fotoalberto.png"
+  imgSrc3 = "/assets/fotocarlos.png"
   imgLinkedin = "/assets/In-Blue-21.png"
 
   agrandar(fotonum:number){
