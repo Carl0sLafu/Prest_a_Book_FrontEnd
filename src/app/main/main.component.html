@@ -11,12 +11,25 @@
 	<div class="container-fluid bg-custom-orange px-0" id="containercentral">
 		<div class="container-fluid purebackground p-5">
 			<div class="row ignore-opacity">
-				<div class="col-3 text-end contentintroImg"><img src="assets/libroscielo.jpg" class="img-fluid" id="libroscielo" height="256px" width="256px"></div>
-				<div class="col col-9 align-self-center fs-5 contentintroText">¿Buscas libros nuevos que devorar? ¿Quieres intercambiar obras y abrir nuevos mundos a lectores como tú?<a href="/login-register" class="color-custom-blue2"><br>¡Regístrate aquí! ¿Ya tienes cuenta? ¡Accede!</a></div>
+				<div class="col col-12 fs-5 text-center contentintroText">¿Buscas libros nuevos que devorar? ¿Quieres intercambiar obras y abrir nuevos mundos a lectores como tú?<br><a href="/login-register" class="color-custom-blue2"><br>¡Regístrate aquí! ¿Ya tienes cuenta? ¡Accede!</a></div>
 			</div>
 			<div class="row ignore-opacity">
-				<div class="col align-self-center fs-5 contentintroText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pretium ac lectus non iaculis. Nam auctor sollicitudin ullamcorper. Sed tincidunt, nulla in aliquam consequat, magna libero mattis tellus, ut facilisis libero odio in erat. Aenean velit ligula, imperdiet sit amet vehicula id, rhoncus sed tellus.</div>
-				<div class="col-3 text-end contentintroImg"><img src="assets/book.png" class="img-fluid" height="256px" width="256px"></div>
+				<div class="col-12 text-center p-5">
+					<span class="fs-1 fw-bold">¿No sabes qué leer? ¡Usa la librería mágica para generar una sugerencia aleatoria!</span>
+			</div>
+				<div class="row ignore-opacity">
+					<div class="col-7 text-end contentintroImg pt-3">
+						<img src="assets/libroscielo.jpg" class="img-fluid" id="libroscielo" height="256px" width="256px" (click)="generarLibroAleatorio()">
+					</div>
+						<div class="card m-2 " style="width: 10rem; height: 10rem;" *ngIf="generado">
+							<a href="book/{{libroAleatorio?.id}}">
+								<img src="{{libroAleatorio?.img}}" class="card-img-top" alt="{{libroAleatorio?.title}}">
+							</a>
+						</div>
+						<div class="card m-2" style="width: 10rem; height: 10rem; background: none ;" *ngIf="!generado">
+							<img src="assets/giflibro.gif" style="min-height: 100%;" id="flotando">
+						</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -29,6 +42,8 @@
 			</div>
 		</div>
 	</div> -->
+
+	
 
 	<div id="cards-container" class="container-fluid px-0">
 		<div class="container-fluid purebackground p-5 pt-0 background-image-center">
