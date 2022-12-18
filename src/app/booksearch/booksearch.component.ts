@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Books } from '../models/books.model';
 import { BooksService } from '../services/books.service';
+import { Wrote } from '../models/wrote.model';
+import { WroteService } from '../services/wrote.service';
 
 @Component({
   selector: 'app-booksearch',
@@ -9,14 +11,20 @@ import { BooksService } from '../services/books.service';
 })
 export class BooksearchComponent implements OnInit{
 
-  constructor(private BooksService:BooksService){}
+  constructor(private BooksService:BooksService, private WroteService:WroteService){}
 
   books?: Books[];
+  wrote?: Wrote[];
+  LibrosEncontrados: Books[] = [];
   ordenarBy: number = 0;
+  titleSearch: string = '';
+  authorSearch: string = '';
+  estaBuscando: boolean = false;
 
   ngOnInit():void{
 
     this.orderBooks();
+    this.WroteService.getAll().subscribe(res=>{this.wrote = res})
 
   }
 
@@ -37,6 +45,18 @@ export class BooksearchComponent implements OnInit{
     } else if (this.ordenarBy == 1) {
 
       this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
+        if (a.title! > b.title!) {
+          return -1;
+        }
+        if (a.title! < b.title!) {
+          return 1;
+        }
+        return 0;
+      }));
+
+    } else if (this.ordenarBy == 2) {
+
+      this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
         if (a.id! > b.id!) {
           return -1;
         }
@@ -46,7 +66,19 @@ export class BooksearchComponent implements OnInit{
         return 0;
       }));
 
-    } else if (this.ordenarBy == 2) {
+    } else if (this.ordenarBy == 3) {
+
+      this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
+        if (a.id! > b.id!) {
+          return 1;
+        }
+        if (a.id! < b.id!) {
+          return -1;
+        }
+        return 0;
+      }));
+
+    } else if (this.ordenarBy == 4) {
 
       this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
         if (a.num_pages! > b.num_pages!) {
@@ -58,7 +90,60 @@ export class BooksearchComponent implements OnInit{
         return 0;
       }));
 
+    } else if (this.ordenarBy == 5) {
+
+      this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
+        if (a.num_pages! > b.num_pages!) {
+          return -1;
+        }
+        if (a.num_pages! < b.num_pages!) {
+          return 1;
+        }
+        return 0;
+      }));
+
     }
+
+  }
+
+  searchByTitle() {
+
+    console.log(this.books);
+
+    this.estaBuscando = (this.titleSearch != '')?true:false;
+
+    this.LibrosEncontrados = [];
+
+    this.books?.forEach(book => {
+      if (book.title?.toLocaleLowerCase().includes(this.titleSearch.toLocaleLowerCase())) {
+        this.LibrosEncontrados.push(book);
+      }
+    });
+
+  }
+
+  searchByAuthor() {
+
+    this.estaBuscando = (this.authorSearch != '')?true:false;
+
+    this.LibrosEncontrados = [];
+
+    this.wrote?.forEach(result => {
+
+      if (result.id_author?.name?.toLocaleLowerCase().includes(this.authorSearch.toLocaleLowerCase())) {
+
+        this.books?.forEach(bookSearch => {
+          if (bookSearch.id == result.book?.id) {
+
+            this.LibrosEncontrados.push(bookSearch);
+
+          }
+
+        });
+
+      }
+
+    });
 
   }
 

@@ -3,28 +3,42 @@
         <div id="searchbar" class="row bg-custom-orange p-3 mb-2 rounded-3">
             <div class="col-lg-2 col-md-4 col-6 mt-1">
                 <select name="orderby" id="orderby" class="form-select col-2 px-2" [(ngModel)]="ordenarBy" (click)="orderBooks()">
-                    <option value="0">Alfabético</option>
-                    <option value="1">Más Reciente</option>
-                    <option value="2">Núm. Páginas</option>
+                    <option value="0">Alfabético A-Z</option>
+                    <option value="1">Alfabético Z-A</option>
+                    <option value="2">Más Reciente</option>
+                    <option value="3">Más Antiguo</option>
+                    <option value="4">Núm. Páginas Asc</option>
+                    <option value="5">Núm. Páginas Desc</option>
                 </select>
             </div>
             <div class="col-lg-3 col-md-4 col-6 mt-1">
-                <input name="title" type="text" class="form-control" placeholder="Por Título">
+                <input name="title" type="text" class="form-control" placeholder="Por Título" [(ngModel)]="titleSearch" (keyup)="searchByTitle()">
             </div>
             <div class="col-lg-3 col-md-4 col-6 mt-1">
-                <input name="autor" type="text" class="form-control" placeholder="Por Autor">
+                <input name="autor" type="text" class="form-control" placeholder="Por Autor" [(ngModel)]="authorSearch" (keyup)="searchByAuthor()">
             </div>
         </div>
         <div id="books" class="row justify-content-center bg-custom-orange py-4 mb-4 rounded-3" *ngIf="books!==undefined">
-            <div class="card m-2" style="width: 18rem;" *ngFor="let book of books">
-                <a href="book/{{book.id}}">
-                    <img src="{{book.img}}" class="card-img-top rounded-top bookimg" alt="{{book.title}}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{book.title}}</h5>
-                    </div>
-                </a>
-
-            </div>
+            <ng-container *ngIf="!estaBuscando">
+                <div class="card m-2" style="width: 18rem;" *ngFor="let book of books">
+                    <a href="book/{{book.id}}">
+                        <img src="{{book.img}}" class="card-img-top rounded-top bookimg" alt="{{book.title}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{book.title}}</h5>
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="estaBuscando">
+                <div class="card m-2" style="width: 18rem;" *ngFor="let book of LibrosEncontrados">
+                    <a href="book/{{book.id}}">
+                        <img src="{{book.img}}" class="card-img-top rounded-top bookimg" alt="{{book.title}}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{book.title}}</h5>
+                        </div>
+                    </a>
+                </div>
+            </ng-container>
         </div>
     </div>
 </body>
