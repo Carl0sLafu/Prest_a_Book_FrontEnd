@@ -7,10 +7,10 @@
 }
 
 .indicator{
-    height: 4.5vh;
+    height: 1vh;
     border:0.13em solid black;
     border-radius: 50px;
-    background-image: url(./../../assets/booklogo.png);
+    /*background-image: url(./../../assets/booklogo.png);*/
     background-repeat: no-repeat;
     background-position: right;
     background-size: 100% auto;
@@ -59,8 +59,40 @@
 
 }
 
-#libreria{
+#libreria {
+
     padding-right: 5px;
+
+}
+
+.bookimg {
+
+    max-height: 400px;
+
+}
+
+.generatebookMaxHeight {
+
+    max-height: 150px;
+
+}
+
+.generatedbookHeight {
+
+    max-height: 230px;
+
+}
+
+.librarygenerator {
+
+    height: 180px;
+    max-height: 180px;
+    width: 256px;
+    background-image: url(./../../assets/libroscielo.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% auto;
+
 }
 
 @media (max-width: 950px) {
@@ -114,22 +146,6 @@
 
     animation-name: headerappear;
     animation-duration: 1s;
-    animation-iteration-count: 1;
-
-}
-
-.headerintro2 {
-
-    animation-name: headerappear;
-    animation-duration: 1.5s;
-    animation-iteration-count: 1;
-
-}
-
-.headerintro3 {
-
-    animation-name: headerappear;
-    animation-duration: 2s;
     animation-iteration-count: 1;
 
 }
