@@ -13,6 +13,9 @@ export class BooksearchComponent implements OnInit{
 
   constructor(private BooksService:BooksService, private WroteService:WroteService){}
 
+  librosParaCargarend:number = 10;
+  librosParaCargarstart:number = 0;
+  page: number = 1;
   books?: Books[];
   wrote?: Wrote[];
   LibrosEncontrados: Books[] = [];
@@ -20,11 +23,13 @@ export class BooksearchComponent implements OnInit{
   titleSearch: string = '';
   authorSearch: string = '';
   estaBuscando: boolean = false;
+  estaHaciendoScroll: boolean = false;
+  isMaxLenght: boolean = false;
 
   ngOnInit():void{
 
     this.orderBooks();
-    this.WroteService.getAll().subscribe(res=>{this.wrote = res})
+    this.WroteService.getAll().subscribe(res=>{this.wrote = res;});
 
   }
 
@@ -32,7 +37,7 @@ export class BooksearchComponent implements OnInit{
 
     if (this.ordenarBy == 0) {
 
-      this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.title! > b.title!) {
           return 1;
         }
@@ -40,11 +45,11 @@ export class BooksearchComponent implements OnInit{
           return -1;
         }
         return 0;
-      }));
+      });}).closed;
 
     } else if (this.ordenarBy == 1) {
 
-      this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.title! > b.title!) {
           return -1;
         }
@@ -52,11 +57,11 @@ export class BooksearchComponent implements OnInit{
           return 1;
         }
         return 0;
-      }));
+      });}).closed
 
     } else if (this.ordenarBy == 2) {
 
-      this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.id! > b.id!) {
           return -1;
         }
@@ -64,11 +69,11 @@ export class BooksearchComponent implements OnInit{
           return 1;
         }
         return 0;
-      }));
+      });}).closed
 
     } else if (this.ordenarBy == 3) {
 
-      this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.id! > b.id!) {
           return 1;
         }
@@ -76,11 +81,11 @@ export class BooksearchComponent implements OnInit{
           return -1;
         }
         return 0;
-      }));
+      });}).closed
 
     } else if (this.ordenarBy == 4) {
 
-      this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.num_pages! > b.num_pages!) {
           return 1;
         }
@@ -88,11 +93,11 @@ export class BooksearchComponent implements OnInit{
           return -1;
         }
         return 0;
-      }));
+      });}).closed
 
     } else if (this.ordenarBy == 5) {
 
-      this.BooksService.getAll().subscribe(result => this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.num_pages! > b.num_pages!) {
           return -1;
         }
@@ -100,7 +105,7 @@ export class BooksearchComponent implements OnInit{
           return 1;
         }
         return 0;
-      }));
+      });}).closed
 
     }
 
@@ -149,5 +154,27 @@ export class BooksearchComponent implements OnInit{
 
   }
 
-  
+  comprobarLength(subir:boolean, plus:number) {
+
+    if (subir) {
+
+      this.librosParaCargarstart += 10 * plus;
+      this.librosParaCargarend += 10 * plus;
+      this.page += plus;
+
+    } else {
+
+      this.librosParaCargarstart -= 10 * plus;
+      this.librosParaCargarend -= 10 * plus;
+      this.page -= plus;
+
+    }
+
+    console.log(this.librosParaCargarend);
+
+  }
+
+    
 }
+  
+
