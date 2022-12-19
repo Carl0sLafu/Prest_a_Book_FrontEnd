@@ -7,7 +7,8 @@ export class Loans {
     id_book?: Books;
     id_loaner?: Users;
     id_loanee?: Users;
-    starting_date?: Date;
-    end_date?: Date;
+    starting_date?: any;
+    end_date?: any;
+    active?:boolean;
 }
 
