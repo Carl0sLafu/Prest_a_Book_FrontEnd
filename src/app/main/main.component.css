@@ -67,7 +67,7 @@
 
 .bookimg {
 
-    max-height: 400px;
+    max-height: 290px;
 
 }
 
@@ -129,6 +129,12 @@
 
     #bienvenido{
         background-size: 200% auto;
+    }
+
+    .bookimg {
+
+        max-height: 400px;
+    
     }
 
 }
