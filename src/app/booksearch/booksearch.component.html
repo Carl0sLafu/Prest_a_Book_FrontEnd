@@ -56,20 +56,20 @@
         <div class="row">
             <div class="col text-center" *ngIf="!estaBuscando">
                 <div class="btn-group py-5" role="group" aria-label="Second group">
-                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="books!==undefined && librosParaCargarstart - 39 > 0"><a href="search#" class="text-reset text-decoration-none" (click)="comprobarLength(false, 2)">{{page - 2}}</a></button>
-                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="books!==undefined && librosParaCargarstart - 19 > 0"><a href="search#" class="text-reset text-decoration-none" (click)="comprobarLength(false, 1)">{{page - 1}}</a></button>
+                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="books!==undefined && librosParaCargarstart - 39 > 0" (click)="comprobarLength(false, 2)"><a href="search#" class="text-reset text-decoration-none">{{page - 2}}</a></button>
+                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="books!==undefined && librosParaCargarstart - 19 > 0" (click)="comprobarLength(false, 1)"><a href="search#" class="text-reset text-decoration-none">{{page - 1}}</a></button>
                     <button type="button" class="btn btn-primary fw-bold">{{page}}</button>
-                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="books!==undefined && books.length > librosParaCargarend"><a href="search#" class="text-reset text-decoration-none" (click)="comprobarLength(true, 1)">{{page + 1}}</a></button>
-                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="books!==undefined && books.length > librosParaCargarend + 20"><a href="search#" class="text-reset text-decoration-none" (click)="comprobarLength(true, 2)">{{page + 2}}</a></button>
+                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="books!==undefined && books.length > librosParaCargarend" (click)="comprobarLength(true, 1)"><a href="search#" class="text-reset text-decoration-none">{{page + 1}}</a></button>
+                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="books!==undefined && books.length > librosParaCargarend + 20" (click)="comprobarLength(true, 2)"><a href="search#" class="text-reset text-decoration-none">{{page + 2}}</a></button>
                 </div>
             </div>
             <div class="col text-center" *ngIf="estaBuscando">
                 <div class="btn-group py-5" role="group" aria-label="Second group">
-                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="LibrosEncontrados!=undefined && librosParaCargarstart - 39 > 0"><a href="search#" class="text-reset text-decoration-none" (click)="comprobarLength(false, 2)">{{page - 2}}</a></button>
-                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="LibrosEncontrados!=undefined && librosParaCargarstart - 19 > 0"><a href="search#" class="text-reset text-decoration-none" (click)="comprobarLength(false, 1)">{{page - 1}}</a></button>
+                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="LibrosEncontrados!=undefined && librosParaCargarstart - 39 > 0" (click)="comprobarLength(false, 2)"><a href="search#" class="text-reset text-decoration-none">{{page - 2}}</a></button>
+                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="LibrosEncontrados!=undefined && librosParaCargarstart - 19 > 0" (click)="comprobarLength(false, 1)"><a href="search#" class="text-reset text-decoration-none">{{page - 1}}</a></button>
                     <button type="button" class="btn btn-primary fw-bold">{{page}}</button>
-                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="LibrosEncontrados!==undefined && LibrosEncontrados.length > librosParaCargarend"><a href="search#" class="text-reset text-decoration-none" (click)="comprobarLength(true, 1)">{{page + 1}}</a></button>
-                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="LibrosEncontrados!==undefined && LibrosEncontrados.length > librosParaCargarend + 20"><a href="search#" class="text-reset text-decoration-none" (click)="comprobarLength(true, 2)">{{page + 2}}</a></button>
+                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="LibrosEncontrados!==undefined && LibrosEncontrados.length > librosParaCargarend" (click)="comprobarLength(true, 1)"><a href="search#" class="text-reset text-decoration-none">{{page + 1}}</a></button>
+                    <button type="button" class="btn btn-secondary fw-bold" *ngIf="LibrosEncontrados!==undefined && LibrosEncontrados.length > librosParaCargarend + 20" (click)="comprobarLength(true, 2)"><a href="search#" class="text-reset text-decoration-none">{{page + 2}}</a></button>
                 </div>
             </div>
         </div>
