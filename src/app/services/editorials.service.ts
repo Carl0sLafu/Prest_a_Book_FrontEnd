@@ -33,7 +33,7 @@ export class EditorialsService {
   }
 
   getByName(name:string): Observable<Editorials>{
-    return this.http.get(`${baseUrl}/name/${name}`);
+    return this.http.get<Editorials>(`${baseUrl}/name/${name}`);
   }
 
 }

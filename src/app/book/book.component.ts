@@ -58,7 +58,7 @@ export class BookComponent implements OnInit {
 
   checkWishlist(){
     this.WishesService.getByUserAndBook(this.user?.id, this.id).subscribe(result => this.wish = result);
-    this.sendRequests();
+    //this.sendRequests();
   }
 
   deleteFromWishlist(){

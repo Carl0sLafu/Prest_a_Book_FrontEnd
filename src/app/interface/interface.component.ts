@@ -19,7 +19,7 @@ export class InterfaceComponent implements OnInit {
     private auth: AuthService, 
     private usersService: UsersService, 
     private wishesService: WishesService,
-    private booksService: BooksService ) {}
+    private booksService: BooksService) {}
 
   editarPerfil: boolean = false;
   user: any = null;
