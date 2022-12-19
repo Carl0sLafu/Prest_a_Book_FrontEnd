@@ -34,17 +34,15 @@ export class BookComponent implements OnInit {
   wrote?: Wrote;
   user?:Users;
   wish?:Wishes;
+  requested?:Loans;
 
   ngOnInit():void{
-
     if (!this.TokenStorage.getToken()) {
-
       window.location.assign("../login-register");
-
-
     }
     this.id = this.route.snapshot.paramMap.get('id');
     this.user = this.TokenStorage.getUser();
+    this.checkRequest();
     this.sendRequests();
   }
 
@@ -54,7 +52,7 @@ export class BookComponent implements OnInit {
       id_user:user,
       id_book:this.book
     }
-    this.WishesService.create(data).subscribe();
+    this.WishesService.create(data).pipe(finalize( () => this.checkWishlist())).subscribe();
     this.checkWishlist();
     this.sendRequests();
   }
@@ -86,6 +84,10 @@ export class BookComponent implements OnInit {
       id_loanee: this.user,
     }
     console.log(loan);
-    this.LoansService.create(loan).subscribe();
+    this.LoansService.create(loan).pipe(finalize( () => this.checkRequest())).subscribe();
+  }
+
+  checkRequest(){
+    this.LoansService.getByLoaneeAndBook(this.user?.id, this.id).subscribe( result => this.requested = result );
   }
 }

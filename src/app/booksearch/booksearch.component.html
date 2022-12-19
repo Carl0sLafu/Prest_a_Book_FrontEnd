@@ -30,23 +30,19 @@
         </div>
         <div id="books" class="row justify-content-center bg-custom-orange py-4 mb-4 rounded-3" *ngIf="books!==undefined">
             <ng-container *ngIf="!estaBuscando">
-                <div class="card m-2" style="width: 18rem;" *ngFor="let book of books | slice:librosParaCargarstart:librosParaCargarend;">
-                    <a href="book/{{book.id}}">
+                <div class="card m-2" style="width: 18rem;" routerLink="/book/{{book.id}}" *ngFor="let book of books | slice:librosParaCargarstart:librosParaCargarend;">
                         <img src="{{book.img}}" class="card-img-top rounded-top bookimg" alt="{{book.title}}">
                         <div class="card-body">
                             <h5 class="card-title">{{book.title}}</h5>
                         </div>
-                    </a>
                 </div>
             </ng-container>
             <ng-container *ngIf="estaBuscando && LibrosEncontrados.length != 0">
-                <div class="card m-2" style="width: 18rem;" *ngFor="let book of LibrosEncontrados | slice:librosParaCargarstart:librosParaCargarend;">
-                    <a href="book/{{book.id}}">
+                <div class="card m-2" style="width: 18rem;" routerLink="/book/{{book.id}}" *ngFor="let book of LibrosEncontrados | slice:librosParaCargarstart:librosParaCargarend;">
                         <img src="{{book.img}}" class="card-img-top rounded-top bookimg" alt="{{book.title}}">
                         <div class="card-body">
                             <h5 class="card-title">{{book.title}}</h5>
                         </div>
-                    </a>
                 </div>
             </ng-container>
             <ng-container *ngIf="estaBuscando && LibrosEncontrados.length == 0">
