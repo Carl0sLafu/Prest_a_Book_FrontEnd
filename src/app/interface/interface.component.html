@@ -207,7 +207,7 @@
                             <div id="foto">
                                 <img src="{{recibida.id_book?.img}}" routerLink="/book/{{recibida.id_book?.id}}"
                                     class="card-img-top" alt="...">
-                                <button id="deleteLoan" (click)="deleteLoan(recibida.id)"
+                                <button id="deleteLoan" *ngIf="recibida.active == true" (click)="deleteLoan(recibida.id)"
                                     class="btn btn-danger text-center"><strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
