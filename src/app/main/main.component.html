@@ -19,14 +19,17 @@
 					<span class="fs-3 fw-bold" *ngIf="generado">Te recomendamos leer {{libroAleatorio?.title}}</span><br>
 				</div>
 			</div>
-			<div class="row pb-5">
+			<div class="row">
 				<div class="col-12 text-center contentintroImg pt-1 librarygenerator mx-auto" *ngIf="!generado" (click)="generarLibroAleatorio()">
 					<img src="assets/giflibro.gif" class="img-fluid generatebookMaxHeight" id="flotando">
 				</div>
-				<div class="col-12 text-center mx-auto pb-5" style="height: 10rem;" *ngIf="generado">
-					<a href="book/{{libroAleatorio?.id}}">
+				<div class="col-12 text-center mx-auto pb-5" style="height: 230px;" *ngIf="generado">
+					<a href="book/{{libroAleatorio?.id}}" style="display: inline-block;">
 						<img src="{{libroAleatorio?.img}}" style="width: 10rem;" class="card-img-top generatedbookHeight" alt="{{libroAleatorio?.title}}">
 					</a>
+				</div>
+				<div class="col-12 text-center contentintroImg mt-5 mx-auto" *ngIf="generado">
+					<button type="button" class="btn btn-primary btn-rounded" (click)="generarLibroAleatorio()">Volver a generar</button>
 				</div>
 			</div>
 		</div>
