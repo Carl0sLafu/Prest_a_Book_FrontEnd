@@ -13,8 +13,8 @@ export class BooksearchComponent implements OnInit{
 
   constructor(private BooksService:BooksService, private WroteService:WroteService){}
 
-  librosParaCargarend:number = 10;
   librosParaCargarstart:number = 0;
+  librosParaCargarend:number = 20;
   page: number = 1;
   books?: Books[];
   wrote?: Wrote[];
@@ -113,6 +113,9 @@ export class BooksearchComponent implements OnInit{
 
   searchByTitle() {
 
+    this.librosParaCargarstart = 0;
+    this.librosParaCargarend = 0;
+    this.page = 1;
     this.authorSearch = '';
 
     this.estaBuscando = (this.titleSearch != '')?true:false;
@@ -122,6 +125,11 @@ export class BooksearchComponent implements OnInit{
     this.books?.forEach(book => {
       if (book.title?.toLocaleLowerCase().includes(this.titleSearch.toLocaleLowerCase())) {
         this.LibrosEncontrados.push(book);
+        if (this.librosParaCargarend != 20) {
+
+          this.librosParaCargarend++;
+
+        }
       }
     });
 
@@ -129,6 +137,9 @@ export class BooksearchComponent implements OnInit{
 
   searchByAuthor() {
 
+    this.librosParaCargarstart = 0;
+    this.librosParaCargarend = 0;
+    this.page = 1;
     this.titleSearch = '';
 
     this.estaBuscando = (this.authorSearch != '')?true:false;
@@ -144,6 +155,12 @@ export class BooksearchComponent implements OnInit{
 
             this.LibrosEncontrados.push(bookSearch);
 
+            if (this.librosParaCargarend != 20) {
+
+              this.librosParaCargarend++;
+
+            }
+
           }
 
         });
@@ -158,19 +175,35 @@ export class BooksearchComponent implements OnInit{
 
     if (subir) {
 
-      this.librosParaCargarstart += 10 * plus;
-      this.librosParaCargarend += 10 * plus;
+      this.librosParaCargarstart += 20 * plus;
+      if ((this.librosParaCargarend + (20*plus) > this.books!.length && !this.estaBuscando)
+      || (this.librosParaCargarend + (20*plus) > this.LibrosEncontrados!.length && this.estaBuscando)) {
+
+        this.librosParaCargarend = this.books!.length;
+
+      } else {
+
+        this.librosParaCargarend += 20 * plus;
+
+      }
+
       this.page += plus;
 
     } else {
 
-      this.librosParaCargarstart -= 10 * plus;
-      this.librosParaCargarend -= 10 * plus;
+      this.librosParaCargarstart -= 20 * plus;
+      if (this.librosParaCargarend - (20 * plus) < 20) {
+
+        this.librosParaCargarend = 20;
+
+      } else {
+        
+        this.librosParaCargarend -= 20 * plus;
+
+      }
       this.page -= plus;
 
     }
-
-    console.log(this.librosParaCargarend);
 
   }
 
