@@ -12,7 +12,7 @@
                     <a href="/search" class="nav-item nav-link color-custom-blue2">Buscar libros</a>
                     <a href="/adminpanel/books" class="nav-item nav-link color-custom-blue2">Admin panel</a>
                 </div>
-                <div class="navbar-nav ms-auto" *ngIf="!isLoged">
+                <div class="navbar-nav ms-auto" *ngIf="!isLoged && !imInLoginRegister">
                     <a href="/login-register" class="nav-item nav-link color-custom-blue2">Register</a>
                     <a href="/login-register" class="nav-item nav-link color-custom-blue2">Login</a>
                 </div>
