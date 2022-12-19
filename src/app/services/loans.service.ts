@@ -30,6 +30,10 @@ export class LoansService {
     return this.http.get<Loans[]>(`${baseUrl}/loaner/${id_loaner}`);
   }
 
+  getByLoaneeAndBook(id_loanee:any, id_book:any): Observable<Loans>{
+    return this.http.get<Loans>(`${baseUrl}/byloaneeandbook/${id_loanee}/${id_book}`);
+  }
+
   create(data:any): Observable<any>{
     return this.http.post(baseUrl,data);
   }

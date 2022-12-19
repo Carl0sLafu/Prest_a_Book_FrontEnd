@@ -55,7 +55,7 @@ export class InterfaceComponent implements OnInit {
     this.user = this.token.getUser();
     this.recargarUserData();
     this.cargarWishlist();
-    this.booksService.getByOwner(this.user.id).subscribe( result => this.published = result);
+    this.cargarBooks();
     this.cargarLoans();
 
   }
@@ -106,6 +106,10 @@ export class InterfaceComponent implements OnInit {
     //this.cargarLoans();
   }
 
+  deleteBook(id_book:any):void{
+    this.booksService.delete(id_book).pipe(finalize( () => this.cargarBooks())).subscribe();
+  }
+
   approveLoan(loan:any):void{
     console.log(loan);
     loan.active = true;
@@ -116,6 +120,10 @@ export class InterfaceComponent implements OnInit {
   cargarLoans(){
     this.loansService.getByLoanee(this.user.id).subscribe( result => this.enviadasLoans = result );
     this.loansService.getByLoaner(this.user.id).subscribe( result => this.recibidasLoans = result );
+  }
+
+  cargarBooks(){
+    this.booksService.getByOwner(this.user.id).subscribe( result => this.published = result);
   }
 
 }
