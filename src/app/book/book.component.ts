@@ -5,10 +5,12 @@ import { WroteService } from '../services/wrote.service';
 import { ActivatedRoute } from '@angular/router';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { WishesService } from '../services/wishes.service';
+import { LoansService } from '../services/loans.service';
 import { Token } from '@angular/compiler';
 import { Wrote } from '../models/wrote.model';
 import { Users } from '../models/users.model';
 import { Wishes } from '../models/wishes.model';
+import { Loans } from '../models/loans.model';
 import {finalize} from 'rxjs/operators';
 
 @Component({
@@ -23,7 +25,8 @@ export class BookComponent implements OnInit {
     private BooksService:BooksService, 
     private TokenStorage:TokenStorageService,
     private WroteService:WroteService,
-    private WishesService:WishesService
+    private WishesService:WishesService,
+    private LoansService:LoansService
     ){}
 
   book?: Books;
@@ -69,5 +72,20 @@ export class BookComponent implements OnInit {
   sendRequests(){
     this.WroteService.getByBook(this.id).subscribe(result => this.wrote = result);
     this.BooksService.getById(this.id).pipe(finalize( () => this.checkWishlist())).subscribe(result => this.book = result);
+  }
+
+  loanRequest(){
+    const inicio = new Date();
+    const fin = inicio.setMonth(inicio.getMonth() + 1);
+    let loan:Loans = {
+      id_book:this.book,
+      id_loaner:this.book?.id_user,
+      starting_date: new Date().toISOString(),
+      end_date: new Date().toISOString(),
+      active: false,
+      id_loanee: this.user,
+    }
+    console.log(loan);
+    this.LoansService.create(loan).subscribe();
   }
 }
