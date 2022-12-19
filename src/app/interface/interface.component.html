@@ -5,13 +5,15 @@
                 <div class="container bg-white">
                     <div class="row p-5">
                         <div class="col-3">
-                            <img src="./../../assets/Portrait_placeholder.png" class="img-fluid"ºº alt="Bruja del mar" height="300">
+                            <img src="./../../assets/Portrait_placeholder.png" class="img-fluid" ºº alt="Bruja del mar"
+                                height="300">
                         </div>
                         <div class="col">
                             <div class="container-fluid fs-4 text-start">
                                 <div class="row">
                                     <div class="col">
-                                        <span class="color-custom-red fw-bold">Nombre de usuario:</span> {{user.username}}
+                                        <span class="color-custom-red fw-bold">Nombre de usuario:</span>
+                                        {{user.username}}
                                     </div>
                                 </div>
                                 <div class="row">
@@ -21,7 +23,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="color-custom-red fw-bold">Fecha de nacimiento:</span> {{user.birth_date}}
+                                        <span class="color-custom-red fw-bold">Fecha de nacimiento:</span>
+                                        {{user.birth_date | date:'dd/MM/y'}}
                                     </div>
                                 </div>
                                 <div class="row">
@@ -47,7 +50,8 @@
                             </div>
                         </div>
                         <div class="col-2 text-end align-self-end">
-                            <button type="button" class="btn btn-success align-self-end" (click)="cambiarDatos()">Editar perfil</button>
+                            <button type="button" class="btn btn-success align-self-end" (click)="cambiarDatos()">Editar
+                                perfil</button>
                         </div>
                     </div>
                 </div>
@@ -58,15 +62,18 @@
                 <div class="container bg-white">
                     <div class="row p-5">
                         <div class="col-3">
-                            <img src="./../../assets/Portrait_placeholder.png" class="img-fluid"ºº alt="Bruja del mar" height="300">
+                            <img src="./../../assets/Portrait_placeholder.png" class="img-fluid" ºº alt="Bruja del mar"
+                                height="300">
                         </div>
                         <div class="col">
                             <div class="container-fluid fs-5 text-start">
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-1">
-                                            <span class="color-custom-red fw-bold input-group-text fs-5">Nombre de usuario:</span>
-                                            <input type="text" name="username" value="{{user.username}}" [(ngModel)]="modifyUser.username">
+                                            <span class="color-custom-red fw-bold input-group-text fs-5">Nombre de
+                                                usuario:</span>
+                                            <input type="text" name="username" value="{{user.username}}"
+                                                [(ngModel)]="modifyUser.username">
                                         </div>
                                     </div>
                                 </div>
@@ -74,31 +81,38 @@
                                     <div class="col">
                                         <div class="input-group mb-1">
                                             <span class="color-custom-red fw-bold input-group-text fs-5">Email:</span>
-                                            <input type="text" name="email" value="{{user.email}}" [(ngModel)]="modifyUser.email">
+                                            <input type="text" name="email" value="{{user.email}}"
+                                                [(ngModel)]="modifyUser.email">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-1">
-                                            <span class="color-custom-red fw-bold input-group-text fs-5">Fecha de nacimiento:</span>
-                                            <input type="text" name="birth" value="{{user.birth_date}}" placeholder="dd/MM/year" [(ngModel)]="modifyUser.birth">
+                                            <span class="color-custom-red fw-bold input-group-text fs-5">Fecha de
+                                                nacimiento:</span>
+                                            <input type="text" name="birth" value="{{user.birth_date}}"
+                                                placeholder="dd/MM/year" [(ngModel)]="modifyUser.birth">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-1">
-                                            <span class="color-custom-red fw-bold input-group-text fs-5">Nombre real:</span>
-                                            <input type="text" name="trueName" value="{{user.real_name}}" [(ngModel)]="modifyUser.trueName">
+                                            <span class="color-custom-red fw-bold input-group-text fs-5">Nombre
+                                                real:</span>
+                                            <input type="text" name="trueName" value="{{user.real_name}}"
+                                                [(ngModel)]="modifyUser.trueName">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-1">
-                                            <span class="color-custom-red fw-bold input-group-text fs-5">Apellidos:</span>
-                                            <input type="text" name="surname" value="{{user.surname}}" [(ngModel)]="modifyUser.surname">
+                                            <span
+                                                class="color-custom-red fw-bold input-group-text fs-5">Apellidos:</span>
+                                            <input type="text" name="surname" value="{{user.surname}}"
+                                                [(ngModel)]="modifyUser.surname">
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +120,8 @@
                                     <div class="col">
                                         <div class="input-group mb-1">
                                             <span class="color-custom-red fw-bold input-group-text fs-5">Género:</span>
-                                            <input type="text" name="gender" value="{{user.gender}}" [(ngModel)]="modifyUser.gender">
+                                            <input type="text" name="gender" value="{{user.gender}}"
+                                                [(ngModel)]="modifyUser.gender">
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +129,8 @@
                         </div>
                         <div class="col-2 text-end align-self-end">
                             <button type="button" class="btn btn-danger" (click)="cambiarDatos()">X</button>
-                            <button type="button" class="btn btn-success align-self-end" (click)="subirDatos()">Subir cambios</button>
+                            <button type="button" class="btn btn-success align-self-end" (click)="subirDatos()">Subir
+                                cambios</button>
                         </div>
                     </div>
                 </div>
@@ -131,10 +147,11 @@
                     <div class="row p-2" *ngIf="wishlist?.length">
                         <div class="card m-2 col-lg-2 col-11" *ngFor="let wish of wishlist" >
                             <div id="foto">
-                                <img src="{{wish.id_book?.img}}" class="card-img-top" alt="...">
-                                <button (click)="deleteWish(wish.id)" class="btn btn-danger text-center"><strong>-</strong></button>
+                                <img src="{{wish.id_book?.img}}" routerLink="/book/{{wish.id_book?.id}}"  class="card-img-top" alt="...">
+                                <button (click)="deleteWish(wish.id)"
+                                    class="btn btn-danger text-center"><strong>-</strong></button>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" routerLink="/book/{{wish.id_book?.id}}">
                                 <h5 class="card-title">{{wish.id_book?.title}}</h5>
                             </div>
                         </div>
@@ -151,33 +168,24 @@
                         </div>
                     </div>
                     <div class="row p-2" *ngIf="published?.length">
-                        <div class="card m-2 col-lg-2 col-11">
-                            <img src="./../../assets/AEEPDLM.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                        <div class="card m-2 col-lg-2 col-11" *ngFor="let publish of published"
+                            routerLink="/book/{{publish.id}}">
+                            <div id="foto">
+                                <img src="{{publish.img}}" class="card-img-top" alt="...">
                             </div>
-                        </div>
-                        <div class="card m-2 col-lg-2 col-11" >
-                            <img src="./../../assets/BDM.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                            </div>
-                        </div>
-                        <div class="card m-2 col-lg-2 col-11" >
-                            <img src="./../../assets/DQDLM.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                                <h5 class="card-title">{{publish.title}}</h5>
                             </div>
                         </div>
                     </div>
                     <div class="row px-4 pb-3">
                         <div class="col text-end">
-                            <button type="button" class="btn btn-primary">Modificar</button>
+                            <button type="button" class="btn btn-primary" routerLink="/bookcreate">Añadir nuevo libro</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 
 </body>
