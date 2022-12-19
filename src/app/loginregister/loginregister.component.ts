@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UsersService } from '../services/users.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-loginregister',
@@ -10,6 +11,7 @@ import { UsersService } from '../services/users.service';
 })
 export class LoginregisterComponent implements OnInit {
 
+  routeString: string = '';
   register: boolean = false;
   loginFormResults: any = {
 
@@ -40,7 +42,7 @@ export class LoginregisterComponent implements OnInit {
 
   registerSuccesful: boolean = false;
 
-  constructor (private authService: AuthService, private tokenStorage: TokenStorageService, private users: UsersService) {}
+  constructor (private authService: AuthService, private tokenStorage: TokenStorageService, private users: UsersService, private route:ActivatedRoute) {}
 
   ngOnInit(): void {
     
@@ -49,6 +51,8 @@ export class LoginregisterComponent implements OnInit {
       window.location.assign("..");
 
     }
+
+    this.comprobarRuta();
 
   }
 
@@ -132,6 +136,25 @@ export class LoginregisterComponent implements OnInit {
 
     this.useremptyLogin = false;
     this.passemptyLogin = false;
+
+  }
+
+  comprobarRuta() {
+
+    this.route.queryParams.subscribe(
+      params => {
+
+        this.routeString = params['register'];
+
+        }      
+      
+      );
+
+    if (this.routeString.match("true")) {
+
+      this.register = true;
+
+    }
 
   }
 
