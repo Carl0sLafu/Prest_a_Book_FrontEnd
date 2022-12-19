@@ -1,17 +1,21 @@
-<body class="bg-custom-yellow purebackground background-image-center fontcabecera p-5">
-    <div class="container align-center">
+<div class="row justify-content-md-center" *ngIf="autorElegido==null">
+    <div class="col align-center">
+    Elige un autor por favor
+    </div>
+</div>
+    <div class="container align-center" *ngIf="autorElegido!=null">
         <div class="row justify-content-md-center">
             <div class="col-8">
                 <form>
 
                     <div class="form-group">
                         <label for="titulo" class="control-label">Título</label>
-                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe un título para el libro" [(ngModel)]="book.title">
+                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe un título para el libro" maxlength="255" required [(ngModel)]="book.title">
                     </div>    
                 
                     <div class="form-group">
                         <label for="isbn" class="control-label">ISBN</label>
-                        <input type="text" class="form-control" id="isbn" name="isbn" placeholder="Número ISBN compuesto por 13 dígitos" [(ngModel)]="book.isbn">
+                        <input type="text" class="form-control" id="isbn" name="isbn" placeholder="13 dígitos" maxlength="13" [(ngModel)]="book.isbn">
                     </div>                    
                                             
                     <div class="form-group">
@@ -55,7 +59,7 @@
 
                     <div class="form-group">
                             <label for="descripcion" class="control-label">Descripción</label>
-                            <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Sinopsis o descripción" rows="3" [(ngModel)]="book.description"></textarea>
+                            <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Sinopsis o descripción" rows="3" maxlength="5000" [(ngModel)]="book.description"></textarea>
                     </div>
 
                     
@@ -72,8 +76,9 @@
                     </div>
                     
                     <div class="form-group pt-5 text-center ">
+                        <input type="submit" value="enviar" class="btn btn-primary">
                         <button type="enviar" class="btn btn-primary" (click)="enviarDatos()">Enviar</button>
-                    </div> 
+                    </div>
 
                 </form>
             </div>
@@ -85,4 +90,9 @@
             </div>
         </div>
     </div>
-</body>
+
+
+
+
+
+
