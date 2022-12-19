@@ -145,11 +145,18 @@
                         </div>
                     </div>
                     <div class="row p-2" *ngIf="wishlist?.length">
-                        <div class="card m-2 col-lg-2 col-11" *ngFor="let wish of wishlist" >
+                        <div class="card m-2 col-lg-2 col-11" *ngFor="let wish of wishlist">
                             <div id="foto">
-                                <img src="{{wish.id_book?.img}}" routerLink="/book/{{wish.id_book?.id}}"  class="card-img-top" alt="...">
-                                <button (click)="deleteWish(wish.id)"
-                                    class="btn btn-danger text-center"><strong>-</strong></button>
+                                <img src="{{wish.id_book?.img}}" routerLink="/book/{{wish.id_book?.id}}"
+                                    class="card-img-top" alt="...">
+                                <button id="deleteFromWishlist" (click)="deleteWish(wish.id)"
+                                    class="btn btn-danger text-center"><strong>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                        </svg>
+                                    </strong></button>
                             </div>
                             <div class="card-body" routerLink="/book/{{wish.id_book?.id}}">
                                 <h5 class="card-title">{{wish.id_book?.title}}</h5>
@@ -180,7 +187,85 @@
                     </div>
                     <div class="row px-4 pb-3">
                         <div class="col text-end">
-                            <button type="button" class="btn btn-primary" routerLink="/bookcreate">Añadir nuevo libro</button>
+                            <button type="button" class="btn btn-primary" routerLink="/bookcreate">Añadir nuevo
+                                libro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <div class="container bg-custom-orange">
+                    <div class="row pt-3">
+                        <div class="col text-start fs-2 color-custom-blue fw-bold">
+                            Peticiones de préstamos recibidas
+                        </div>
+                    </div>
+                    <div class="row p-2" *ngIf="published?.length">
+                        <div class="card m-2 col-lg-2 col-11" *ngFor="let recibida of recibidasLoans">
+                            <div id="foto">
+                                <img src="{{recibida.id_book?.img}}" routerLink="/book/{{recibida.id_book?.id}}"
+                                    class="card-img-top" alt="...">
+                                <button id="deleteLoan" (click)="deleteLoan(recibida.id)"
+                                    class="btn btn-danger text-center"><strong>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                        </svg>
+                                    </strong></button>
+                                <svg id="aprobarLoan" *ngIf="recibida.active == false" (click)="approveLoan(recibida)"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                </svg>
+                                <svg id="denegarLoan" *ngIf="recibida.active == false" (click)="deleteLoan(recibida.id)"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                    class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
+                                    <path
+                                        d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                                </svg>
+                                <div id="finalizacion" class="container bg-light" *ngIf="recibida.active == true">
+                                    <p class="p-0 m-0">Fin préstamo: {{recibida.end_date | date:'dd/MM/y'}}</p>
+                                </div>
+                            </div>
+                            <div class="card-body" routerLink="/book/{{recibida.id_book?.id}}">
+                                <h6 class="card-title m-0 p-0">{{recibida.id_book?.title}}</h6>
+                                <p class="m-0">Lo quiere: {{recibida.id_loanee?.username}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <div class="container bg-custom-orange">
+                    <div class="row pt-3">
+                        <div class="col text-start fs-2 color-custom-blue fw-bold">
+                            Peticiones de préstamos enviadas
+                        </div>
+                    </div>
+                    <div class="row p-2" *ngIf="published?.length">
+                        <div class="card m-2 col-lg-2 col-11" *ngFor="let loan of enviadasLoans">
+                            <div id="foto">
+                                <img src="{{loan.id_book?.img}}" routerLink="/book/{{loan.id_book?.id}}"
+                                    class="card-img-top" alt="...">
+                                <button id="deleteLoan" (click)="deleteLoan(loan.id)"
+                                    class="btn btn-danger text-center"><strong>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                        </svg>
+                                    </strong></button>
+                            </div>
+                            <div class="card-body" routerLink="/book/{{loan.id_book?.id}}">
+                                <h6 class="card-title m-0 p-0">{{loan.id_book?.title}}</h6>
+                                <p class="m-0">Propietario: {{loan.id_loaner?.username}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
