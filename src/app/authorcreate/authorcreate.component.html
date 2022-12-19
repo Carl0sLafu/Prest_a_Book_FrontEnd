@@ -1,1 +1,66 @@
-<p>authorcreate works!</p>
+<body class="bg-custom-yellow purebackground background-image-center fontcabecera p-5">
+    <div class="container align-center">
+        <div class="row justify-content-md-center">
+            <div class="col-8">
+                <form>
+                    <div class="form-group">
+                        <label for="autor" class="control-label">Escoge el autor del libro que crearás</label>
+                        <select class="form-control" id="autor"  [(ngModel)]="autorElegido" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let autor of autores" value="{{autor.surname}}">{{autor.name}} {{autor.surname}}</option>
+                        </select>                
+                    </div>
+
+                    <div class="form-group py-5 text-center ">
+                        <button type="enviar" class="btn btn-primary" (click)="iniciarLibro()">Crear libro</button>
+                    </div> 
+                    <div class="form-group" *ngIf="!creandoLibro">
+                        <label for="autor" class="control-label">¿No lo tenemos? Créalo</label>
+
+                        <div class="form-group pt-5 text-center ">
+                            <button type="enviar" class="btn btn-primary" (click)="iniciarFormulario()">Crear nuevo autor</button>
+                        </div> 
+
+                        <div class="row justify-content-md-center" *ngIf="creandoAutor">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="nombre" class="control-label">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escribe un nombre para tu autor" maxlength="60" [(ngModel)]="autor.name">
+                                </div>  
+                                <div class="form-group">
+                                    <label for="apellidos" class="control-label">Apellidos</label>
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Escribe un apellido para tu autor" maxlength="80" [(ngModel)]="autor.surname">
+                                </div>  
+                                <div class="form-group">
+                                    <label for="fechanacimiento" class="control-label">Fecha de nacimiento</label>
+                                    <input type="text" class="form-control" id="fechanacimiento" name="fechanacimiento" placeholder="Escribe una fecha de nacimiento" [(ngModel)]="autor.birth_date">
+                                </div>  
+                                <div class="form-group">
+                                    <label for="nacionalidad" class="control-label">Nacionalidad</label>
+                                    <input type="text" class="form-control" id="nacionalidad" name="nacionalidad" placeholder="Escribe el lugar de nacimiento del autor" maxlength="40" [(ngModel)]="autor.nationality">
+                                </div>  
+                                <div class="form-group">
+                                    <label for="descripcion" class="control-label">Descripción</label>
+                                    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ej: Escritor de fantasía" maxlength="500" [(ngModel)]="autor.descr">
+                                </div> 
+                                <div class="form-group">
+                                    <label for="sexo" class="control-label" >Sexo</label>
+                                    <select class="form-control" id="sexo" [(ngModel)]="autor.gender" [ngModelOptions]="{standalone: true}">
+                                        <option value="Hombre">H</option>
+                                        <option value="Mujer">M</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>                
+                                </div>
+                                <div class="form-group pt-5 text-center ">
+                                <button type="enviar" class="btn btn-primary" (click)="enviarDatos()">Enviar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <label *ngIf="creandoLibro">
+                    <app-bookcreate [autorElegido]="autorElegido"></app-bookcreate>
+                </label>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

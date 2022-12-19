@@ -63,7 +63,7 @@ const routes: Routes = [
         component: BookcreateComponent
     },
     {
-        path: 'authorcreate',
+        path: 'author',
         component: AuthorcreateComponent
     }
 ];

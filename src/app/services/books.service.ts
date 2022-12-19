@@ -36,7 +36,7 @@ export class BooksService {
   }
 
   getByTitle(title:string): Observable<Books>{
-    return this.http.get<Books>(`${baseUrl}/title/${title}`);
+    return this.http.get(`${baseUrl}/title/${title}`);
   }
 
   getByIsbn(isbn:string): Observable<Books>{
