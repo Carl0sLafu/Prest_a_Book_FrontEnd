@@ -67,7 +67,7 @@
 
 .bookimg {
 
-    max-height: 290px;
+    max-height: 370px;
 
 }
 
@@ -92,6 +92,16 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% auto;
+
+}
+
+@media (max-width: 1700px) {
+
+    .bookimg {
+
+        max-height: 300px;
+
+    }
 
 }
 
