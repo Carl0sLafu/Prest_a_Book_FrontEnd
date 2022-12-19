@@ -1,0 +1,15 @@
+.validacion{
+    color:red;
+    font-style: oblique;
+}
+
+label{
+    padding-top:4px;
+    padding-bottom: 4px;
+}
+
+.alert{
+    bottom: 250px;
+    right: 40px;
+    position:absolute;
+}
