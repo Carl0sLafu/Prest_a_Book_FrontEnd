@@ -39,7 +39,7 @@ export class BooksearchComponent implements OnInit{
     if (this.ordenarBy == 0) {
 
       this.BooksService.getAll().pipe(finalize( () => this.getAllBooksLength())).subscribe(result => { this.books = result.sort(function (a, b) {
-        if (a.title! > b.title!) {
+        if (a.title!.toLocaleLowerCase() > b.title!.toLocaleLowerCase()) {
           return 1;
         }
         if (a.title! < b.title!) {
@@ -51,7 +51,7 @@ export class BooksearchComponent implements OnInit{
     } else if (this.ordenarBy == 1) {
 
       this.BooksService.getAll().pipe(finalize( () => this.getAllBooksLength())).subscribe(result => { this.books = result.sort(function (a, b) {
-        if (a.title! > b.title!) {
+        if (a.title!.toLocaleLowerCase() > b.title!.toLocaleLowerCase()) {
           return -1;
         }
         if (a.title! < b.title!) {
