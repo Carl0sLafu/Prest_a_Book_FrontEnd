@@ -35,6 +35,12 @@
 
 }
 
+.custom-blue-a:hover {
+
+	color: #008dda !important;
+
+}
+
 .bg-custom-red {
 
 	background-color: #6e0d25;

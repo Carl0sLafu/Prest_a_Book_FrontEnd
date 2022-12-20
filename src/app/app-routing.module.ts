@@ -60,10 +60,6 @@ const routes: Routes = [
     },
     {
         path: 'bookcreate',
-        component: BookcreateComponent
-    },
-    {
-        path: 'author',
         component: AuthorcreateComponent
     }
 ];
