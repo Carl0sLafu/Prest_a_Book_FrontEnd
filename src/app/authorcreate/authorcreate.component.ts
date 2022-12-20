@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorsService } from '../services/authors.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-authorcreate',
@@ -30,8 +31,8 @@ export class AuthorcreateComponent implements OnInit{
   ngOnInit(): void {
 
     this.user = this.token.getUser();
-
-    this.authorsService.getAll().subscribe( result => this.autores = result);
+    this.cargarAutores();
+    
   }
 
   iniciarFormulario(){
@@ -57,9 +58,14 @@ export class AuthorcreateComponent implements OnInit{
   }
   crearAutor(){
 
-    this.authorsService.create(this.autor).subscribe();
+    this.authorsService.create(this.autor).pipe(finalize( () => this.cargarAutores())).subscribe();
 
   }
 
+  cargarAutores(){
+
+    this.authorsService.getAll().subscribe( result => this.autores = result);
+
+  }
 
 }

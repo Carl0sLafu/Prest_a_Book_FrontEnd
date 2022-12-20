@@ -28,7 +28,7 @@ export class BookcreateComponent implements OnInit{
     
     editorialElegida:any = null;
     user:any = null;
-  
+    
 
     letraDrawer:string = "";
 
@@ -78,6 +78,8 @@ export class BookcreateComponent implements OnInit{
 
     this.editorialsService.getAll().subscribe( result => this.editoriales = result);
 
+    this.recogerAutor();
+
     console.log(this.autorElegido)
 
   }
@@ -106,6 +108,7 @@ export class BookcreateComponent implements OnInit{
     this.wrote.id_author.id = this.autor.id;
     this.wrote.book.id = this.libroCreado.id;
     this.wroteService.create(this.wrote).subscribe(res => console.log("Wrote añadido: "+res))
+    window.alert("Libro "+this.book.title+ " creado correctamente.")
     
   }
 

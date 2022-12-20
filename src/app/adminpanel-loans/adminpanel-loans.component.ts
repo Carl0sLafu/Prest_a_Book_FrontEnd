@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { finalize } from 'rxjs';
 import { LoansService } from '../services/loans.service';
 
 @Component({
@@ -14,21 +15,20 @@ export class AdminpanelLoansComponent implements OnInit {
   constructor(private loans: LoansService){}
 
   ngOnInit(): void{
-    this.loans.getAll().subscribe
-    (res => this.prestamos = res);
-  }
-
-  comprobar(): void{
-    console.log("PRESTAMOS"+JSON.stringify(this.prestamos));
+    this.recibirPrestamos();
   }
 
   borrarPrestamo(prestamo_id:number){
     this.estasSeguro = window.confirm("¿Estás seguro?");
     console.log(prestamo_id)
     if(this.estasSeguro){
-          this.loans.delete(prestamo_id).subscribe();
-          window.alert("Libro borrado correctamente");
+          this.loans.delete(prestamo_id).pipe(finalize( () => this.recibirPrestamos())).subscribe();
+          window.alert("Préstamo borrado correctamente");
     }
   }
 
+  recibirPrestamos(){
+    this.loans.getAll().subscribe
+    (res => this.prestamos = res);
+  }
 }

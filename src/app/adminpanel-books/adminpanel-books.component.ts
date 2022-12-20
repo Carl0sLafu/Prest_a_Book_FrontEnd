@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { finalize } from 'rxjs';
 import { BooksService } from '../services/books.service';
 
 @Component({
@@ -14,16 +15,20 @@ export class AdminpanelBooksComponent implements OnInit {
   constructor(private books: BooksService){}
 
   ngOnInit(): void{
-    this.books.getAll().subscribe
-    (res => this.libros = res);
+    this.recibirLibros();
     
   }
   borrarLibro(libro_id:number){
     this.estasSeguro = window.confirm("¿Estás seguro?");
     console.log(libro_id)
     if(this.estasSeguro){
-          this.books.delete(libro_id).subscribe();
-          window.alert("Libro borrado correctamente");
+          this.books.delete(libro_id).pipe(finalize( () => this.recibirLibros())).subscribe(result => window.alert("Libro borrado correctamente"));
+          
     }
+  }
+
+  recibirLibros(){
+    this.books.getAll().subscribe
+    (res => this.libros = res);
   }
 }

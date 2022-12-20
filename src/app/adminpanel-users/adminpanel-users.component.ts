@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { timeout } from 'rxjs';
+import { finalize, timeout } from 'rxjs';
 import { UsersService } from '../services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -25,8 +25,7 @@ export class AdminpanelUsersComponent {
   }
 
   ngOnInit(): void{
-    this.users.getAll().subscribe
-    (res => this.usuarios = res);
+    this.recibirUsers();
   }
 
   
@@ -34,7 +33,7 @@ export class AdminpanelUsersComponent {
     this.estasSeguro = window.confirm("¿Estás seguro?");
 
     if(this.estasSeguro){
-          this.users.delete(usuario_id).subscribe()
+          this.users.delete(usuario_id).pipe(finalize( () => this.recibirUsers())).subscribe()
     }
   }
 
@@ -44,18 +43,23 @@ export class AdminpanelUsersComponent {
       ("¿Quieres cambiar el rol de "+usuario.username+" a Colaborador?");
       if(this.estasSeguro){
           usuario.id_role.id = 2;
-          this.users.update(usuario.id,usuario).subscribe();
+          this.users.update(usuario.id,usuario).pipe(finalize( () => this.recibirUsers())).subscribe();
       }
     }else if(usuario.id_role.id == 2){
       this.estasSeguro = window.confirm
       ("¿Quieres cambiar el rol de "+usuario.username+" a User?");
       if(this.estasSeguro){
           usuario.id_role.id = 3;
-          this.users.update(usuario.id,usuario).subscribe();
+          this.users.update(usuario.id,usuario).pipe(finalize( () => this.recibirUsers())).subscribe();
       }
     }else if(usuario.id_role.id == 1){
       window.alert("No puedes cambiar el rol de un administrador.");
     }
     
+  }
+
+  recibirUsers(){
+    this.users.getAll().subscribe
+    (res => this.usuarios = res);
   }
 }
