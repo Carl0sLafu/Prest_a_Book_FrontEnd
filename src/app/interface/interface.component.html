@@ -175,10 +175,10 @@
                         </div>
                     </div>
                     <div class="row p-2" *ngIf="published?.length">
-                        <div class="card m-2 col-lg-2 col-11" *ngFor="let publish of published"
-                            >
+                        <div class="card m-2 col-lg-2 col-11" *ngFor="let publish of published">
                             <div id="foto">
-                                <img src="{{publish.img}}" routerLink="/book/{{publish.id}}" class="card-img-top" alt="...">
+                                <img src="{{publish.img}}" routerLink="/book/{{publish.id}}" class="card-img-top"
+                                    alt="...">
                                 <button id="deleteLoan" (click)="deleteBook(publish.id)"
                                     class="btn btn-danger text-center"><strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -215,8 +215,8 @@
                             <div id="foto">
                                 <img src="{{recibida.id_book?.img}}" routerLink="/book/{{recibida.id_book?.id}}"
                                     class="card-img-top" alt="...">
-                                <button id="deleteLoan" *ngIf="recibida.active == true" (click)="deleteLoan(recibida.id)"
-                                    class="btn btn-danger text-center"><strong>
+                                <button id="deleteLoan" *ngIf="recibida.active == true"
+                                    (click)="deleteLoan(recibida.id)" class="btn btn-danger text-center"><strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                             <path
@@ -269,6 +269,12 @@
                                                 d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                         </svg>
                                     </strong></button>
+                                <div id="finalizacion" class="container bg-light" *ngIf="loan.active == true">
+                                    <p class="p-0 m-0 text-success">Fin préstamo: {{loan.end_date | date:'dd/MM/y'}}</p>
+                                </div>
+                                <div id="finalizacion" class="container bg-light" *ngIf="loan.active == false">
+                                    <p class="p-0 m-0 text-danger">Pendiente de ser aprobado</p>
+                                </div>
                             </div>
                             <div class="card-body" routerLink="/book/{{loan.id_book?.id}}">
                                 <h6 class="card-title m-0 p-0">{{loan.id_book?.title}}</h6>

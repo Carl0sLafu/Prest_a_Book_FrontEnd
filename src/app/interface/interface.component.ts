@@ -111,10 +111,11 @@ export class InterfaceComponent implements OnInit {
   }
 
   approveLoan(loan:any):void{
-    console.log(loan);
+    const date = new Date()
+    date.setMonth(date.getMonth() + 1)
+    loan.end_date = date;
     loan.active = true;
     this.loansService.update(loan.id, loan).pipe(finalize( () => this.cargarLoans())).subscribe();
-    //this.cargarLoans();
   }
 
   cargarLoans(){
