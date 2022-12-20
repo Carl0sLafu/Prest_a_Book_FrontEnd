@@ -1,5 +1,13 @@
 a{
-    color:rgb(0, 107, 166)
+    color:rgb(0, 107, 166);
+}
+
+a > svg{
+    margin-bottom: 0.3em;
+}
+
+button > svg{
+    margin-bottom: 0.3em;
 }
 
 a:hover{
