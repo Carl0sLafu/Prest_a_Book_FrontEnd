@@ -15,11 +15,11 @@
         </div>
 
 <div class="row justify-content-md-center text-center pt-5" *ngIf="libroElegido==null">
-    <div class="col alert alert-warning" role="alert">
+    <div class="col alert alert-warning" id="editordelibro" role="alert">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
           </svg>
-          Elige un libro para editar aquí
+          Selecciona un libro para editar
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
           </svg>
@@ -117,7 +117,7 @@
                     </form>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-4 pt-5">
                     <div class="card m-2" style="width: 20rem;">
                             <img src="{{libro.img}}" class="card-img-top bookimg" alt="{{libro.title}}">
                     </div>

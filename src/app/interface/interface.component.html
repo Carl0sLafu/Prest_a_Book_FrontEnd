@@ -170,9 +170,15 @@
             <div class="col">
                 <div class="container bg-custom-orange">
                     <div class="row pt-3">
-                        <div class="col text-start fs-2 color-custom-blue fw-bold">
+                        <div class="col-8 text-start fs-2 color-custom-blue fw-bold">
                             Mis libros publicados
                         </div>
+                        <a type="button" href="/bookcreate" class="col-2 text-start text-center fs-5 btn btn-success color-custom-green fw-bold">
+                            Crear libro
+                        </a>
+                        <a type="button" href="/bookedit" class="col-2 text-start text-center fs-5 btn btn-info color-custom-blue fw-bold">
+                            Editar libro
+                        </a>
                     </div>
                     <div class="row p-2" *ngIf="published?.length">
                         <div class="card m-2 col-lg-2 col-11" *ngFor="let publish of published">
