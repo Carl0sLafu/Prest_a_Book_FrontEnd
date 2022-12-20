@@ -1,0 +1,134 @@
+
+<body class="bg-custom-yellow purebackground background-image-center fontcabecera p-3">
+    <div class="container align-center">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-8">
+                <form>
+                    <div class="form-group needs-validation">
+                        <label for="autor" class="control-label">Escoge el libro que editarás</label>
+                        <select class="form-control" id="autor"  [(ngModel)]="libroElegido" [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let libro of libros" value="{{libro.title}}">{{libro.title}}</option>
+                        </select>                
+                    </div>
+                </form>
+            </div>
+        </div>
+
+<div class="row justify-content-md-center text-center pt-5" *ngIf="libroElegido==null">
+    <div class="col alert alert-warning" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+          </svg>
+          Elige un libro para editar aquí
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+          </svg>
+      </div>
+</div>
+
+    <div class="container align-center"  *ngIf="libroElegido!=null">
+        <div class="form-group py-5 text-center ">
+            <button type="enviar" class="btn btn-primary" (click)="elegirLibro()">Elegir libro</button>
+        </div>
+        <div class="row justify-content-md-center " id="editordelibro">
+            <div class="col col-lg-8">
+                    <form>
+
+                        <div class="form-group">
+                            <label for="titulo" class="control-label">Título</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe un título para el libro" maxlength="255" required [(ngModel)]="libro.title" #title="ngModel">
+                            <div class="validacion py-1" *ngIf="title.errors?.['required']">* Titulo requerido</div>
+                        </div>    
+                    
+                        <div class="form-group">
+                            <label for="isbn" class="control-label">ISBN</label>
+                            <input type="text" class="form-control" id="isbn" name="isbn" placeholder="13 dígitos" maxlength="13" required [(ngModel)]="libro.isbn" #isbn="ngModel">
+                            <div class="validacion py-1" *ngIf="isbn.errors?.['required']">* ISBN requerido</div>
+                        </div>                    
+                                                
+                        <div class="form-group">
+                            <label for="numpaginas" class="control-label">Número de páginas</label>
+                            <input type="text" class="form-control" id="numpaginas" name="numpaginas" placeholder="Número de páginas" required [(ngModel)]="libro.num_pages" #numpaginas="ngModel">
+                            <div class="validacion py-1" *ngIf="numpaginas.errors?.['required']">* Nº de páginas requerido</div>
+                        </div>    
+                    
+                        <div class="form-group">
+                            <label for="genero" class="control-label" >Género</label>
+                            <select class="form-control" id="genero" required [(ngModel)]="libro.genre" [ngModelOptions]="{standalone: true}" #genero="ngModel">
+                                <option [ngValue]="libro.genre">{{libro.genre}}</option>
+                                <option value="Clásico literario">Clásico literario</option>
+                                <option value="Cómic">Cómic</option>
+                                <option value="Cuentos y relatos">Cuentos y relatos</option>
+                                <option value="Fantasía">Fantasía</option>
+                                <option value="Humor">Humor</option>
+                                <option value="Infantil">Infantil</option>
+                                <option value="Juvenil">Juvenil</option>
+                                <option value="Novela histórica">Novela histórica</option>
+                                <option value="Novela policiaca">Novela policiaca</option>
+                                <option value="Novela romántica">Novela romántica</option>
+                                <option value="Terror">Terror</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="Arte">Arte</option>
+                                <option value="Autoayuda">Autoayuda</option>
+                                <option value="Biografías y autobiografías">Biografías y autobiografías</option>
+                                <option value="Cocina">Cocina</option>
+                                <option value="Deportes">Deportes</option>
+                                <option value="Divulgación científica">Divulgación científica</option>
+                                <option value="Diccionarios">Diccionarios</option>
+                                <option value="Ensayo">Ensayo</option>
+                                <option value="Filosofía">Filosofía</option>
+                                <option value="Historia">Historia</option>
+                                <option value="Idiomas">Idiomas</option>
+                                <option value="Negocios">Negocios</option>
+                                <option value="Viajes">Viajes</option>
+                                <option value="Religión">Religión</option>
+                                <option value="Poesía">Poesía</option>
+                                <option value="Otros">Otros</option>
+                            </select>            
+                            <div class="validacion py-1" *ngIf="genero.errors?.['required']">* Género requerido</div>     
+                        </div>     
+
+                        <div class="form-group">
+                                <label for="descripcion" class="control-label">Descripción</label>
+                                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Sinopsis o descripción" rows="3" maxlength="5000" required [(ngModel)]="libro.description" #descripcion="ngModel"></textarea>
+                                <div class="validacion py-1" *ngIf="descripcion.errors?.['required']">* Descripción requerida</div>
+                        </div>
+
+                        
+                        <div class="form-group">
+                            <label for="imagen" class="control-label">Imagen</label>
+                            <input type="text" class="form-control" id="imagen" name="imagen" placeholder="URL de la imagen" required [(ngModel)]="libro.img" #imagen="ngModel">
+                            <div class="validacion py-1" *ngIf="imagen.errors?.['required']">* Imagen requerida</div>
+                        </div>    
+                        
+                        <div class="form-group">
+                            <label for="editorial" class="control-label">Editorial</label>
+                            <select class="form-control" id="editorial" required  [(ngModel)]="libro.id_editorial.editorial_name"[ngModelOptions]="{standalone: true}" #editorial="ngModel">
+                                <option [ngValue]="libro.id_editorial.editorial_name">{{libro.id_editorial.editorial_name}}</option>
+                                <option *ngFor="let editorial of editoriales" value="{{libro.id_editorial.editorial_name}}">{{editorial.editorial_name}}</option>
+                            </select>
+                            <div class="validacion py-1" *ngIf="editorial.errors?.['required']">* Editorial requerida</div>                
+                        </div>
+                        
+                        <div class="form-group py-4 text-center ">
+                            <button type="enviar" class="btn btn-primary" (click)="enviarDatos()">Enviar</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card m-2" style="width: 20rem;">
+                            <img src="{{libro.img}}" class="card-img-top bookimg" alt="{{libro.title}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+
