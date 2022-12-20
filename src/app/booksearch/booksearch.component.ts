@@ -3,6 +3,7 @@ import { Books } from '../models/books.model';
 import { BooksService } from '../services/books.service';
 import { Wrote } from '../models/wrote.model';
 import { WroteService } from '../services/wrote.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-booksearch',
@@ -14,7 +15,7 @@ export class BooksearchComponent implements OnInit{
   constructor(private BooksService:BooksService, private WroteService:WroteService){}
 
   librosParaCargarstart:number = 0;
-  librosParaCargarend:number = 20;
+  librosParaCargarend:number = 0;
   page: number = 1;
   books?: Books[];
   wrote?: Wrote[];
@@ -37,7 +38,7 @@ export class BooksearchComponent implements OnInit{
 
     if (this.ordenarBy == 0) {
 
-      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().pipe(finalize( () => this.getAllBooksLength())).subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.title! > b.title!) {
           return 1;
         }
@@ -45,11 +46,11 @@ export class BooksearchComponent implements OnInit{
           return -1;
         }
         return 0;
-      });}).closed;
+      });});
 
     } else if (this.ordenarBy == 1) {
 
-      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().pipe(finalize( () => this.getAllBooksLength())).subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.title! > b.title!) {
           return -1;
         }
@@ -57,11 +58,11 @@ export class BooksearchComponent implements OnInit{
           return 1;
         }
         return 0;
-      });}).closed
+      });});
 
     } else if (this.ordenarBy == 2) {
 
-      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().pipe(finalize( () => this.getAllBooksLength())).subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.id! > b.id!) {
           return -1;
         }
@@ -69,11 +70,11 @@ export class BooksearchComponent implements OnInit{
           return 1;
         }
         return 0;
-      });}).closed
+      });});
 
     } else if (this.ordenarBy == 3) {
 
-      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().pipe(finalize( () => this.getAllBooksLength())).subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.id! > b.id!) {
           return 1;
         }
@@ -81,11 +82,11 @@ export class BooksearchComponent implements OnInit{
           return -1;
         }
         return 0;
-      });}).closed
+      });});
 
     } else if (this.ordenarBy == 4) {
 
-      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().pipe(finalize( () => this.getAllBooksLength())).subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.num_pages! > b.num_pages!) {
           return 1;
         }
@@ -93,11 +94,11 @@ export class BooksearchComponent implements OnInit{
           return -1;
         }
         return 0;
-      });}).closed
+      });});
 
     } else if (this.ordenarBy == 5) {
 
-      this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
+      this.BooksService.getAll().pipe(finalize( () => this.getAllBooksLength())).subscribe(result => { this.books = result.sort(function (a, b) {
         if (a.num_pages! > b.num_pages!) {
           return -1;
         }
@@ -105,8 +106,18 @@ export class BooksearchComponent implements OnInit{
           return 1;
         }
         return 0;
-      });}).closed
+      });});
 
+    }
+
+  }
+
+  getAllBooksLength() {
+
+    if (this.books?.length! < 20) {
+      this.librosParaCargarend = this.books?.length!;
+    } else {
+      this.librosParaCargarend = this.books?.length!;
     }
 
   }
