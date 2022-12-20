@@ -7,3 +7,7 @@ label{
     padding-top:4px;
     padding-bottom: 4px;
 }
+
+#contenedor{
+    min-height: 70vh;
+}

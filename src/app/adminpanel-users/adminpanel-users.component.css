@@ -9,3 +9,7 @@ tr:nth-child(even) {
     background-color: rgb(240, 240, 240);
 
 }
+
+#contenedor{
+    min-height: 70vh;
+}
