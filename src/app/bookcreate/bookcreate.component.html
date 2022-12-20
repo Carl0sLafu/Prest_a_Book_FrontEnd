@@ -1,7 +1,7 @@
 <div class="row justify-content-md-center" *ngIf="autorElegido==null">
-    <div class="col alert alert-info" role="alert">
-        Elige un autor o crea uno nuevo por favor
-      </div>
+    <div class="col align-center">
+    Elige un autor por favor
+    </div>
 </div>
 
 <div class="container align-center" *ngIf="autorElegido!=null">
@@ -59,7 +59,7 @@
                             <option value="Poesía">Poesía</option>
                             <option value="Otros">Otros</option>
                         </select>            
-                        <div class="validacion py-1" *ngIf="genero.errors?.['required']">* Género requerido</div>     
+                        <div class="validacion py-1" *nfIf="genero.errors?.['required']">* Género requerido</div>     
                     </div>     
 
                     <div class="form-group">

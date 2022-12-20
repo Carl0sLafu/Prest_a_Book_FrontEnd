@@ -12,6 +12,7 @@ import { AdminpanelBooksComponent } from './adminpanel-books/adminpanel-books.co
 import { BookComponent } from './book/book.component';
 import { BookcreateComponent } from './bookcreate/bookcreate.component';
 import { AuthorcreateComponent } from './authorcreate/authorcreate.component';
+import { BookeditComponent } from './bookedit/bookedit.component';
 
 const routes: Routes = [
     {
@@ -61,6 +62,10 @@ const routes: Routes = [
     {
         path: 'bookcreate',
         component: AuthorcreateComponent
+    },
+    {
+        path: 'bookedit',
+        component: BookeditComponent
     }
 ];
 

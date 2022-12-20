@@ -23,6 +23,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { BookcreateComponent } from './bookcreate/bookcreate.component';
 import { AuthorcreateComponent } from './authorcreate/authorcreate.component';
+import { BookeditComponent } from './bookedit/bookedit.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AuthorcreateComponent } from './authorcreate/authorcreate.component';
     AdminpanelLoansComponent,
     BookComponent,
     BookcreateComponent,
-    AuthorcreateComponent
+    AuthorcreateComponent,
+    BookeditComponent
   ],
   imports: [
     BrowserModule,

@@ -94,6 +94,11 @@ export class BookcreateComponent implements OnInit{
 
   }
 
+  recogerEditorial(){
+    this.editorialsService.getByName(this.editorialElegida).pipe(finalize( () => this.crearLibro()))
+    .subscribe(result => this.editorial = result);
+  }
+
   crearLibro(){
 
     this.book.id_editorial.id = this.editorial.id;
@@ -107,15 +112,12 @@ export class BookcreateComponent implements OnInit{
 
     this.wrote.id_author.id = this.autor.id;
     this.wrote.book.id = this.libroCreado.id;
-    this.wroteService.create(this.wrote).subscribe(res => console.log("Wrote añadido: "+res))
-    window.alert("Libro "+this.book.title+ " creado correctamente.")
+    this.wroteService.create(this.wrote).subscribe(res => console.log("Wrote añadido: "+res,
+    window.alert("Libro "+this.book.title+ " creado correctamente.")))
     
   }
 
-  recogerEditorial(){
-    this.editorialsService.getByName(this.editorialElegida).pipe(finalize( () => this.crearLibro()))
-    .subscribe(result => this.editorial = result);
-  }
+
 
   recogerAutor(){
     this.authorsService.getBySurname(this.autorElegido).subscribe(result => this.autor = result);
