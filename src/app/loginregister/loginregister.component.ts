@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UsersService } from '../services/users.service';
 import { ActivatedRoute } from '@angular/router';
+import { HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-loginregister',
@@ -10,6 +11,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./loginregister.component.css']
 })
 export class LoginregisterComponent implements OnInit {
+
+  @HostListener('document:keypress', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) { 
+    if(event.key == "Enter" && this.register == false){
+      this.onSubmitLogin();
+    }else if (event.key == "Enter" && this.register == true){
+      this.onSubmitRegister();
+    }
+  }
 
   routeString: string = '';
   register: boolean = false;
@@ -59,7 +69,8 @@ export class LoginregisterComponent implements OnInit {
   onSubmitLogin(): void {
 
     const {username, password} = this.loginFormResults;
-
+    console.log(username);
+    console.log(password);
     this.useremptyLogin = (username == null)?true:false;
     this.passemptyLogin = (password == null)?true:false;
 
