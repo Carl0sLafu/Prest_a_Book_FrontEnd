@@ -54,25 +54,15 @@
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<div class="card-group">
-								<div class="card m-2" style="width: 18rem;" *ngFor="let book of books | slice:0:3;">
-									<a href="book/{{book.id}}">
+								<div class="card m-2" routerLink="/book/{{book.id}}" style="width: 18rem;" *ngFor="let book of books | slice:0:3;">
 										<img src="{{book.img}}" class="card-img-top bookimg" alt="{{book.title}}">
-										<div class="card-body">
-											<h5 class="card-title">{{book.title}}</h5>
-										</div>
-									</a>
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item">
 							<div class="card-group">
-								<div class="card m-2" style="width: 18rem;" *ngFor="let book of books | slice:3:6;">
-									<a href="book/{{book.id}}">
+								<div class="card m-2" routerLink="/book/{{book.id}}" style="width: 18rem;" *ngFor="let book of books | slice:3:6;">
 										<img src="{{book.img}}" class="card-img-top bookimg" alt="{{book.title}}">
-										<div class="card-body">
-											<h5 class="card-title">{{book.title}}</h5>
-										</div>
-									</a>
 								</div>
 							</div>
 						</div>

@@ -34,7 +34,7 @@ export class InterfaceComponent implements OnInit {
   published?:Books[];
   enviadasLoans?:Loans[];
   recibidasLoans?:Loans[];
-
+  estasSeguro: boolean = false;
 
 
   modifyUser: any = {
@@ -61,7 +61,13 @@ export class InterfaceComponent implements OnInit {
   }
 
   deleteWish(id:number | undefined):void{
-    this.wishesService.delete(id).pipe(finalize( () => this.cargarWishlist())).subscribe();
+    this.estasSeguro = window.confirm
+    ("¿Estás seguro?");
+    if(this.estasSeguro){
+      this.wishesService.delete(id).pipe(finalize( () => this.cargarWishlist())).subscribe();
+    }
+    this.estasSeguro = false;
+
   }
 
   cambiarDatos() {
@@ -102,12 +108,24 @@ export class InterfaceComponent implements OnInit {
   }
 
   deleteLoan(id_loan:any):void{
-    this.loansService.delete(id_loan).pipe(finalize( () => this.cargarLoans())).subscribe();
+    this.estasSeguro = window.confirm
+    ("¿Estás seguro?");
+    if(this.estasSeguro){
+      this.loansService.delete(id_loan).pipe(finalize( () => this.cargarLoans())).subscribe();
+    }
+    this.estasSeguro = false;
+
     //this.cargarLoans();
   }
 
   deleteBook(id_book:any):void{
-    this.booksService.delete(id_book).pipe(finalize( () => this.cargarBooks())).subscribe();
+    this.estasSeguro = window.confirm
+    ("¿Estás seguro?");
+    if(this.estasSeguro){
+      this.booksService.delete(id_book).pipe(finalize( () => this.cargarBooks())).subscribe();
+    }
+    this.estasSeguro = false;
+
   }
 
   approveLoan(loan:any):void{
