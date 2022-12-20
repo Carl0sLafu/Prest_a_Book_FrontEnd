@@ -26,6 +26,7 @@ export class BooksearchComponent implements OnInit{
   estaBuscando: boolean = false;
   estaHaciendoScroll: boolean = false;
   isMaxLenght: boolean = false;
+  isFetching:boolean = true;
 
   ngOnInit():void{
 
@@ -113,7 +114,7 @@ export class BooksearchComponent implements OnInit{
   }
 
   getAllBooksLength() {
-
+    this.isFetching=false;
     if (this.books?.length! < 20) {
       this.librosParaCargarend = this.books?.length!;
     } else {
