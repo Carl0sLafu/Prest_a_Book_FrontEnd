@@ -72,6 +72,12 @@ export class BookcreateComponent implements OnInit{
 
 
   ngOnInit(): void {
+
+    if (this.token.getToken()) {
+
+      window.location.assign("..");
+
+    }
     
     this.user = this.token.getUser();
     this.book.id_user.id=this.user.id;    
