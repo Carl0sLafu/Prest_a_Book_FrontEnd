@@ -11,6 +11,8 @@ export class AdminpanelLoansComponent implements OnInit {
 
   prestamos:any = null;
   estasSeguro: any = false;
+  mensaje: string = '';
+  idprestamo: number = 0;
 
   constructor(private loans: LoansService){}
 
@@ -19,12 +21,17 @@ export class AdminpanelLoansComponent implements OnInit {
   }
 
   borrarPrestamo(prestamo_id:number){
-    this.estasSeguro = window.confirm("¿Estás seguro?");
-    console.log(prestamo_id)
-    if(this.estasSeguro){
-          this.loans.delete(prestamo_id).pipe(finalize( () => this.recibirPrestamos())).subscribe();
-          window.alert("Préstamo borrado correctamente");
-    }
+
+    this.mensaje = "¿Estás seguro?";
+    this.idprestamo = prestamo_id;
+
+  }
+
+  borradoDefinitivo() {
+
+    this.mensaje = "Préstamo borrado correctamente";
+    this.loans.delete(this.idprestamo).pipe(finalize(() => this.recibirPrestamos())).subscribe();
+
   }
 
   recibirPrestamos(){
