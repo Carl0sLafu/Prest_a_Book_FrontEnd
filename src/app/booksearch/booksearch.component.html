@@ -64,14 +64,14 @@
             </ng-container>
         </div>
         <div class="row">
-            <div class="col text-center" *ngIf="!estaBuscando">
+            <div class="col text-center" *ngIf="!estaBuscando && !isFetching">
                 <div class="btn-group py-5" role="group" aria-label="Second group">
                     <button type="button" class="btn btn-secondary fw-bold"
-                        *ngIf="books!==undefined && librosParaCargarstart - 39 > 0"
+                        *ngIf="books!==undefined && librosParaCargarstart - 23 > 0"
                         (click)="comprobarLength(false, 2)"><a href="search#"
                             class="text-reset text-decoration-none">{{page - 2}}</a></button>
                     <button type="button" class="btn btn-secondary fw-bold"
-                        *ngIf="books!==undefined && librosParaCargarstart - 19 > 0"
+                        *ngIf="books!==undefined && librosParaCargarstart - 11 > 0"
                         (click)="comprobarLength(false, 1)"><a href="search#"
                             class="text-reset text-decoration-none">{{page - 1}}</a></button>
                     <button type="button" class="btn btn-primary fw-bold">{{page}}</button>
@@ -80,19 +80,19 @@
                         (click)="comprobarLength(true, 1)"><a href="search#"
                             class="text-reset text-decoration-none">{{page + 1}}</a></button>
                     <button type="button" class="btn btn-secondary fw-bold"
-                        *ngIf="books!==undefined && books.length > librosParaCargarend + 20"
+                        *ngIf="books!==undefined && books.length > librosParaCargarend + 12"
                         (click)="comprobarLength(true, 2)"><a href="search#"
                             class="text-reset text-decoration-none">{{page + 2}}</a></button>
                 </div>
             </div>
-            <div class="col text-center" *ngIf="estaBuscando">
+            <div class="col text-center" *ngIf="estaBuscando && !isFetching">
                 <div class="btn-group py-5" role="group" aria-label="Second group">
                     <button type="button" class="btn btn-secondary fw-bold"
-                        *ngIf="LibrosEncontrados!=undefined && librosParaCargarstart - 39 > 0"
+                        *ngIf="LibrosEncontrados!=undefined && librosParaCargarstart - 23 > 0"
                         (click)="comprobarLength(false, 2)"><a href="search#"
                             class="text-reset text-decoration-none">{{page - 2}}</a></button>
                     <button type="button" class="btn btn-secondary fw-bold"
-                        *ngIf="LibrosEncontrados!=undefined && librosParaCargarstart - 19 > 0"
+                        *ngIf="LibrosEncontrados!=undefined && librosParaCargarstart - 11 > 0"
                         (click)="comprobarLength(false, 1)"><a href="search#"
                             class="text-reset text-decoration-none">{{page - 1}}</a></button>
                     <button type="button" class="btn btn-primary fw-bold">{{page}}</button>
@@ -101,7 +101,7 @@
                         (click)="comprobarLength(true, 1)"><a href="search#"
                             class="text-reset text-decoration-none">{{page + 1}}</a></button>
                     <button type="button" class="btn btn-secondary fw-bold"
-                        *ngIf="LibrosEncontrados!==undefined && LibrosEncontrados.length > librosParaCargarend + 20"
+                        *ngIf="LibrosEncontrados!==undefined && LibrosEncontrados.length > librosParaCargarend + 12"
                         (click)="comprobarLength(true, 2)"><a href="search#"
                             class="text-reset text-decoration-none">{{page + 2}}</a></button>
                 </div>
