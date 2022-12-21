@@ -70,6 +70,9 @@ export class BookcreateComponent implements OnInit{
       }
     }
 
+    modalSucces: any;
+    modalFail: any;
+
 
   ngOnInit(): void {
 
@@ -86,7 +89,10 @@ export class BookcreateComponent implements OnInit{
 
     this.recogerAutor();
 
-    console.log(this.autorElegido)
+    console.log(this.autorElegido);
+
+    this.modalSucces = document.getElementById('Funciona');
+    this.modalFail = document.getElementById('AlgoFalla');
 
   }
 
@@ -115,15 +121,11 @@ export class BookcreateComponent implements OnInit{
 
   crearWrote(){
 
-
     this.wrote.id_author.id = this.autor.id;
     this.wrote.book.id = this.libroCreado.id;
-    this.wroteService.create(this.wrote).subscribe(res => console.log("Wrote añadido: "+res,
-    window.alert("Libro "+this.book.title+ " creado correctamente.")))
-    
+    this.wroteService.create(this.wrote).subscribe();
+
   }
-
-
 
   recogerAutor(){
     this.authorsService.getBySurname(this.autorElegido).subscribe(result => this.autor = result);

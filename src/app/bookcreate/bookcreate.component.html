@@ -92,7 +92,7 @@
                     </div>
                     
                     <div class="form-group pt-5 text-center ">
-                        <button type="enviar" class="btn btn-primary" (click)="enviarDatos()">Enviar</button>
+                        <button type="enviar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Funciona" (click)="enviarDatos()">Enviar</button>
                     </div>
 
                 </form>
@@ -108,6 +108,35 @@
 
 
 
+<div class="modal fade" id="Funciona" tabindex="-1" role="dialog" aria-labelledby="Funciona" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Has creado un libro correctamente</h5>
+            </div>
+            <div class="modal-body">
+                El libro <strong>{{book.title}}</strong> ha sido publicado
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-
+<div class="modal fade" id="AlgoFalla" tabindex="-1" role="dialog" aria-labelledby="AlgoFalla" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Algo a fallado</h5>
+            </div>
+            <div class="modal-body">
+                Ha habido un error al crear el libro, revisa que todo sea correcto y vuelvelo a intentar
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
