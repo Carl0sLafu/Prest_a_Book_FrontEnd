@@ -123,12 +123,7 @@ export class InterfaceComponent implements OnInit {
   }
 
   deleteBook():void {
-
-    var id_book = this.idBookToTouch;
-
-    console.log(id_book);
-    //this.booksService.delete(id_book).pipe(finalize( () => this.cargarBooks())).subscribe();
-
+    this.booksService.delete(this.idBookToTouch).pipe(finalize( () => this.cargarBooks())).subscribe();
   }
 
   approveLoan(loan:any):void{
