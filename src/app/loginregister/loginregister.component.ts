@@ -4,6 +4,8 @@ import { TokenStorageService } from '../_services/token-storage.service';
 import { UsersService } from '../services/users.service';
 import { ActivatedRoute } from '@angular/router';
 import { HostListener } from '@angular/core';
+import { Users } from '../models/users.model';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-loginregister',
@@ -52,6 +54,8 @@ export class LoginregisterComponent implements OnInit {
 
   registerSuccesful: boolean = false;
 
+  usuarioExiste?:Users;
+
   constructor (private authService: AuthService, private tokenStorage: TokenStorageService, private users: UsersService, private route:ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -69,8 +73,6 @@ export class LoginregisterComponent implements OnInit {
   onSubmitLogin(): void {
 
     const {username, password} = this.loginFormResults;
-    console.log(username);
-    console.log(password);
     this.useremptyLogin = (username == null)?true:false;
     this.passemptyLogin = (password == null)?true:false;
 
@@ -103,41 +105,9 @@ export class LoginregisterComponent implements OnInit {
 
     const {username, email, password, confirmedpassword} = this.registerFormResults;
 
-    this.useremptyRegister = (username == null)?true:false;
-    this.emailemptyRegister = (email == null)?true:false;
-    this.passemptyRegister = (password == null)?true:false;
-    this.passConfirmemptyRegister = (confirmedpassword == null)?true:false;
+    this.users.getByUsername(username).pipe(finalize(() => this.enviarRegister(username, email, password, confirmedpassword))).subscribe( result => this.usuarioExiste = result);
 
-    var coinciden = false;
-
-    if (password == confirmedpassword) {
-
-      coinciden = true;
-
-    } else if (!this.passemptyRegister && !this.passConfirmemptyRegister) {
-
-      this.errorMessageRegister = 'Las contraseñas no coinciden';
-      coinciden = false;
-
-    }
-
-    //Controlar con una consulta de que no se repite el nombre
-    if (!this.useremptyRegister && !this.emailemptyRegister && !this.passemptyRegister && !this.passConfirmemptyRegister && coinciden) {
-
-      this.authService.register(username, password, email, username, null, null, null, 3).subscribe(
-        data => {
-
-          this.registerSuccesful = true;
-
-        },
-        error => {
-
-          this.errorMessageRegister = "Algo ha fallado, vuelvelo a intentar";
-
-        }
-      );
-
-    }
+    
 
   }
 
@@ -173,6 +143,46 @@ export class LoginregisterComponent implements OnInit {
 
     window.location.reload();
 
+  }
+
+  enviarRegister(username:any, email:any, password:any, confirmedpassword:any){
+    this.useremptyRegister = (username == null)?true:false;
+    this.emailemptyRegister = (email == null)?true:false;
+    this.passemptyRegister = (password == null)?true:false;
+    this.passConfirmemptyRegister = (confirmedpassword == null)?true:false;
+
+    var coinciden = false;
+
+    if (password == confirmedpassword) {
+
+      coinciden = true;
+
+    } else if (!this.passemptyRegister && !this.passConfirmemptyRegister) {
+
+      this.errorMessageRegister = 'Las contraseñas no coinciden';
+      coinciden = false;
+
+    }
+
+    //Controlar con una consulta de que no se repite el nombre
+    if ( (!this.useremptyRegister && !this.emailemptyRegister && !this.passemptyRegister && !this.passConfirmemptyRegister && coinciden) && !this.usuarioExiste) {
+
+      this.authService.register(username, password, email, username, null, null, null, 3).subscribe(
+        data => {
+
+          this.registerSuccesful = true;
+
+        },
+        error => {
+
+          this.errorMessageRegister = "Algo ha fallado, vuelvelo a intentar";
+
+        }
+      );
+
+    }else if(this.usuarioExiste){
+      this.errorMessageRegister = "Este usuario ya existe";
+    }
   }
 
 }
