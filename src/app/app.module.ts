@@ -18,9 +18,6 @@ import { FormsModule } from '@angular/forms';
 import { BookComponent } from './book/book.component';
 import { AuthInterceptor } from './_helpers/auth.interceptor';
 import { ActivatedRoute, Router } from '@angular/router';
-
-  // Guard
-import { AuthGuard } from './guards/auth.guard';
 import { BookcreateComponent } from './bookcreate/bookcreate.component';
 import { AuthorcreateComponent } from './authorcreate/authorcreate.component';
 import { BookeditComponent } from './bookedit/bookedit.component';
@@ -57,8 +54,6 @@ import { BookeditComponent } from './bookedit/bookedit.component';
       useClass:AuthInterceptor,
       multi:true
     },
-    AuthGuard
-
   ],
   bootstrap: [AppComponent]
 })
