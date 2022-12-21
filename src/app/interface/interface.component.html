@@ -62,8 +62,7 @@
                 <div class="container bg-white">
                     <div class="row p-5">
                         <div class="col-3">
-                            <img src="./../../assets/Portrait_placeholder.png" class="img-fluid"
-                                height="300">
+                            <img src="./../../assets/Portrait_placeholder.png" class="img-fluid" height="300">
                         </div>
                         <div class="col">
                             <div class="container-fluid fs-5 text-start">
@@ -149,7 +148,7 @@
                             <div id="foto">
                                 <img src="{{wish.id_book?.img}}" routerLink="/book/{{wish.id_book?.id}}"
                                     class="card-img-top" alt="...">
-                                <button id="deleteFromWishlist" (click)="deleteWish(wish.id)"
+                                <button id="deleteFromWishlist" data-bs-toggle="modal" data-bs-target="#ModalLibrosWishlist" (click)="swapWishToTouch(wish.id!)"
                                     class="btn btn-danger text-center"><strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -166,6 +165,28 @@
                     <ng-template #elseWishlist>
                         <div class="p-4">Aún no has añadido libros a tu lista de deseos.</div>
                     </ng-template>
+                    <!--Modal para borrar de wishlist-->
+                    <div class="modal fade" id="ModalLibrosWishlist" tabindex="-1" role="dialog"
+                        aria-labelledby="ModalLibrosWishlist" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">¿Seguro?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Seguro que quieres quitar este libro de la lista de deseos?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" (click)="deleteWish()"
+                                        data-bs-dismiss="modal">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -182,7 +203,9 @@
                             <div id="foto">
                                 <img src="{{publish.img}}" routerLink="/book/{{publish.id}}" class="card-img-top"
                                     alt="...">
-                                <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPublicados" (click)="swapBookToTouch(publish.id!)">
+                                <button type="button" class="btn btn-danger text-center" id="deleteLoan"
+                                    data-bs-toggle="modal" data-bs-target="#ModalLibrosPublicados"
+                                    (click)="swapBookToTouch(publish.id!)">
                                     <strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -200,27 +223,32 @@
                     <ng-template #elsePublished>
                         <div class="p-4">Aún no has publicado ningún libro.</div>
                     </ng-template>
-                     <!--Modal para borrar libros publicados-->
-                     <div class="modal fade" id="ModalLibrosPublicados" tabindex="-1" role="dialog" aria-labelledby="ModalLibrosPublicados" aria-hidden="true">
+                    <!--Modal para borrar libros publicados-->
+                    <div class="modal fade" id="ModalLibrosPublicados" tabindex="-1" role="dialog"
+                        aria-labelledby="ModalLibrosPublicados" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">¿Seguro?</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     ¿Seguro que quieres borrar este libro?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger" (click)="deleteBook()" data-bs-dismiss="modal">Eliminar</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" (click)="deleteBook()"
+                                        data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row px-4 pb-3">
                         <div class="col text-end">
-                            <button type="button" class="btn btn-primary mx-2" routerLink="/bookcreate">Añadir nuevo libro</button>
+                            <button type="button" class="btn btn-primary mx-2" routerLink="/bookcreate">Añadir nuevo
+                                libro</button>
                             <button type="button" class="btn btn-success" routerLink="/bookedit">Editar libro</button>
                         </div>
                     </div>
@@ -240,26 +268,27 @@
                             <div id="foto">
                                 <img src="{{recibida.id_book?.img}}" routerLink="/book/{{recibida.id_book?.id}}"
                                     class="card-img-top" alt="...">
-                                    <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones1" *ngIf="recibida.active == true"
-                                    (click)="swapLoanToTouch(recibida.id!)">
-                                        <strong>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                            </svg>
-                                        </strong>
-                                    </button>
-                                    
+                                <button type="button" class="btn btn-danger text-center" id="deleteLoan"
+                                    data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones1"
+                                    *ngIf="recibida.active == true" (click)="swapLoanToTouch(recibida.id!)">
+                                    <strong>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                        </svg>
+                                    </strong>
+                                </button>
+
                                 <svg id="aprobarLoan" *ngIf="recibida.active == false" (click)="approveLoan(recibida)"
                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
                                     <path
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                 </svg>
-                                <svg id="denegarLoan" *ngIf="recibida.active == false" (click)="swapLoanToTouch(recibida.id!)"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                    class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
+                                <svg id="denegarLoan" *ngIf="recibida.active == false"
+                                    (click)="swapLoanToTouch(recibida.id!)" xmlns="http://www.w3.org/2000/svg"
+                                    fill="currentColor" class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
                                     <path
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                                 </svg>
@@ -273,19 +302,23 @@
                             </div>
                         </div>
                         <!--Modal para borrar libros publicados-->
-                        <div class="modal fade" id="ModalLibrosPeticiones1" tabindex="-1" role="dialog" aria-labelledby="ModalLibrosPeticiones1" aria-hidden="true">
+                        <div class="modal fade" id="ModalLibrosPeticiones1" tabindex="-1" role="dialog"
+                            aria-labelledby="ModalLibrosPeticiones1" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">¿Seguro?</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         ¿Seguro que quieres borrar este préstamo?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger" (click)="deleteLoan()" data-bs-dismiss="modal">Eliminar</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger" (click)="deleteLoan()"
+                                            data-bs-dismiss="modal">Eliminar</button>
                                     </div>
                                 </div>
                             </div>
@@ -310,17 +343,18 @@
                             <div id="foto">
                                 <img src="{{loan.id_book?.img}}" routerLink="/book/{{loan.id_book?.id}}"
                                     class="card-img-top" alt="...">
-                                <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones2"
-                                (click)="swapLoanToTouch(loan.id!)">
+                                <button type="button" class="btn btn-danger text-center" id="deleteLoan"
+                                    data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones2"
+                                    (click)="swapLoanToTouch(loan.id!)">
                                     <strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                             <path
-                                                 d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                         </svg>
                                     </strong>
                                 </button>
-                                
+
                                 <div id="finalizacion" class="container bg-light" *ngIf="loan.active == true">
                                     <p class="p-0 m-0 text-success">Fin préstamo: {{loan.end_date | date:'dd/MM/y'}}</p>
                                 </div>
@@ -334,19 +368,23 @@
                             </div>
                         </div>
                         <!--Modal para borrar libros publicados-->
-                        <div class="modal fade" id="ModalLibrosPeticiones2" tabindex="-1" role="dialog" aria-labelledby="ModalLibrosPeticiones2" aria-hidden="true">
+                        <div class="modal fade" id="ModalLibrosPeticiones2" tabindex="-1" role="dialog"
+                            aria-labelledby="ModalLibrosPeticiones2" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">¿Seguro?</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         ¿Seguro que quieres borrar este préstamo?
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                        <button type="button" class="btn btn-danger" (click)="deleteLoan()" data-bs-dismiss="modal">Eliminar</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-danger" (click)="deleteLoan()"
+                                            data-bs-dismiss="modal">Eliminar</button>
                                     </div>
                                 </div>
                             </div>

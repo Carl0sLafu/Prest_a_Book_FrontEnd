@@ -39,6 +39,7 @@ export class InterfaceComponent implements OnInit {
   datepipe: DatePipe = new DatePipe('en-US');
   idBookToTouch: number = 0;
   idLoanToTouch: number = 0;
+  idWishToTouch: number = 0;
 
   modifyUser: any = {
     username: null,
@@ -71,14 +72,12 @@ export class InterfaceComponent implements OnInit {
     this.idLoanToTouch = num;
   }
 
-  deleteWish(id:number | undefined):void{
-    this.estasSeguro = window.confirm
-    ("¿Estás seguro?");
-    if(this.estasSeguro){
-      this.wishesService.delete(id).pipe(finalize( () => this.cargarWishlist())).subscribe();
-    }
-    this.estasSeguro = false;
+  swapWishToTouch(num: number) {
+    this.idWishToTouch = num;
+  }
 
+  deleteWish():void{
+    this.wishesService.delete(this.idWishToTouch).pipe(finalize( () => this.cargarWishlist())).subscribe();
   }
 
   cambiarDatos() {
