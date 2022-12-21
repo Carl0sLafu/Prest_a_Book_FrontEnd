@@ -18,7 +18,8 @@ export class AdminpanelUsersComponent {
       id: null
     }
   };
-
+  mensaje: string = '';
+  usuarioId: number = 0;
 
   constructor(private users: UsersService){
     
@@ -30,30 +31,36 @@ export class AdminpanelUsersComponent {
 
   
   borrarUsuario(usuario_id:number){
-    this.estasSeguro = window.confirm("¿Estás seguro?");
 
-    if(this.estasSeguro){
-          this.users.delete(usuario_id).pipe(finalize( () => this.recibirUsers())).subscribe()
-    }
+    this.mensaje = "¿Estás seguro?";
+    this.usuarioId = usuario_id;
+
+  }
+
+  borrarUsuarioDefinitivo() {
+
+    this.mensaje = "Se ha borrado el usuario";
+    this.users.delete(this.usuarioId).pipe(finalize( () => this.recibirUsers())).subscribe();
+
   }
 
   desplegarRol(usuario:any){
     if(usuario.id_role.id == 3){
-      this.estasSeguro = window.confirm
-      ("¿Quieres cambiar el rol de "+usuario.username+" a Colaborador?");
-      if(this.estasSeguro){
-          usuario.id_role.id = 2;
-          this.users.update(usuario.id,usuario).pipe(finalize( () => this.recibirUsers())).subscribe();
-      }
+
+      this.mensaje = "Se a cambiado el rol de "+usuario.username+" a Colaborador";
+      usuario.id_role.id = 2;
+      this.users.update(usuario.id,usuario).pipe(finalize( () => this.recibirUsers())).subscribe();
+
     }else if(usuario.id_role.id == 2){
-      this.estasSeguro = window.confirm
-      ("¿Quieres cambiar el rol de "+usuario.username+" a User?");
-      if(this.estasSeguro){
-          usuario.id_role.id = 3;
-          this.users.update(usuario.id,usuario).pipe(finalize( () => this.recibirUsers())).subscribe();
-      }
+
+      this.mensaje = "Se a cambiado cambiar el rol de "+usuario.username+" a User";
+      usuario.id_role.id = 3;
+      this.users.update(usuario.id,usuario).pipe(finalize( () => this.recibirUsers())).subscribe();
+      
     }else if(usuario.id_role.id == 1){
-      window.alert("No puedes cambiar el rol de un administrador.");
+
+      this.mensaje = "No puedes cambiar el rol de un administrador.";
+
     }
     
   }
