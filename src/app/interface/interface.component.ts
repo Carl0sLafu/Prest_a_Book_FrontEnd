@@ -38,6 +38,7 @@ export class InterfaceComponent implements OnInit {
   estasSeguro: boolean = false;
   datepipe: DatePipe = new DatePipe('en-US');
   idBookToTouch: number = 0;
+  idLoanToTouch: number = 0;
 
   modifyUser: any = {
     username: null,
@@ -63,10 +64,11 @@ export class InterfaceComponent implements OnInit {
   }
 
   swapBookToTouch(num: number) {
-
     this.idBookToTouch = num;
-    console.log(this.idBookToTouch);
+  }
 
+  swapLoanToTouch(num: number) {
+    this.idLoanToTouch = num;
   }
 
   deleteWish(id:number | undefined):void{
@@ -117,18 +119,15 @@ export class InterfaceComponent implements OnInit {
   }
 
   deleteLoan():void{
-    
-    var id_loan = this.idBookToTouch;
-    this.loansService.delete(id_loan).pipe(finalize( () => this.cargarLoans())).subscribe();
-
-    //this.cargarLoans();
+    this.loansService.delete(this.idLoanToTouch).pipe(finalize( () => this.cargarLoans())).subscribe();
   }
 
   deleteBook():void {
 
     var id_book = this.idBookToTouch;
+
     console.log(id_book);
-    this.booksService.delete(id_book).pipe(finalize( () => this.cargarBooks())).subscribe();
+    //this.booksService.delete(id_book).pipe(finalize( () => this.cargarBooks())).subscribe();
 
   }
 

@@ -213,7 +213,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-danger" (click)="deleteBook()" data-bs-dismiss="modal">Eliminar</button>
+                                    <button type="button" class="btn btn-danger" (click)="deleteLoan()" data-bs-dismiss="modal">Eliminar</button>
                                 </div>
                             </div>
                         </div>
@@ -241,7 +241,7 @@
                                 <img src="{{recibida.id_book?.img}}" routerLink="/book/{{recibida.id_book?.id}}"
                                     class="card-img-top" alt="...">
                                     <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones1" *ngIf="recibida.active == true"
-                                    (click)="swapBookToTouch(recibida.id_book?.id!)">
+                                    (click)="swapLoanToTouch(recibida.id!)">
                                         <strong>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -311,7 +311,7 @@
                                 <img src="{{loan.id_book?.img}}" routerLink="/book/{{loan.id_book?.id}}"
                                     class="card-img-top" alt="...">
                                 <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones2"
-                                (click)="swapBookToTouch(loan.id_book?.id!)">
+                                (click)="swapLoanToTouch(loan.id!)">
                                     <strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -342,7 +342,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        ¿Seguro que quieres borrar este libro?
+                                        ¿Seguro que quieres borrar este préstamo?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
