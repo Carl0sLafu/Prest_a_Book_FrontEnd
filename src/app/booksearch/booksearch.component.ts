@@ -31,7 +31,7 @@ export class BooksearchComponent implements OnInit{
   ngOnInit():void{
 
     this.orderBooks();
-    this.WroteService.getAll().subscribe(res=>{this.wrote = res;});
+    this.WroteService.getAll().pipe(finalize(() => this.getAllBooksLength())).subscribe(res=>{this.wrote = res;});
 
   }
 
@@ -115,10 +115,10 @@ export class BooksearchComponent implements OnInit{
 
   getAllBooksLength() {
     this.isFetching=false;
-    if (this.books?.length! < 20) {
+    if (this.books?.length! < 12) {
       this.librosParaCargarend = this.books?.length!;
     } else {
-      this.librosParaCargarend = this.books?.length!;
+      this.librosParaCargarend = 12;
     }
 
   }
@@ -137,13 +137,19 @@ export class BooksearchComponent implements OnInit{
     this.books?.forEach(book => {
       if (book.title?.toLocaleLowerCase().includes(this.titleSearch.toLocaleLowerCase())) {
         this.LibrosEncontrados.push(book);
-        if (this.librosParaCargarend != 20) {
+        if (this.librosParaCargarend != 12) {
 
           this.librosParaCargarend++;
 
         }
       }
     });
+
+    if (this.librosParaCargarend == 0) {
+
+      this.librosParaCargarstart = -1;
+
+    }
 
   }
 
@@ -167,7 +173,7 @@ export class BooksearchComponent implements OnInit{
 
             this.LibrosEncontrados.push(bookSearch);
 
-            if (this.librosParaCargarend != 20) {
+            if (this.librosParaCargarend != 12) {
 
               this.librosParaCargarend++;
 
@@ -181,21 +187,29 @@ export class BooksearchComponent implements OnInit{
 
     });
 
+    if (this.librosParaCargarend == 0) {
+
+      this.librosParaCargarstart = -1;
+
+    }
+
   }
 
   comprobarLength(subir:boolean, plus:number) {
 
+    window.scrollTo(scrollX, 0);
+
     if (subir) {
 
-      this.librosParaCargarstart += 20 * plus;
-      if ((this.librosParaCargarend + (20*plus) > this.books!.length && !this.estaBuscando)
-      || (this.librosParaCargarend + (20*plus) > this.LibrosEncontrados!.length && this.estaBuscando)) {
+      this.librosParaCargarstart += 12 * plus;
+      if ((this.librosParaCargarend + (12*plus) > this.books!.length && !this.estaBuscando)
+      || (this.librosParaCargarend + (12*plus) > this.LibrosEncontrados!.length && this.estaBuscando)) {
 
         this.librosParaCargarend = this.books!.length;
 
       } else {
 
-        this.librosParaCargarend += 20 * plus;
+        this.librosParaCargarend += 12 * plus;
 
       }
 
@@ -203,14 +217,14 @@ export class BooksearchComponent implements OnInit{
 
     } else {
 
-      this.librosParaCargarstart -= 20 * plus;
-      if (this.librosParaCargarend - (20 * plus) < 20) {
+      this.librosParaCargarstart -= 12 * plus;
+      if (this.librosParaCargarend - (12 * plus) < 12) {
 
-        this.librosParaCargarend = 20;
+        this.librosParaCargarend = 12;
 
       } else {
         
-        this.librosParaCargarend -= 20 * plus;
+        this.librosParaCargarend -= 12 * plus;
 
       }
       this.page -= plus;
