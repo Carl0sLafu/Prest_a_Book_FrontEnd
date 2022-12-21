@@ -132,7 +132,7 @@ export class LoginregisterComponent implements OnInit {
         },
         error => {
 
-          this.errorMessageRegister = "Algo a fallado, vuelvelo a intentar";
+          this.errorMessageRegister = "Algo ha fallado, vuelvelo a intentar";
 
         }
       );
