@@ -9,6 +9,7 @@ import { Wishes } from '../models/wishes.model';
 import { Books } from '../models/books.model';
 import { Loans } from '../models/loans.model';
 import {finalize} from 'rxjs/operators';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-interface',
@@ -35,6 +36,7 @@ export class InterfaceComponent implements OnInit {
   enviadasLoans?:Loans[];
   recibidasLoans?:Loans[];
   estasSeguro: boolean = false;
+  datepipe: DatePipe = new DatePipe('en-US')
 
 
   modifyUser: any = {
@@ -80,7 +82,7 @@ export class InterfaceComponent implements OnInit {
   subirDatos() {
     this.user.username = this.modifyUser.username;
     this.user.email = this.modifyUser.email;
-    this.user.birth_date = this.modifyUser.birth;
+    this.user.birth_date = this.modifyUser.birth
     this.user.real_name = this.modifyUser.trueName;
     this.user.surname = this.modifyUser.surname;
     this.user.gender = this.modifyUser.gender;

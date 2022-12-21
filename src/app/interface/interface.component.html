@@ -91,8 +91,8 @@
                                         <div class="input-group mb-1">
                                             <span class="color-custom-red fw-bold input-group-text fs-5">Fecha de
                                                 nacimiento:</span>
-                                            <input type="text" name="birth" value="{{user.birth_date}}"
-                                                placeholder="dd/MM/year" [(ngModel)]="modifyUser.birth">
+                                            <input type="date" name="birth" value="{{user.birth_date | date:'dd-MM-y'}}"
+                                                placeholder="Fecha de nacimiento" [(ngModel)]="modifyUser.birth">
                                         </div>
                                     </div>
                                 </div>

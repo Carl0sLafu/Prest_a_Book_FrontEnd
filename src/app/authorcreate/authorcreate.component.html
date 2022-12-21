@@ -34,7 +34,7 @@
                                 </div>  
                                 <div class="form-group">
                                     <label for="fechanacimiento" class="control-label">Fecha de nacimiento</label>
-                                    <input type="text" class="form-control" id="fechanacimiento" name="fechanacimiento" placeholder="Escribe una fecha de nacimiento" [(ngModel)]="autor.birth_date">
+                                    <input type="date" class="form-control" id="fechanacimiento" name="fechanacimiento" placeholder="Escribe una fecha de nacimiento" [(ngModel)]="autor.birth_date">
                                 </div>  
                                 <div class="form-group">
                                     <label for="nacionalidad" class="control-label">Nacionalidad</label>
@@ -47,9 +47,9 @@
                                 <div class="form-group">
                                     <label for="sexo" class="control-label" >Sexo</label>
                                     <select class="form-control" id="sexo" [(ngModel)]="autor.gender" [ngModelOptions]="{standalone: true}">
-                                        <option value="Hombre">H</option>
-                                        <option value="Mujer">M</option>
-                                        <option value="Otro">Otro</option>
+                                        <option value="H">H</option>
+                                        <option value="M">M</option>
+                                        <option value="null">Otro</option>
                                     </select>                
                                 </div>
                                 <div class="form-group pt-5 text-center ">
