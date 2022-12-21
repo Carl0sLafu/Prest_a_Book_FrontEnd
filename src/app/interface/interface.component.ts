@@ -36,8 +36,8 @@ export class InterfaceComponent implements OnInit {
   enviadasLoans?:Loans[];
   recibidasLoans?:Loans[];
   estasSeguro: boolean = false;
-  datepipe: DatePipe = new DatePipe('en-US')
-
+  datepipe: DatePipe = new DatePipe('en-US');
+  idBookToTouch: number = 0;
 
   modifyUser: any = {
     username: null,
@@ -59,6 +59,13 @@ export class InterfaceComponent implements OnInit {
     this.cargarWishlist();
     this.cargarBooks();
     this.cargarLoans();
+
+  }
+
+  swapBookToTouch(num: number) {
+
+    this.idBookToTouch = num;
+    console.log(this.idBookToTouch);
 
   }
 
@@ -109,24 +116,19 @@ export class InterfaceComponent implements OnInit {
     this.wishesService.getByUser(this.user.id).subscribe( result => this.wishlist = result);
   }
 
-  deleteLoan(id_loan:any):void{
-    this.estasSeguro = window.confirm
-    ("¿Estás seguro?");
-    if(this.estasSeguro){
-      this.loansService.delete(id_loan).pipe(finalize( () => this.cargarLoans())).subscribe();
-    }
-    this.estasSeguro = false;
+  deleteLoan():void{
+    
+    var id_loan = this.idBookToTouch;
+    this.loansService.delete(id_loan).pipe(finalize( () => this.cargarLoans())).subscribe();
 
     //this.cargarLoans();
   }
 
-  deleteBook(id_book:any):void{
-    this.estasSeguro = window.confirm
-    ("¿Estás seguro?");
-    if(this.estasSeguro){
-      this.booksService.delete(id_book).pipe(finalize( () => this.cargarBooks())).subscribe();
-    }
-    this.estasSeguro = false;
+  deleteBook():void {
+
+    var id_book = this.idBookToTouch;
+    console.log(id_book);
+    this.booksService.delete(id_book).pipe(finalize( () => this.cargarBooks())).subscribe();
 
   }
 
@@ -135,7 +137,7 @@ export class InterfaceComponent implements OnInit {
     date.setMonth(date.getMonth() + 1)
     loan.end_date = date;
     loan.active = true;
-    this.loansService.update(loan.id, loan).pipe(finalize( () => this.cargarLoans())).subscribe();
+    this.loansService.update(loan.id, loan).pipe(finalize(() => this.cargarLoans())).subscribe();
   }
 
   cargarLoans(){
