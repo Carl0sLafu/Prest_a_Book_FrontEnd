@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Books } from '../models/books.model';
 import { BooksService } from '../services/books.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-main',
@@ -9,7 +10,8 @@ import { BooksService } from '../services/books.service';
 })
 export class MainComponent {
 
-  constructor(private BooksService:BooksService){}
+  constructor(private BooksService:BooksService,
+    private token: TokenStorageService){}
 
   books: Books[] = [];
   count: number = 3;
@@ -17,8 +19,21 @@ export class MainComponent {
   numrandomanterior: number = 0;
   libroAleatorio?: any ;
   generado: boolean = false;
+  user:any = null;
+  isLoged: boolean = false;
 
   ngOnInit():void {
+
+    if (this.token.getToken()) {
+
+      this.isLoged = true;
+      this.user = this.token.getUser();
+
+    } else {
+
+      this.isLoged = false;
+
+    }
 
     this.BooksService.getAll().subscribe(result => { this.books = result.sort(function (a, b) {
       if (a.id! > b.id!) {
