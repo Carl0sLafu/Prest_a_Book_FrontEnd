@@ -62,7 +62,7 @@
                 <div class="container bg-white">
                     <div class="row p-5">
                         <div class="col-3">
-                            <img src="./../../assets/Portrait_placeholder.png" class="img-fluid" ºº alt="Bruja del mar"
+                            <img src="./../../assets/Portrait_placeholder.png" class="img-fluid"
                                 height="300">
                         </div>
                         <div class="col">
@@ -179,14 +179,33 @@
                             <div id="foto">
                                 <img src="{{publish.img}}" routerLink="/book/{{publish.id}}" class="card-img-top"
                                     alt="...">
-                                <button id="deleteLoan" (click)="deleteBook(publish.id)"
-                                    class="btn btn-danger text-center"><strong>
+                                <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPublicados">
+                                    <strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                             <path
                                                 d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                         </svg>
-                                    </strong></button>
+                                    </strong>
+                                </button>
+                                <!--Modal para borrar libros publicados-->
+                                <div class="modal fade" id="ModalLibrosPublicados" tabindex="-1" role="dialog" aria-labelledby="ModalLibrosPublicados" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">¿Seguro?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Seguro que quieres borrar este libro?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-danger" (click)="deleteBook(publish.id)">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body" routerLink="/book/{{publish.id}}">
                                 <h5 class="card-title">{{publish.title}}</h5>
@@ -215,14 +234,34 @@
                             <div id="foto">
                                 <img src="{{recibida.id_book?.img}}" routerLink="/book/{{recibida.id_book?.id}}"
                                     class="card-img-top" alt="...">
-                                <button id="deleteLoan" *ngIf="recibida.active == true"
-                                    (click)="deleteLoan(recibida.id)" class="btn btn-danger text-center"><strong>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                                        </svg>
-                                    </strong></button>
+                                    <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones1">
+                                        <strong>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                            </svg>
+                                        </strong>
+                                    </button>
+                                    <!--Modal para borrar libros publicados-->
+                                    <div class="modal fade" id="ModalLibrosPeticiones1" tabindex="-1" role="dialog" aria-labelledby="ModalLibrosPeticiones1" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">¿Seguro?</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ¿Seguro que quieres borrar este libro?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    <button type="button" class="btn btn-danger" *ngIf="recibida.active == true"
+                                                    (click)="deleteLoan(recibida.id)">Eliminar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <svg id="aprobarLoan" *ngIf="recibida.active == false" (click)="approveLoan(recibida)"
                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
@@ -261,14 +300,33 @@
                             <div id="foto">
                                 <img src="{{loan.id_book?.img}}" routerLink="/book/{{loan.id_book?.id}}"
                                     class="card-img-top" alt="...">
-                                <button id="deleteLoan" (click)="deleteLoan(loan.id)"
-                                    class="btn btn-danger text-center"><strong>
+                                <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones1">
+                                    <strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                             <path
-                                                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
+                                                 d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                         </svg>
-                                    </strong></button>
+                                    </strong>
+                                </button>
+                                <!--Modal para borrar libros publicados-->
+                                <div class="modal fade" id="ModalLibrosPeticiones1" tabindex="-1" role="dialog" aria-labelledby="ModalLibrosPeticiones1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">¿Seguro?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿Seguro que quieres borrar este libro?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                <button type="button" class="btn btn-danger" (click)="deleteLoan(loan.id)">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div id="finalizacion" class="container bg-light" *ngIf="loan.active == true">
                                     <p class="p-0 m-0 text-success">Fin préstamo: {{loan.end_date | date:'dd/MM/y'}}</p>
                                 </div>
