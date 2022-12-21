@@ -35,6 +35,7 @@ export class BookComponent implements OnInit {
   user?:Users;
   wish?:Wishes;
   requested?:Loans;
+  isFetching: boolean = true;
 
   ngOnInit():void{
     if (!this.TokenStorage.getToken()) {
@@ -53,6 +54,7 @@ export class BookComponent implements OnInit {
       id_book:this.book
     }
     this.WishesService.create(data).pipe(finalize( () => this.checkWishlist())).subscribe();
+    this.WroteService.getByBook(this.id).pipe(finalize( () => this.sendRequests())).subscribe(result => this.wrote = result);
     this.checkWishlist();
     this.sendRequests();
   }
@@ -60,6 +62,8 @@ export class BookComponent implements OnInit {
   checkWishlist(){
     this.WishesService.getByUserAndBook(this.user?.id, this.id).subscribe(result => this.wish = result);
     //this.sendRequests();
+    console.log(this.wrote);
+    this.isFetching = false;
   }
 
   deleteFromWishlist(){
@@ -68,7 +72,7 @@ export class BookComponent implements OnInit {
   }
 
   sendRequests(){
-    this.WroteService.getByBook(this.id).subscribe(result => this.wrote = result);
+    this.WroteService.getByBook(this.id).pipe(finalize( () => null)).subscribe(result => this.wrote = result);
     this.BooksService.getById(this.id).pipe(finalize( () => this.checkWishlist())).subscribe(result => this.book = result);
   }
 
