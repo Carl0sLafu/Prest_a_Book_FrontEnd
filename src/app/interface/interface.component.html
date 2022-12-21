@@ -144,7 +144,7 @@
                             Lista de deseos
                         </div>
                     </div>
-                    <div class="row p-2" *ngIf="wishlist?.length">
+                    <div class="row p-2" *ngIf="wishlist?.length; else elseWishlist">
                         <div class="card m-2 col-lg-2 col-11" *ngFor="let wish of wishlist">
                             <div id="foto">
                                 <img src="{{wish.id_book?.img}}" routerLink="/book/{{wish.id_book?.id}}"
@@ -163,6 +163,9 @@
                             </div>
                         </div>
                     </div>
+                    <ng-template #elseWishlist>
+                        <div class="p-4">Aún no has añadido libros a tu lista de deseos.</div>
+                    </ng-template>
                 </div>
             </div>
         </div>
@@ -174,7 +177,7 @@
                             Mis libros publicados
                         </div>
                     </div>
-                    <div class="row p-2" *ngIf="published?.length">
+                    <div class="row p-2" *ngIf="published?.length; else elsePublished">
                         <div class="card m-2 col-lg-2 col-11" *ngFor="let publish of published">
                             <div id="foto">
                                 <img src="{{publish.img}}" routerLink="/book/{{publish.id}}" class="card-img-top"
@@ -194,6 +197,9 @@
                             </div>
                         </div>
                     </div>
+                    <ng-template #elsePublished>
+                        <div class="p-4">Aún no has publicado ningún libro.</div>
+                    </ng-template>
                      <!--Modal para borrar libros publicados-->
                      <div class="modal fade" id="ModalLibrosPublicados" tabindex="-1" role="dialog" aria-labelledby="ModalLibrosPublicados" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -229,13 +235,13 @@
                             Peticiones de préstamos recibidas
                         </div>
                     </div>
-                    <div class="row p-2" *ngIf="published?.length">
+                    <div class="row p-2" *ngIf="published?.length; else elseRecibida">
                         <div class="card m-2 col-lg-2 col-11" *ngFor="let recibida of recibidasLoans">
                             <div id="foto">
                                 <img src="{{recibida.id_book?.img}}" routerLink="/book/{{recibida.id_book?.id}}"
                                     class="card-img-top" alt="...">
                                     <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones1" *ngIf="recibida.active == true"
-                                    (click)="swapBookToTouch(recibida.id_book?.id!)">
+                                    (click)="swapLoanToTouch(recibida.id!)">
                                         <strong>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                 fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -251,7 +257,7 @@
                                     <path
                                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
                                 </svg>
-                                <svg id="denegarLoan" *ngIf="recibida.active == false" (click)="deleteLoan()"
+                                <svg id="denegarLoan" *ngIf="recibida.active == false" (click)="swapLoanToTouch(recibida.id!)"
                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                     class="bi bi-x-circle-fill text-danger" viewBox="0 0 16 16">
                                     <path
@@ -275,7 +281,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        ¿Seguro que quieres borrar este libro?
+                                        ¿Seguro que quieres borrar este préstamo?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -285,6 +291,9 @@
                             </div>
                         </div>
                     </div>
+                    <ng-template #elseRecibida>
+                        <div class="p-4">Aún no has recibido ninguna petición de préstamo.</div>
+                    </ng-template>
                 </div>
             </div>
         </div>
@@ -296,13 +305,13 @@
                             Peticiones de préstamos enviadas
                         </div>
                     </div>
-                    <div class="row p-2" *ngIf="published?.length">
+                    <div class="row p-2" *ngIf="enviadasLoans?.length; else elseLoan">
                         <div class="card m-2 col-lg-2 col-11" *ngFor="let loan of enviadasLoans">
                             <div id="foto">
                                 <img src="{{loan.id_book?.img}}" routerLink="/book/{{loan.id_book?.id}}"
                                     class="card-img-top" alt="...">
                                 <button type="button" class="btn btn-danger text-center" id="deleteLoan" data-bs-toggle="modal" data-bs-target="#ModalLibrosPeticiones2"
-                                (click)="swapBookToTouch(loan.id_book?.id!)">
+                                (click)="swapLoanToTouch(loan.id!)">
                                     <strong>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                             fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -333,7 +342,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        ¿Seguro que quieres borrar este libro?
+                                        ¿Seguro que quieres borrar este préstamo?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -343,6 +352,9 @@
                             </div>
                         </div>
                     </div>
+                    <ng-template #elseLoan>
+                        <div class="p-4">Aún no has recibido ninguna petición de préstamo.</div>
+                    </ng-template>
                 </div>
             </div>
         </div>
