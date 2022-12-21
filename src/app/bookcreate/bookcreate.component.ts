@@ -73,7 +73,7 @@ export class BookcreateComponent implements OnInit{
 
   ngOnInit(): void {
 
-    if (this.token.getToken()) {
+    if (!this.token.getToken()) {
 
       window.location.assign("..");
 
