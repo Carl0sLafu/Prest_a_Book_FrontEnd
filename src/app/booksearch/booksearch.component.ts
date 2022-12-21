@@ -197,6 +197,8 @@ export class BooksearchComponent implements OnInit{
 
   comprobarLength(subir:boolean, plus:number) {
 
+    window.scrollTo(scrollX, 0);
+
     if (subir) {
 
       this.librosParaCargarstart += 12 * plus;
