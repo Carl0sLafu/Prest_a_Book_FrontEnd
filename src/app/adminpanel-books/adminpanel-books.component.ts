@@ -12,6 +12,9 @@ export class AdminpanelBooksComponent implements OnInit {
   libros:any = null
   estasSeguro: any = false;
 
+  mensaje: string = '';
+  bookid: number = 0;
+
   constructor(private books: BooksService){}
 
   ngOnInit(): void{
@@ -19,12 +22,17 @@ export class AdminpanelBooksComponent implements OnInit {
     
   }
   borrarLibro(libro_id:number){
-    this.estasSeguro = window.confirm("¿Estás seguro?");
-    console.log(libro_id)
-    if(this.estasSeguro){
-          this.books.delete(libro_id).pipe(finalize( () => this.recibirLibros())).subscribe(result => window.alert("Libro borrado correctamente"));
-          
-    }
+
+    this.mensaje = "¿Estás seguro?";
+    this.bookid = libro_id
+
+  }
+
+  borradoDefinitivo() {
+
+    this.mensaje = "Libro borrado correctamente";
+    this.books.delete(this.bookid).pipe(finalize( () => this.recibirLibros())).subscribe();
+
   }
 
   recibirLibros(){
