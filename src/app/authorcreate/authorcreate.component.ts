@@ -49,8 +49,6 @@ export class AuthorcreateComponent implements OnInit{
 
   enviarDatos(){
 
-    window.alert("Autor "+this.autor.name+ " " +this.autor.surname+ " creado.")
-    console.log(this.autor)
     this.creandoAutor = !this.creandoAutor;
     
     this.crearAutor();
