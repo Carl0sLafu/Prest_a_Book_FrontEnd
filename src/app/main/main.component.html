@@ -1,7 +1,7 @@
 <body class="bg-custom-yellow fontcabecera">
 	<div id="bienvenido" class="container-fluid p-4 text-white text-center">
-		<div class="row pt-4">
-			<div class="col-lg-4 fs-1 align-self-center fw-bolder"><img src="assets/Logoprestabook.png" alt="Prest-A-Book"></div>
+		<div class="row pt-5">
+			<div class="col-lg-5 fs-1 align-self-center fw-bolder"><img src="assets/Logoprestabook.png" alt="Prest-A-Book"></div>
 		</div>
 		<div class="row">
 			<div class="col-lg-5 mt-5 fs-1 align-self-center fw-bolder color-custom-blue">Bienvenido a Prest-a-book</div>
@@ -54,14 +54,14 @@
 					<div class="carousel-inner">
 						<div class="carousel-item active">
 							<div class="card-group">
-								<div class="card m-2" routerLink="/book/{{book.id}}" style="width: 18rem;" *ngFor="let book of books | slice:0:3;">
+								<div class="card m-2" routerLink="/book/{{book.id}}" style="width: 20rem;" *ngFor="let book of books | slice:0:3;">
 										<img src="{{book.img}}" class="card-img-top bookimg" alt="{{book.title}}">
 								</div>
 							</div>
 						</div>
 						<div class="carousel-item">
 							<div class="card-group">
-								<div class="card m-2" routerLink="/book/{{book.id}}" style="width: 18rem;" *ngFor="let book of books | slice:3:6;">
+								<div class="card m-2" routerLink="/book/{{book.id}}" style="width: 20rem;" *ngFor="let book of books | slice:3:6;">
 										<img src="{{book.img}}" class="card-img-top bookimg" alt="{{book.title}}">
 								</div>
 							</div>
