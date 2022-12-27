@@ -1,0 +1,93 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-custom-black {
+
+	background-color: #191519;
+
+}
+
+.color-custom-black {
+
+	color: #191519;
+
+}
+
+.bg-custom-yellow {
+
+	background-color: #ffffb3;
+
+}
+
+.color-custom-blue {
+
+	color: #006ba6 !important;
+
+}
+
+.color-custom-blue2 {
+
+	color: #68caff !important;
+
+}
+
+.color-custom-blue2:hover {
+
+	color: #2cb5ff !important;
+
+}
+
+.custom-blue-a:hover {
+
+	color: #008dda !important;
+
+}
+
+.bg-custom-red {
+
+	background-color: #6e0d25;
+
+}
+
+.color-custom-red {
+
+	color: #b6002d;
+
+}
+
+.bg-custom-orange {
+
+	background-color: #dcab6b;
+
+}
+
+.color-custom-pink {
+
+	color: #e20074 !important;
+
+}
+
+.dropdown-menu[data-bs-popper] {
+
+	right: 1%;
+	left: auto;
+
+}
+
+.purebackground {
+
+	background-image: url(assets/purebackground.png);
+	background-repeat: repeat;
+
+}
+
+.background-image-center {
+
+	background-position: center;
+
+}
+
+.fontcabecera{
+
+	font-family: 'Libre Baskerville', serif;
+	
+}
+

@@ -1,0 +1,96 @@
+<body class="bg-custom-yellow fontcabecera">
+	<div id="bienvenido" class="container-fluid p-4 text-white text-center">
+		<div class="row pt-5">
+			<div class="col-lg-5 fs-1 align-self-center fw-bolder"><img src="assets/Logoprestabook.png" alt="Prest-A-Book"></div>
+		</div>
+		<div class="row">
+			<div class="col-lg-5 mt-5 fs-1 align-self-center fw-bolder color-custom-blue">Bienvenido a Prest-a-book</div>
+		</div>
+	</div>
+	
+	<div class="container-fluid bg-custom-orange px-0" id="containercentral">
+		<div class="container-fluid purebackground p-5">
+			<div class="row pb-5" *ngIf="!isLoged">
+				<div class="col col-12 fs-5 text-center contentintroImg">¿Buscas libros nuevos que devorar? ¿Quieres intercambiar obras y abrir nuevos mundos a lectores como tú?<br><a href="/login-register" class="color-custom-blue custom-blue-a"><br>¡Regístrate aquí o accede a tu cuenta!</a></div>
+			</div>
+			<div class="row pb-5" *ngIf="isLoged">
+				<div class="col col-12 fs-5 text-center contentintroImg">¿Buscas libros nuevos que devorar? ¿Quieres intercambiar obras y abrir nuevos mundos a lectores como tú?<br><a href="/interface" class="color-custom-blue custom-blue-a"><br>¡Regístrate aquí o accede a tu cuenta!</a></div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-center px-5 py-4 contentintroImg">
+					<span class="fs-1 fw-bold" *ngIf="!generado">¿No sabes qué leer? ¡Usa la librería mágica para generar una sugerencia aleatoria!</span>
+					<span class="fs-3 fw-bold" *ngIf="generado">Te recomendamos leer {{libroAleatorio?.title}}</span><br>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-center contentintroImg pt-1 librarygenerator mx-auto" *ngIf="!generado" (click)="generarLibroAleatorio()">
+					<img src="assets/giflibro.gif" class="img-fluid generatebookMaxHeight" id="flotando">
+				</div>
+				<div class="col-12 text-center mx-auto pb-5" style="height: 230px;" *ngIf="generado">
+					<a href="book/{{libroAleatorio?.id}}" style="display: inline-block;">
+						<img src="{{libroAleatorio?.img}}" style="width: 10rem;" class="card-img-top generatedbookHeight" alt="{{libroAleatorio?.title}}">
+					</a>
+				</div>
+				<div class="col-12 text-center contentintroImg mt-5 mx-auto" *ngIf="generado">
+					<button type="button" class="btn btn-primary btn-rounded" (click)="generarLibroAleatorio()">Volver a generar</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+	<div id="cards-container" class="container-fluid px-0">
+		<div class="container-fluid purebackground p-5 pt-0 background-image-center">
+			<div class="row mb-3 pt-5">
+				<div class="col-12 text-center">
+					<span class="fs-1 fw-bold">Últimos libros publicados</span>
+				</div>
+			</div>
+			<div class="row">
+				<div id="carouselExampleIndicators" class="carousel slide pb-5 col-lg-6 col-md-8 col-sm-12" data-bs-ride="true">
+					<div class="carousel-indicators">
+						<!--No me gusta el libro en los botones del slider, lo he dejado comentado en css-->
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+							class="active indicator" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+							aria-label="Slide 2" class="indicator"></button>
+					</div>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="card-group">
+								<div class="card m-2" routerLink="/book/{{book.id}}" style="width: 20rem;" *ngFor="let book of books | slice:0:3;">
+										<img src="{{book.img}}" class="card-img-top bookimg" alt="{{book.title}}">
+								</div>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<div class="card-group">
+								<div class="card m-2" routerLink="/book/{{book.id}}" style="width: 20rem;" *ngFor="let book of books | slice:3:6;">
+										<img src="{{book.img}}" class="card-img-top bookimg" alt="{{book.title}}">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid bg-custom-orange" id="bottom">
+		<div class="container-fluid purebackground p-5">
+			<div class="row">
+				<div class="col-6 text-center contentintroImg">
+					<span class="fs-2 fw-bold">¿No encuentras lo que buscas?</span><br>
+					<a class="color-custom-blue custom-blue-a fs-3" href="/search">Explora para añadir a tu lista de deseos --></a>
+				</div>
+				<div class="col-6 text-center contentintroImg">
+					<span class="fs-2 fw-bold">¿Quieres prestar libros que no usas?</span><br>
+					<a class="color-custom-blue custom-blue-a fs-3" href="/login-register" *ngIf="!isLoged">Inicia sesión y comienza a compartir --></a>
+					<a class="color-custom-blue custom-blue-a fs-3" href="/interface" *ngIf="isLoged">Inicia sesión y comienza a compartir --></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>

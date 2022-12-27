@@ -1,0 +1,83 @@
+<div class="container-fluid color-custom-black h-100 fontcabecera">
+    <div class="row h-100">
+        <div class="col-xxl-9 p-0 bg-custom-yellow">
+            <div class="container-fluid  h-100 p-5">
+                <div class="row">
+                    <div class="col fs-1 fw-bold py-3" id="intro">
+                        <p>Prest-a-Book © </p>
+                        <p>Web creada como proyecto Prest-a-Book por:</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col fw-bold py-2" id="intro">
+                        <button class="btn btn-link fw-bold" ngbButton (click)="agrandar(1)"><img id="mini" [src]="imgSrc1"></button>
+                        <button class="btn btn-link fw-bold" ngbButton (click)="agrandar(2)"><img id="mini" [src]="imgSrc2"></button>
+                        <button class="btn btn-link fw-bold" ngbButton (click)="agrandar(3)"><img id="mini" [src]="imgSrc3"></button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col py-1" id="intro">
+                        <br>
+                        <p>Prest-a-Book es una aplicación para el préstamo de libros que fomenta la lectura y el compañerismo entre personas con dicho hobby.</p>
+                        <p>Este proyecto es posible gracias a 
+                        <a href="https://www.t-systems.com/es/es">T-System</a>, 
+                        <a href="https://cambrareus.org/">Cambra Reus</a>,
+                        <a href="https://fundacionesplai.org/">Fundación esplai</a> y
+                        <a href="https://techmabs.com/">Techma</a>.
+                        <br><br>          
+                        <p>Prest-a-Book no se hace responsable de la pérdida de libros o diferencias entre los usuarios de esta plataforma.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xxl-3 p-0">
+            <div class="container-fluid bg-custom-orange h-100 grande">
+
+                <!--Alberto-->
+
+                <div class="row justify-content-md-center" *ngIf="fotonum==1">
+                    <div class="col-12 col-md-auto p-5 text-center" id="intro">
+                        <img id="foto" class="img-fluid" [src]="imgSrc1">
+                    </div>
+                    <div class="col-12 text-center pb-5">
+                        <p class="fs-5 fw-bold">Alberto Jiménez <a target="_blank" href="https://www.linkedin.com/in/albertojilo/"><img [src]="imgLinkedin"></a></p>
+                        <p class="fs-6 fw-bold">Fullstack developer</p>
+                    </div>
+                </div>
+
+                <!--Facu-->
+
+                <div class="row justify-content-md-center" *ngIf="fotonum==2">
+                    <div class="col-12 col-md-auto p-5 text-center" id="intro">
+                        <img id="foto" class="img-fluid" [src]="imgSrc2">
+                    </div>
+                    <div class="col-12 text-center pb-5">
+                        <p class="fs-5 fw-bold">Facundo Silva <a target="_blank" href="https://www.linkedin.com/in/facundo-javier-silva-castillo/"><img [src]="imgLinkedin"></a></p>
+                        <p class="fs-6 fw-bold">Fullstack developer</p>
+                    </div>
+                </div>
+
+                <!--Carlos-->
+
+                <div class="row justify-content-md-center" *ngIf="fotonum==3">
+                    <div class="col-12 col-md-auto p-5 text-center" id="intro">
+                        <img id="foto" class="img-fluid" [src]="imgSrc3">
+                    </div>
+                    <div class="col-12 text-center pb-5">
+                        <p class="fs-5 fw-bold">Carlos Lafuente <a target="_blank" href="https://www.linkedin.com/in/carlos-lafuente-108271240/"><img [src]="imgLinkedin"></a></p>
+                        <p class="fs-6 fw-bold">Fullstack developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+        

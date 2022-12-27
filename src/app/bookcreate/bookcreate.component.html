@@ -1,0 +1,142 @@
+<div class="container align-center">
+<div class="row justify-content-md-center text-center pt-5" *ngIf="autorElegido==null">
+    <div class="col-12 alert alert-warning" id="editordelibro" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+          </svg>
+          Selecciona un autor para crear un libro
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+          </svg>
+      </div>
+</div>
+</div>
+
+<div class="container align-center" *ngIf="autorElegido!=null">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-8">
+                <form>
+
+                    <div class="form-group">
+                        <label for="titulo" class="control-label">Título</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Escribe un título para el libro" maxlength="255" required [(ngModel)]="book.title" #title="ngModel">
+                        <div class="validacion py-1" *ngIf="title.errors?.['required']">* Titulo requerido</div>
+                    </div>    
+                
+                    <div class="form-group">
+                        <label for="isbn" class="control-label">ISBN</label>
+                        <input type="text" class="form-control" id="isbn" name="isbn" placeholder="13 dígitos" maxlength="13" required [(ngModel)]="book.isbn" #isbn="ngModel">
+                        <div class="validacion py-1" *ngIf="isbn.errors?.['required']">* ISBN requerido</div>
+                    </div>                    
+                                            
+                    <div class="form-group">
+                        <label for="numpaginas" class="control-label">Número de páginas</label>
+                        <input type="text" class="form-control" id="numpaginas" name="numpaginas" placeholder="Número de páginas" required [(ngModel)]="book.num_pages" #numpaginas="ngModel">
+                        <div class="validacion py-1" *ngIf="numpaginas.errors?.['required']">* Nº de páginas requerido</div>
+                    </div>    
+                
+                    <div class="form-group">
+                        <label for="genero" class="control-label" >Género</label>
+                        <select class="form-control" id="genero" required [(ngModel)]="book.genre" [ngModelOptions]="{standalone: true}" #genero="ngModel">
+                            <option value="Clásico literario">Clásico literario</option>
+                            <option value="Cómic">Cómic</option>
+                            <option value="Cuentos y relatos">Cuentos y relatos</option>
+                            <option value="Fantasía">Fantasía</option>
+                            <option value="Humor">Humor</option>
+                            <option value="Infantil">Infantil</option>
+                            <option value="Juvenil">Juvenil</option>
+                            <option value="Novela histórica">Novela histórica</option>
+                            <option value="Novela policiaca">Novela policiaca</option>
+                            <option value="Novela romántica">Novela romántica</option>
+                            <option value="Terror">Terror</option>
+                            <option value="Thriller">Thriller</option>
+                            <option value="Arte">Arte</option>
+                            <option value="Autoayuda">Autoayuda</option>
+                            <option value="Biografías y autobiografías">Biografías y autobiografías</option>
+                            <option value="Cocina">Cocina</option>
+                            <option value="Deportes">Deportes</option>
+                            <option value="Divulgación científica">Divulgación científica</option>
+                            <option value="Diccionarios">Diccionarios</option>
+                            <option value="Ensayo">Ensayo</option>
+                            <option value="Filosofía">Filosofía</option>
+                            <option value="Historia">Historia</option>
+                            <option value="Idiomas">Idiomas</option>
+                            <option value="Negocios">Negocios</option>
+                            <option value="Viajes">Viajes</option>
+                            <option value="Religión">Religión</option>
+                            <option value="Poesía">Poesía</option>
+                            <option value="Otros">Otros</option>
+                        </select>            
+                        <div class="validacion py-1" *nfIf="genero.errors?.['required']">* Género requerido</div>     
+                    </div>     
+
+                    <div class="form-group">
+                            <label for="descripcion" class="control-label">Descripción</label>
+                            <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Sinopsis o descripción" rows="3" maxlength="5000" required [(ngModel)]="book.description" #descripcion="ngModel"></textarea>
+                            <div class="validacion py-1" *ngIf="descripcion.errors?.['required']">* Descripción requerida</div>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="imagen" class="control-label">Imagen</label>
+                        <input type="text" class="form-control" id="imagen" name="imagen" placeholder="URL de la imagen" required [(ngModel)]="book.img" #imagen="ngModel">
+                        <div class="validacion py-1" *ngIf="imagen.errors?.['required']">* Imagen requerida</div>
+                    </div>    
+                    
+                    <div class="form-group">
+                        <label for="editorial" class="control-label">Editorial</label>
+                        <select class="form-control" id="editorial" required  [(ngModel)]="editorialElegida" [ngModelOptions]="{standalone: true}" #editorial="ngModel">
+                            <option *ngFor="let editorial of editoriales" value="{{editorial.editorial_name}}">{{editorial.editorial_name}}</option>
+                        </select>
+                        <div class="validacion py-1" *ngIf="editorial.errors?.['required']">* Editorial requerida</div>                
+                    </div>
+                    
+                    <div class="form-group pt-5 text-center ">
+                        <button type="enviar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Funciona" (click)="enviarDatos()">Enviar</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card m-2" style="width: 20rem;">
+                        <img src="{{book.img}}" class="card-img-top bookimg" alt="{{book.title}}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<div class="modal fade" id="Funciona" tabindex="-1" role="dialog" aria-labelledby="Funciona" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Has creado un libro correctamente</h5>
+            </div>
+            <div class="modal-body">
+                El libro <strong>{{book.title}}</strong> ha sido publicado
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="AlgoFalla" tabindex="-1" role="dialog" aria-labelledby="AlgoFalla" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Algo a fallado</h5>
+            </div>
+            <div class="modal-body">
+                Ha habido un error al crear el libro, revisa que todo sea correcto y vuelvelo a intentar
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

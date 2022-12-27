@@ -1,0 +1,11 @@
+#all-page-height {
+
+    min-height: 75vh;
+
+}
+
+.max-image-height {
+
+    max-height: 600px;
+
+}

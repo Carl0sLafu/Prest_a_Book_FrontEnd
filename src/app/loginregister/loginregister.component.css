@@ -1,0 +1,65 @@
+.intro {
+
+    animation-name: appear;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+
+}
+
+.intro2 {
+
+    animation-name: appear2;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+
+}
+
+.intro3 {
+
+    animation-name: appear3;
+    animation-duration: 0.8s;
+    animation-iteration-count: 1;
+
+}
+
+@keyframes appear {
+
+    from {margin-top: 1em;
+    color: #1915196b;}
+    to {margin-top: 0em; color: inherit;}
+
+}
+
+@keyframes appear2 {
+
+    from {margin-top: 1em;
+    color: #ffffff;}
+    to {margin-top: 0em; color: #ffffff;}
+
+}
+
+@keyframes appear3 {
+
+    from {margin-top: 0.01em;
+    color: #1915196b;}
+    to {margin-top: 0em; color: inherit;}
+
+}
+
+#acceder{
+    background-image: url(/assets/Acceder.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width:100%;
+    height:100vh;
+    border-left: 2px solid black;
+}
+
+#registrarse{
+    background-image: url(/assets/Registrarse.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width:100%;
+    height:100vh;
+    border-left: 2px solid black;
+}
